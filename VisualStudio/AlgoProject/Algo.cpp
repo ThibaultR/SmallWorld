@@ -1,0 +1,76 @@
+#include "Algo.h"
+#include <time.h>
+
+#define TILE_PLAIN 0
+#define TILE_DESERT 1
+#define TILE_MOUNTAIN 2
+#define TILE_FOREST 3
+
+Algo::Algo(){
+
+}
+
+Algo::~Algo(){
+
+}
+
+int Algo::computeFoo() { 
+	return 1; 
+}
+
+
+int* Algo::mapCreation(int taille){
+	srand((unsigned int)time(NULL));
+
+	int* tabmap = new int[taille * taille];
+	int n = taille * taille / 4;
+	int counter[] = { n, n, n, n };
+
+	int v;
+	for (int i = 0; i < taille*taille; i++)
+	{
+		v = rand() % 4;
+		while (counter[v] == 0){
+			v = rand() % 4;
+		}
+		tabmap[i] = v;
+		counter[v]--;
+	}
+
+	return (int*) tabmap;
+}
+
+
+int* Algo::findStartCoordinate(int taille){
+	srand((unsigned int)time(NULL));
+
+	// tabCoordinate[xPlayer1, yPlayer1, xPlayer2, yPlayer2]
+	int tabCoordinate[] = { 0, 0, 0, 0 };
+
+	int v = rand() % 4;
+
+	switch (v)
+	{
+	case 0:
+		tabCoordinate[2] = taille;
+		tabCoordinate[3] = taille;
+		break;
+	case 1:
+		tabCoordinate[0] = taille;
+		tabCoordinate[3] = taille;
+		break;
+	case 2:
+		tabCoordinate[1] = taille;
+		tabCoordinate[2] = taille;
+		break;
+	case 3:
+		tabCoordinate[0] = taille;
+		tabCoordinate[1] = taille;
+		break;
+	default:
+		//TODO ERROR
+		break;
+	}
+
+	return tabCoordinate;
+}

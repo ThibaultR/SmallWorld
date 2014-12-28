@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Poids-Mouche pour la modélisation de la carte">
+    <Position X="18.925" Y="4.271" Height="0.49" Width="1.596" />
+  </Comment>
+  <Comment CommentText="Fabrique pour gérer les différents peuples">
+    <Position X="3.863" Y="2.04" Height="0.51" Width="1.44" />
+  </Comment>
+  <Comment CommentText="Monteur pour la création d'une partie">
+    <Position X="0.741" Y="6.949" Height="0.469" Width="1.44" />
+  </Comment>
+  <Comment CommentText="Stratégie pour la création des différents types de carte">
+    <Position X="12.177" Y="8.76" Height="0.5" Width="1.825" />
+  </Comment>
+  <Class Name="UML_SW.StrategyDemoMap">
+    <Position X="8.5" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAGBAAAAAAABAAAIAAAAAAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>DemoMap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.Player">
+    <Position X="5.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAQAIAAAAAAAUAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Player.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="units" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UML_SW.Unit">
+    <Position X="8" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAAAECAAAQAAAAAAAAAAACEAAAAAAEAAAA=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.Game">
+    <Position X="6.25" Y="5.75" Width="2" />
+    <AssociationLine Name="map" Type="UML_SW.Map" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="8.25" Y="6.938" />
+        <Point X="8.625" Y="6.938" />
+        <Point X="8.625" Y="6.938" />
+        <Point X="10.5" Y="6.938" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAFAAAAAAAIAAAAAAAAAAACAACFAAAAAAAEAAAgAA=</HashCode>
+      <FileName>Game.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="map" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UML_SW.Plain">
+    <Position X="11.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Plain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.Desert">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Desert.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.Mountain">
+    <Position X="15.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Mountain.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.Forest">
+    <Position X="17" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Forest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.StrategySmallMap">
+    <Position X="10.5" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACBAAAAAAAAAAAIAAAAAAEBAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>SmallMap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.StrategyNormalMap">
+    <Position X="12.5" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAACBAAAIAAAAAAAKAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>NormalMap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="UML_SW.FactoryTile">
+    <Position X="19" Y="1.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <AssociationLine Name="plain" Type="UML_SW.Plain" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19.625" Y="1.5" />
+        <Point X="19.625" Y="1.125" />
+        <Point X="12.5" Y="1.125" />
+        <Point X="12.5" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.487" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="desert" Type="UML_SW.Desert" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="1.689" />
+        <Point X="14.188" Y="1.689" />
+        <Point X="14.188" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.414" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="mountain" Type="UML_SW.Mountain" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="2.188" />
+        <Point X="16.406" Y="2.188" />
+        <Point X="16.406" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.921" Y="0.498" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="forest" Type="UML_SW.Forest" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="2.605" />
+        <Point X="17.938" Y="2.605" />
+        <Point X="17.938" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.796" Y="0.31" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAACBAAAAAAAAAJAgAAAAAAAAACAABAAAAAAAAAACA=</HashCode>
+      <FileName>FactoryTile.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="plain" />
+      <Property Name="desert" />
+      <Property Name="mountain" />
+      <Property Name="forest" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UML_SW.BuilderSavedGame">
+    <Position X="2.5" Y="9.25" Width="1.5" />
+    <InheritanceLine Type="UML_SW.BuilderGame" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="4.25" Y="8.594" />
+        <Point X="4.25" Y="8.875" />
+        <Point X="3.25" Y="8.875" />
+        <Point X="3.25" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BuilderSavedGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.BuilderNewGame">
+    <Position X="4.5" Y="9.25" Width="1.5" />
+    <InheritanceLine Type="UML_SW.BuilderGame" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="4.25" Y="8.594" />
+        <Point X="4.25" Y="8.875" />
+        <Point X="5.25" Y="8.875" />
+        <Point X="5.25" Y="9.25" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>BuilderNewGame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.BuilderGame">
+    <Position X="3.25" Y="5.5" Width="2" />
+    <AssociationLine Name="game" Type="UML_SW.Game" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="5.25" Y="7.063" />
+        <Point X="5.375" Y="7.063" />
+        <Point X="5.375" Y="7.062" />
+        <Point X="6.25" Y="7.062" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.12" Y="-0.68" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAAAAhAAAgAEAAAAgAIAAAAAAiAAAA=</HashCode>
+      <FileName>BuilderGame.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="game" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UML_SW.GameCreator">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <AssociationLine Name="builderGame" Type="UML_SW.BuilderGame" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="5.73" />
+        <Point X="3.25" Y="5.73" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameCreator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="builderGame" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UML_SW.Coordinate">
+    <Position X="6.5" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Coordinate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.Map">
+    <Position X="10.5" Y="5.75" Width="1.5" />
+    <AssociationLine Name="tilesList" Type="UML_SW.ITile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="12" Y="6.812" />
+        <Point X="15.125" Y="6.812" />
+        <Point X="15.125" Y="3.103" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EAAAAgAAAAAAAAAAAAAAAAAAEAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="strategy" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="tilesList" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="UML_SW.FactoryPopulation">
+    <Position X="2" Y="1" Width="1.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Enum Name="UML_SW.FactoryPopulation.populationType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>FactoryPopulation.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FactoryPopulation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.UnitElf">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.UnitDwarf">
+    <Position X="9.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UML_SW.UnitOrc">
+    <Position X="8" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Unit.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="UML_SW.ITile">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITile.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="UML_SW.StrategyMap">
+    <Position X="10.5" Y="7.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="UML_SW.StrategyMap.mapType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>StrategyMap.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAACBAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>StrategyMap.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,987 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel"
+  dslVersion="1.0.0.0"
+  Id="493c847a-8cfd-4ca6-8039-fa77b5d1e544"
+  name="CasUtilisation1" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="f4cfef10-ddaa-499b-b9d5-8ab57d4df692"
+        name="Player"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="cb08c983-98f9-4a83-8850-ea07b429757b"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Launch new game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="f21721f6-4897-4e15-ba4e-3441a2fc8698"
+              LastKnownName="Launch new game"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d929443c-513c-41cd-bbe8-f8a1981a6532"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="67fbbecc-a525-481d-bc17-f7f36f9b3b61"
+                  name="Launch new game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="bfc534ce-e8f2-4964-a3de-d0a1295cab9e"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Launch saved game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="4fa43c49-6c5a-4b37-a6c3-7ef91ed0f338"
+              LastKnownName="Launch saved game"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="474f2283-3ee7-49f9-a644-07e7592bd40a"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="93d550b5-e4b1-498c-b6a8-ec0a173b1f67"
+                  name="Launch saved game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="f21721f6-4897-4e15-ba4e-3441a2fc8698"
+        name="Launch new game"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="1090f940-70cb-415e-a545-dfe242b5c074">
+            <useCaseMoniker
+              Id="dc0a93ac-cfdd-4da0-97d8-a24fe563bd37"
+              LastKnownName="Choose Map size"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="84698ac3-8fb4-4bda-8d58-cb5ffdd1e927">
+            <useCaseMoniker
+              Id="b718a13d-c3ff-48f9-806e-ae8cccbf455c"
+              LastKnownName="Create Players"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4fa43c49-6c5a-4b37-a6c3-7ef91ed0f338"
+        name="Launch saved game"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="b4da468c-4fc6-4dc4-936c-4ef1beadc063">
+            <useCaseMoniker
+              Id="7afaa78b-3752-431a-b45e-33c91abd5668"
+              LastKnownName="Select Game to load"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="897a5093-1fac-4cf6-8b15-6b3e2da237dc"
+        name="Abandon game"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="002bff79-63f9-4d04-8443-cb9809f36ace">
+            <useCaseMoniker
+              Id="f21721f6-4897-4e15-ba4e-3441a2fc8698"
+              LastKnownName="Launch new game"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+          <extend
+            Id="bb3f6155-5382-4433-8576-72b6df3e185e">
+            <useCaseMoniker
+              Id="4fa43c49-6c5a-4b37-a6c3-7ef91ed0f338"
+              LastKnownName="Launch saved game"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="011b1d43-cf14-4cef-9677-3daf57b82482"
+        name="save game"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="a8154193-dadc-49e9-83c0-018e26562fbd">
+            <useCaseMoniker
+              Id="4fa43c49-6c5a-4b37-a6c3-7ef91ed0f338"
+              LastKnownName="Launch saved game"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+          <extend
+            Id="576e1281-1170-4cc6-b677-20793705ba3c">
+            <useCaseMoniker
+              Id="f21721f6-4897-4e15-ba4e-3441a2fc8698"
+              LastKnownName="Launch new game"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="62abe900-f63e-475d-90d0-fb70f1ecd432"
+        name="Player1"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="18ca7edd-f328-4a47-a677-740b16b2878c"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f4cfef10-ddaa-499b-b9d5-8ab57d4df692"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="50ac382f-5381-410f-b43c-652cf6649638"
+        name="Player2"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="fe977bad-c7dd-4d74-a240-03e933661000"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f4cfef10-ddaa-499b-b9d5-8ab57d4df692"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="5ccb9dd3-f724-4def-877f-12ea2750d104"
+        name="Player"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="30763fbd-0632-425b-a666-ddd9688afbfc"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Move units"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="6e2b8fe6-a67d-4f59-a560-c5fc58602771"
+              LastKnownName="Do Action"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6fc3486f-b3ba-43f0-bb63-6192158b1ee6"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e1064140-912c-44cf-937d-fc41191adea6"
+                  name="Move units"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6262a45d-ec9f-4a6b-baf3-dad05f9d8f63"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Attack with units"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="94176d1b-5ba1-4709-b844-7df061df6c77"
+              LastKnownName="Attack with units"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c8a5688a-f0be-4d8b-9b40-d92df376d115"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9b6ece2c-c96e-4093-a988-19af1026abdb"
+                  name="Attack with units"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="427f41e3-b1b3-40e3-987b-836d6fb43a06"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Abandon Game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="78e06f4f-89c6-4670-a754-8b467cb5ae7a"
+              LastKnownName="Abandon Game"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9ba9d5e0-29cd-4787-8ae6-3f33c4f5f12d"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5892166b-4597-4c4f-8449-4eb4715f4939"
+                  name="Abandon Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="796b9d88-b9bb-4ee4-828e-29eecefb403e"
+            isDerived="false"
+            sourceEndRoleName="Player"
+            targetEndRoleName="Save Game"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="db51bfc2-040a-4ed7-9531-c2a2d5fd3292"
+              LastKnownName="Save Game"
+              LastKnownLocation="CasUtilisation1.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6769a79d-d390-4207-b15a-b90cf1dbad03"
+                  name="Player"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="06377903-cfb3-40af-8b67-b09535bc0371"
+                  name="Save Game"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="2afd1bc8-777d-4ceb-ae6e-3566259a7a16"
+        name="PlayerOne"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="febfc4bb-5f37-40ef-a51b-f98b9e812e03"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="5ccb9dd3-f724-4def-877f-12ea2750d104"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="5010422e-a729-4797-b2e8-38e87050ff40"
+        name="PlayerTwo"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="bdbaf19c-b1d3-467a-860a-73ca82d89bc5"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="5ccb9dd3-f724-4def-877f-12ea2750d104"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="6e2b8fe6-a67d-4f59-a560-c5fc58602771"
+        name="Do Action"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="90cac539-6495-4569-bd1e-2f8602ff381f">
+            <useCaseMoniker
+              Id="0ab8a9af-bbe3-4879-8bf1-2e234944629f"
+              LastKnownName="Select Unit"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="ff270968-0f8f-40e9-98c7-74037a0b3eb9">
+            <useCaseMoniker
+              Id="31794d72-86ca-4be6-b4c4-a98c384305af"
+              LastKnownName="Select nearby Tile"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="9684a53f-7e43-41c3-bb98-4d87020cab3d">
+            <useCaseMoniker
+              Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e"
+              LastKnownName="Validate movement"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="94176d1b-5ba1-4709-b844-7df061df6c77"
+        name="Attack with units"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="daee1900-1f5e-4c96-a1ae-e417780181f7">
+            <useCaseMoniker
+              Id="0ab8a9af-bbe3-4879-8bf1-2e234944629f"
+              LastKnownName="Select Unit"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="3bc58a50-02a0-4a72-9c72-dc427999da83">
+            <useCaseMoniker
+              Id="31794d72-86ca-4be6-b4c4-a98c384305af"
+              LastKnownName="Select nearby Tile"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="9b218afa-9469-4840-bd92-bca90ae2804a">
+            <useCaseMoniker
+              Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e"
+              LastKnownName="Validate movement"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+        </additions>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0ab8a9af-bbe3-4879-8bf1-2e234944629f"
+        name="Select Unit"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a9bc0fdb-fe70-4a58-a00f-03cf7c724952"
+        name="Select destination tile"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="17ce41c2-e9c4-4f7e-8dac-320596c89989"
+        name="Select unit to attack with"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7b3337d6-b1f8-47e5-aa4b-499730ab5801"
+        name="Select tile to attack"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="1228aa4f-da68-48c9-8ca8-b7fd9f661c14"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="ab6b61ab-fae9-4502-94c0-e07c9c9515b4"
+        name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dc0a93ac-cfdd-4da0-97d8-a24fe563bd37"
+        name="Choose Map size"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b718a13d-c3ff-48f9-806e-ae8cccbf455c"
+        name="Create Players"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c4683cae-bcee-4894-8b4a-d3349a2643c4">
+            <useCaseMoniker
+              Id="e8f160c7-c942-4ddb-b25f-0c60302845f1"
+              LastKnownName="Choose Name"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+          <include
+            Id="041286d0-c8fd-4865-9bea-d35bf8636605">
+            <useCaseMoniker
+              Id="24be8c92-6cc8-43a0-ac02-6576ea47f313"
+              LastKnownName="Choose Population"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7afaa78b-3752-431a-b45e-33c91abd5668"
+        name="Select Game to load"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="78e06f4f-89c6-4670-a754-8b467cb5ae7a"
+        name="Abandon Game"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="db51bfc2-040a-4ed7-9531-c2a2d5fd3292"
+        name="Save Game"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="1bfc5b4d-3e2e-49e7-8f92-adee6ebc1960"
+        name="Subsystem2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="6340009a-8216-4751-b25d-2356c15cb8ac"
+        name="PlayerOne"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="ec0e5705-2b1d-4d44-8e27-631e9abef0b7"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f4cfef10-ddaa-499b-b9d5-8ab57d4df692"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="df045d74-40de-4bdf-a024-3adaa83877ce"
+        name="PlayerTwo"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="6c7cc543-9dd5-4e19-8d1b-7084f6eae829"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="f4cfef10-ddaa-499b-b9d5-8ab57d4df692"
+              LastKnownName="Player"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e8f160c7-c942-4ddb-b25f-0c60302845f1"
+        name="Choose Name"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="24be8c92-6cc8-43a0-ac02-6576ea47f313"
+        name="Choose Population"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="70526025-34ad-4912-ba9f-3b1b69910124"
+        name="Select Dwarf"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="ed6e817e-b4bb-44ba-81b1-a18ce24bdfbb">
+            <useCaseMoniker
+              Id="24be8c92-6cc8-43a0-ac02-6576ea47f313"
+              LastKnownName="Choose Population"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="53c99f77-8d65-48cd-8b3f-eafb24c9f89b"
+        name="Select Elf"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="b3fccbc0-c7a6-4f3e-a689-1b2911493edf">
+            <useCaseMoniker
+              Id="24be8c92-6cc8-43a0-ac02-6576ea47f313"
+              LastKnownName="Choose Population"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ebbee68d-9444-48c7-9d17-473bc5954385"
+        name="Select Orc"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="fa6cb298-ffdb-496c-a630-a9bcbdc30c56">
+            <useCaseMoniker
+              Id="24be8c92-6cc8-43a0-ac02-6576ea47f313"
+              LastKnownName="Choose Population"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="95a6cca8-edc2-40b4-9a89-fd3d200ce4a3"
+        name="Select Demo"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="8bbf8fa4-81f6-4fda-a68c-902fbf8170e7">
+            <useCaseMoniker
+              Id="dc0a93ac-cfdd-4da0-97d8-a24fe563bd37"
+              LastKnownName="Choose Map size"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="842b10bc-7984-4e97-a073-9ba674c003f8"
+        name="Select Small"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="42983d05-b01e-4c6e-b825-401650eef79a">
+            <useCaseMoniker
+              Id="dc0a93ac-cfdd-4da0-97d8-a24fe563bd37"
+              LastKnownName="Choose Map size"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="a8195fca-d2a7-4f1d-9f0a-2d27b4fa4aa3"
+        name="Select Normal"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="1d49f902-30e0-477b-8714-c59a4300c80c">
+            <useCaseMoniker
+              Id="dc0a93ac-cfdd-4da0-97d8-a24fe563bd37"
+              LastKnownName="Choose Map size"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="31794d72-86ca-4be6-b4c4-a98c384305af"
+        name="Select nearby Tile"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e"
+        name="Validate movement"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+        name="SmallWorld"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="53fadff7-e8bc-42ba-aa8f-8074399f2d9c"
+        name="UseCase1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="1afbb601-8d1f-4ead-975c-2bb47f6c8d88"
+        name="SmallWorld"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="fb1c47f6-0c03-41de-9936-a7ec206137f9"
+        name="UseCase2"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c1ee769d-0518-43a0-824e-f4f7fa4d33d0"
+        name="Attack with Unit"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="c104556b-27b1-4a29-af41-decdcfef7089">
+            <useCaseMoniker
+              Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e"
+              LastKnownName="Validate movement"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="01f3416d-c0fe-4c1d-b17a-6916f75e94e9"
+        name="Move Unit"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="bfd4cb30-e7cf-4175-8e7f-4ced108cd997">
+            <useCaseMoniker
+              Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e"
+              LastKnownName="Validate movement"
+              LastKnownLocation="CasUtilisation1.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="930e0754-c2b6-4152-b69f-cbad7f116d4e"
+            LastKnownName="SmallWorld"
+            LastKnownLocation="CasUtilisation1.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

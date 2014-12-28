@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="ff197723-1b03-4c28-87ee-87ed15059724" name="inGame" linkedPackageId="61fc8304-5933-406c-9611-d1451202071e" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="ab33f748-f2aa-4296-a35b-35e1de524a62" name="Player" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5ccb9dd3-f724-4def-877f-12ea2750d104" />
+        <targetEnds>
+          <association Id="8fc52d2e-540e-4a63-adef-091bb9547d73" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="Move units" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="524464d9-af2e-42c1-b023-8469ef8026ed" LastKnownName="Do Action" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="520ea4fb-27e3-482a-bca6-05bf88fe68fd" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6fc3486f-b3ba-43f0-bb63-6192158b1ee6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ad3ce0a2-fc5d-4390-a3b1-a0625fbae6e2" name="Move units" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e1064140-912c-44cf-937d-fc41191adea6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="30763fbd-0632-425b-a666-ddd9688afbfc" />
+          </association>
+          <association Id="69835705-4980-4d15-8055-8c5818ca827a" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="Abandon Game" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b087b664-69aa-405f-b9b8-3ec88b6c91e5" LastKnownName="Abandon Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b2a15f3b-6dbb-410b-bf60-c84bc97bcac2" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9ba9d5e0-29cd-4787-8ae6-3f33c4f5f12d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7628bd7f-2371-43fc-abf3-0e16ddad99e9" name="Abandon Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5892166b-4597-4c4f-8449-4eb4715f4939" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="427f41e3-b1b3-40e3-987b-836d6fb43a06" />
+          </association>
+          <association Id="43d33146-3df9-43de-a615-afe00e95b1df" isDerived="false" sourceEndRoleName="Player" targetEndRoleName="Save Game" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9dec883d-70be-4758-b53a-4e53d457169c" LastKnownName="Save Game" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5e383109-486e-44d9-b665-5b7c02505974" name="Player" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6769a79d-d390-4207-b15a-b90cf1dbad03" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="31d847fa-c3a1-417f-af71-ae3b7bc640ba" name="Save Game" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="06377903-cfb3-40af-8b67-b09535bc0371" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="796b9d88-b9bb-4ee4-828e-29eecefb403e" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="30cccf0d-48ce-497e-9633-42a8b2840184" name="PlayerOne" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2afd1bc8-777d-4ceb-ae6e-3566259a7a16" />
+        <generalsInternal>
+          <generalization Id="a0f64cd6-e4ab-4167-b2d0-26fd82fdb6e5" isSubstitutable="false">
+            <actorMoniker Id="ab33f748-f2aa-4296-a35b-35e1de524a62" LastKnownName="Player" />
+            <elementDefinition Id="febfc4bb-5f37-40ef-a51b-f98b9e812e03" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="9e393c53-dc1a-4a40-bdca-56c0a2c77b99" name="PlayerTwo" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5010422e-a729-4797-b2e8-38e87050ff40" />
+        <generalsInternal>
+          <generalization Id="235111fc-9426-47a8-9223-dc5b1a3d5f9a" isSubstitutable="false">
+            <actorMoniker Id="ab33f748-f2aa-4296-a35b-35e1de524a62" LastKnownName="Player" />
+            <elementDefinition Id="bdbaf19c-b1d3-467a-860a-73ca82d89bc5" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="524464d9-af2e-42c1-b023-8469ef8026ed" name="Do Action" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6e2b8fe6-a67d-4f59-a560-c5fc58602771" />
+        <additions>
+          <include Id="48b5e4e0-7ed7-4ad7-8f91-890e47d9d8c1">
+            <useCaseMoniker Id="1ba4a060-9cf0-4e8e-8041-b32a3d7978d1" LastKnownName="Select Unit" />
+            <elementDefinition Id="90cac539-6495-4569-bd1e-2f8602ff381f" />
+          </include>
+          <include Id="a70233fb-9c23-4a13-b472-fc92d2197b2e">
+            <useCaseMoniker Id="999cb325-9b0c-4b49-b787-b2b18a43262a" LastKnownName="Select nearby Tile" />
+            <elementDefinition Id="ff270968-0f8f-40e9-98c7-74037a0b3eb9" />
+          </include>
+          <include Id="c52bc3ac-2729-4985-9a6d-30e31fccf982">
+            <useCaseMoniker Id="38a31d26-5501-4d7b-bc1b-9552c3f38ef1" LastKnownName="Validate movement" />
+            <elementDefinition Id="9684a53f-7e43-41c3-bb98-4d87020cab3d" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1ba4a060-9cf0-4e8e-8041-b32a3d7978d1" name="Select Unit" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0ab8a9af-bbe3-4879-8bf1-2e234944629f" />
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b087b664-69aa-405f-b9b8-3ec88b6c91e5" name="Abandon Game" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="78e06f4f-89c6-4670-a754-8b467cb5ae7a" />
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9dec883d-70be-4758-b53a-4e53d457169c" name="Save Game" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="db51bfc2-040a-4ed7-9531-c2a2d5fd3292" />
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="999cb325-9b0c-4b49-b787-b2b18a43262a" name="Select nearby Tile" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="31794d72-86ca-4be6-b4c4-a98c384305af" />
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="38a31d26-5501-4d7b-bc1b-9552c3f38ef1" name="Validate movement" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7e61ad06-7e92-4178-aee3-7fa7db2bd15e" />
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" name="SmallWorld" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="930e0754-c2b6-4152-b69f-cbad7f116d4e" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="828430f0-0bf5-4d8c-952e-b400e93325cf" name="Attack with Unit" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c1ee769d-0518-43a0-824e-f4f7fa4d33d0" />
+        <extendedCases>
+          <extend Id="633a331d-6c00-4da7-a916-610e478f8372">
+            <useCaseMoniker Id="38a31d26-5501-4d7b-bc1b-9552c3f38ef1" LastKnownName="Validate movement" />
+            <elementDefinition Id="c104556b-27b1-4a29-af41-decdcfef7089" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="ed95b4e3-e881-44e2-b9d9-89acde8b77fc" name="Move Unit" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="01f3416d-c0fe-4c1d-b17a-6916f75e94e9" />
+        <extendedCases>
+          <extend Id="0104fed3-10df-4696-a904-58133302aaad">
+            <useCaseMoniker Id="38a31d26-5501-4d7b-bc1b-9552c3f38ef1" LastKnownName="Validate movement" />
+            <elementDefinition Id="bfd4cb30-e7cf-4175-8e7f-4ced108cd997" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="d3d13594-80e2-4b81-888d-ed078a8b5d1a" LastKnownName="SmallWorld" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="61fc8304-5933-406c-9611-d1451202071e" name="CasUtilisation1">
+    <elementDefinition Id="493c847a-8cfd-4ca6-8039-fa77b5d1e544" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b22fb512-16ee-419f-9ee0-2bc737e9e85b">
+        <profileInstance Id="c4de999f-cd75-484d-a9b0-370343bdd109" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="b4b136ba-0250-4e79-ba9e-523995fdc162">
+        <profileInstance Id="c18f3bd8-11d1-4c66-bcaf-4327c8ec30e9" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
