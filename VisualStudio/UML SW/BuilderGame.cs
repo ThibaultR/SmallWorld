@@ -47,7 +47,7 @@ namespace UML_SW
         public Game createGame()
         {
             this.game = new Game();
-            return game; //TODO reverifier
+            return game; //TODO reverifier 
         }
 
         protected void createMap()
@@ -55,7 +55,6 @@ namespace UML_SW
             this.game.map = new Map();
             this.game.map.setStrategy(mapType);
             this.game.map.createMap();
-            //TODO round ...
         }
 
         protected void createPlayers() {

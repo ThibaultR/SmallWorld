@@ -14,7 +14,6 @@ namespace UML_SW
 
         public StrategyDemoMap()
         {
-            throw new System.NotImplementedException();
         }
 
         public int size

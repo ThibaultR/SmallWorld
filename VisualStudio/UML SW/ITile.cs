@@ -7,6 +7,29 @@ namespace UML_SW
 {
     public interface ITile
     {
-        int isTaken();
+    }
+
+
+    public class Plain : ITile
+    {
+        public Plain() { }
+    }
+
+
+    public class Desert : ITile
+    {
+        public Desert() { }
+    }
+
+
+    public class Mountain : ITile
+    {
+        public Mountain() { }
+    }
+
+
+    public class Forest : ITile
+    {
+        public Forest() { }
     }
 }

@@ -15,36 +15,26 @@ namespace UML_SW
 
         public Player playerOne
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Player playerTwo
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public int currentRoundNumber
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
+
+        public Game() {
+            currentRoundNumber = 0;
+        }
+
 
         public void endRound(Player player)
         {

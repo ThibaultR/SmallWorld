@@ -13,7 +13,6 @@ namespace UML_SW
 
         public StrategySmallMap()
         {
-            throw new System.NotImplementedException();
         }
 
         public int size

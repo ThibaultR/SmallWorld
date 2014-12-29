@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wrapper;
 
 namespace UML_SW
 {
@@ -43,9 +44,38 @@ namespace UML_SW
             }
         }
 
-        public Map createMap()
-        {
-            throw new System.NotImplementedException();
+        unsafe public void createMap()
+        {//TODO error if strategy not set
+            int n = strategy.size;
+            WrapperAlgo algoW = new WrapperAlgo();
+            int* tabMap = algoW.mapCreation(n);
+
+            FactoryTile ft = new FactoryTile();
+            ITile tempTile;
+
+            for (int i = 0; i < n * n; i++)
+            {
+                switch (tabMap[i])
+                {
+                    case 0:
+                        tempTile = ft.getOrCreatePlain();
+                        break;
+                    case 1:
+                        tempTile = ft.getOrCreateDesert();
+                        break;
+                    case 2:
+                        tempTile = ft.getOrCreateMountain();
+                        break;
+                    case 3:
+                        tempTile = ft.getOrCreateForest();
+                        break;
+                    default:
+                        tempTile = null; //TODO : error
+                        break;
+                }
+        
+                tilesList.Add(tempTile);
+            }
         }
     }
 }

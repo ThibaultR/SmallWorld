@@ -13,19 +13,16 @@ namespace UML_SW
         int size
         {
             get;
-            set;
         }
 
         int nbRounds
         {
             get;
-            set;
         }
 
         int nbUnits
         {
             get;
-            set;
         }
     }
 }

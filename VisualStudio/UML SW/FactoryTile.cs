@@ -10,66 +10,67 @@ namespace UML_SW
 
         public Plain plain
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Desert desert
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Mountain mountain
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
 
         public Forest forest
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
+
+        public FactoryTile() { }
 
         public Plain getOrCreatePlain()
         {
-            throw new System.NotImplementedException();
+            if (plain == null) {
+                plain = new Plain();
+            }
+
+            return plain;
         }
 
         public Desert getOrCreateDesert()
         {
-            throw new System.NotImplementedException();
+            if (desert == null)
+            {
+                desert = new Desert();
+            }
+
+            return desert;
         }
 
         public Mountain getOrCreateMountain()
         {
-            throw new System.NotImplementedException();
+            if (mountain == null)
+            {
+                mountain = new Mountain();
+            }
+
+            return mountain;
         }
 
         public Forest getOrCreateForest()
         {
-            throw new System.NotImplementedException();
+            if (forest == null)
+            {
+                forest = new Forest();
+            }
+
+            return forest;
         }
     }
 }

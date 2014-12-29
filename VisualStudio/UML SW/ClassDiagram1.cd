@@ -58,32 +58,27 @@
   <Class Name="UML_SW.Plain">
     <Position X="11.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Plain.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="UML_SW.Desert">
-    <Position X="13.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Desert.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITile.cs</FileName>
+      <NewMemberFileName>Plain.cs</NewMemberFileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="UML_SW.Mountain">
     <Position X="15.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Mountain.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITile.cs</FileName>
+      <NewMemberFileName>Mountain.cs</NewMemberFileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="UML_SW.Forest">
     <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Forest.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITile.cs</FileName>
+      <NewMemberFileName>Forest.cs</NewMemberFileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -119,20 +114,10 @@
         <Position X="0.089" Y="0.487" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="desert" Type="UML_SW.Desert" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="19" Y="1.689" />
-        <Point X="14.188" Y="1.689" />
-        <Point X="14.188" Y="3.5" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.089" Y="0.414" />
-      </MemberNameLabel>
-    </AssociationLine>
     <AssociationLine Name="mountain" Type="UML_SW.Mountain" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="19" Y="2.188" />
-        <Point X="16.406" Y="2.188" />
+        <Point X="19" Y="2.267" />
+        <Point X="16.406" Y="2.267" />
         <Point X="16.406" Y="3.5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
@@ -141,12 +126,22 @@
     </AssociationLine>
     <AssociationLine Name="forest" Type="UML_SW.Forest" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="19" Y="2.605" />
-        <Point X="17.938" Y="2.605" />
+        <Point X="19" Y="2.731" />
+        <Point X="17.938" Y="2.731" />
         <Point X="17.938" Y="3.5" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-0.796" Y="0.31" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="desert" Type="UML_SW.Desert" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="1.711" />
+        <Point X="14.188" Y="1.711" />
+        <Point X="14.188" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.414" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -155,9 +150,9 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="plain" />
-      <Property Name="desert" />
       <Property Name="mountain" />
       <Property Name="forest" />
+      <Property Name="desert" />
     </ShowAsAssociation>
   </Class>
   <Class Name="UML_SW.BuilderSavedGame">
@@ -236,11 +231,18 @@
   </Class>
   <Class Name="UML_SW.Map">
     <Position X="10.5" Y="5.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="UML_SW.Map.mapType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Map.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
     <AssociationLine Name="tilesList" Type="UML_SW.ITile" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="12" Y="6.812" />
         <Point X="15.125" Y="6.812" />
-        <Point X="15.125" Y="3.103" />
+        <Point X="15.125" Y="2.868" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -267,7 +269,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAIAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAI=</HashCode>
       <FileName>FactoryPopulation.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -292,22 +294,23 @@
       <FileName>Unit.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="UML_SW.Desert">
+    <Position X="13.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ITile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="UML_SW.ITile">
     <Position X="14.5" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ITile.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="UML_SW.StrategyMap">
     <Position X="10.5" Y="7.75" Width="1.5" />
-    <NestedTypes>
-      <Enum Name="UML_SW.StrategyMap.mapType" Collapsed="true">
-        <TypeIdentifier>
-          <NewMemberFileName>StrategyMap.cs</NewMemberFileName>
-        </TypeIdentifier>
-      </Enum>
-    </NestedTypes>
     <TypeIdentifier>
       <HashCode>AAAACBAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>StrategyMap.cs</FileName>
