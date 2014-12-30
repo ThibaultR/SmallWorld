@@ -12,22 +12,22 @@ namespace UnitTestProject
         public void TestFactory()
         {
             FactoryTile ft = new FactoryTile();
-            Assert.AreEqual(ft.plain, null);
+            Assert.IsNull(ft.plain);
             Plain p = ft.getOrCreatePlain();
-            Assert.AreNotEqual(ft.plain, null);
+            Assert.IsNotNull(ft.plain);
             Assert.AreEqual(ft.plain, p);
             Plain p2 = ft.getOrCreatePlain();
             Assert.AreEqual(p2, p);
 
-            Assert.AreEqual(ft.desert, null);
+            Assert.IsNull(ft.desert);
             Desert d = ft.getOrCreateDesert();
             Assert.AreEqual(ft.desert, d);
 
-            Assert.AreEqual(ft.mountain, null);
+            Assert.IsNull(ft.mountain);
             Mountain m = ft.getOrCreateMountain();
             Assert.AreEqual(ft.mountain, m);
 
-            Assert.AreEqual(ft.forest, null);
+            Assert.IsNull(ft.forest);
             Forest f = ft.getOrCreateForest();
             Assert.AreEqual(ft.forest, f);
 

@@ -8,7 +8,7 @@ namespace UML_SW
 {
     public abstract class BuilderGame
     {
-        protected Game game
+        public Game game
         {
             get;
             set;
@@ -44,45 +44,37 @@ namespace UML_SW
             set;
         }
 
+        public BuilderGame(string playerOneName, string playerTwoName, FactoryPopulation.populationType playerOnePopulationType, FactoryPopulation.populationType playerTwoPopulationType, Map.mapType mapType)
+        {
+            this.playerOneName = playerOneName;
+            this.playerTwoName = playerTwoName;
+            this.playerOnePopulationType = playerOnePopulationType;
+            this.playerTwoPopulationType = playerTwoPopulationType;
+            this.mapType = mapType;
+        }
+
+
         public Game createGame()
         {
             this.game = new Game();
             return game; //TODO reverifier 
         }
 
-        protected void createMap()
-        {
-            this.game.map = new Map();
-            this.game.map.setStrategy(mapType);
-            this.game.map.createMap();
-        }
+        abstract public void createMap();
 
-        protected void createPlayers() {
+        public void createPlayers()
+        {
             game.playerOne = new Player(playerOneName, playerOnePopulationType);
             game.playerTwo = new Player(playerTwoName, playerTwoPopulationType);
         }
 
-        unsafe protected void placeUnitsOnMap() {
-            FactoryPopulation fp = new FactoryPopulation();
+        abstract public void placeUnitsOnMap();
 
-            WrapperAlgo algoW = new WrapperAlgo();
-            int* tabCoord = algoW.findStartCoordinate(game.map.strategy.size);
-
-
-            for (int i = 0; i < game.map.strategy.nbUnits; i++) {
-                Unit tempUnit1 = fp.createUnit(this.game.playerOne.populationType);
-                tempUnit1.coordinate = new Coordinate(tabCoord[0], tabCoord[1]);
-                game.playerOne.units.Add(tempUnit1);
-
-                Unit tempUnit2 = fp.createUnit(this.game.playerTwo.populationType);
-                tempUnit2.coordinate = new Coordinate(tabCoord[2], tabCoord[3]);
-                game.playerTwo.units.Add(tempUnit2);
-            }
-        }
-
-        protected void launchGame()
+        public void launchGame()
         {
             throw new System.NotImplementedException();
         }
+
+        
     }
 }

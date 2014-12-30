@@ -7,18 +7,20 @@ namespace UML_SW
 {
     public class BuilderSavedGame : BuilderGame
     {
+        public BuilderSavedGame(string playerOneName, string playerTwoName, FactoryPopulation.populationType playerOnePopulationType, FactoryPopulation.populationType playerTwoPopulationType, Map.mapType mapType)
+            : base(playerOneName, playerTwoName, playerOnePopulationType, playerTwoPopulationType, mapType)
+        {
+            //TODO add param file
+        }
 
-        protected void createMap()
+
+        public override void createMap()
         {
             throw new NotImplementedException();
         }
 
-        protected void createPlayers()
-        {
-            throw new NotImplementedException();
-        }
 
-        protected void placeUnitOnMap()
+        public override void placeUnitsOnMap()
         {
             throw new NotImplementedException();
         }

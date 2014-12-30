@@ -24,17 +24,17 @@ namespace UML_SW
 
         public UnitElf createElf()
         {
-            throw new System.NotImplementedException();
+            return new UnitElf();
         }
 
         public UnitOrc createOrc()
         {
-            throw new System.NotImplementedException();
+            return new UnitOrc();
         }
 
         public UnitDwarf createDwarf()
         {
-            throw new System.NotImplementedException();
+            return new UnitDwarf();
         }
     }
 }

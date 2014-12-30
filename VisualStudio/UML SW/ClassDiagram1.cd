@@ -114,6 +114,16 @@
         <Position X="0.089" Y="0.487" />
       </MemberNameLabel>
     </AssociationLine>
+    <AssociationLine Name="desert" Type="UML_SW.Desert" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="19" Y="1.711" />
+        <Point X="14.188" Y="1.711" />
+        <Point X="14.188" Y="3.5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.089" Y="0.414" />
+      </MemberNameLabel>
+    </AssociationLine>
     <AssociationLine Name="mountain" Type="UML_SW.Mountain" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="19" Y="2.267" />
@@ -134,39 +144,29 @@
         <Position X="-0.796" Y="0.31" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="desert" Type="UML_SW.Desert" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="19" Y="1.711" />
-        <Point X="14.188" Y="1.711" />
-        <Point X="14.188" Y="3.5" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.089" Y="0.414" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAACBAAAAAAAAAJAgAAAAAAAAACAABAAAAAAAAAACA=</HashCode>
       <FileName>FactoryTile.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="plain" />
+      <Property Name="desert" />
       <Property Name="mountain" />
       <Property Name="forest" />
-      <Property Name="desert" />
     </ShowAsAssociation>
   </Class>
   <Class Name="UML_SW.BuilderSavedGame">
     <Position X="2.5" Y="9.25" Width="1.5" />
     <InheritanceLine Type="UML_SW.BuilderGame" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="4.25" Y="8.594" />
+        <Point X="4.25" Y="8.786" />
         <Point X="4.25" Y="8.875" />
         <Point X="3.25" Y="8.875" />
         <Point X="3.25" Y="9.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>BuilderSavedGame.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -174,14 +174,14 @@
     <Position X="4.5" Y="9.25" Width="1.5" />
     <InheritanceLine Type="UML_SW.BuilderGame" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="4.25" Y="8.594" />
+        <Point X="4.25" Y="8.786" />
         <Point X="4.25" Y="8.875" />
         <Point X="5.25" Y="8.875" />
         <Point X="5.25" Y="9.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAACAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAEAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>BuilderNewGame.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -189,8 +189,8 @@
     <Position X="3.25" Y="5.5" Width="2" />
     <AssociationLine Name="game" Type="UML_SW.Game" ManuallyRouted="true" FixedFromPoint="true">
       <Path>
-        <Point X="5.25" Y="7.063" />
-        <Point X="5.375" Y="7.063" />
+        <Point X="5.25" Y="7.16" />
+        <Point X="5.375" Y="7.16" />
         <Point X="5.375" Y="7.062" />
         <Point X="6.25" Y="7.062" />
       </Path>
@@ -210,8 +210,8 @@
     <Position X="0.5" Y="5.5" Width="1.5" />
     <AssociationLine Name="builderGame" Type="UML_SW.BuilderGame" FixedToPoint="true">
       <Path>
-        <Point X="2" Y="5.73" />
-        <Point X="3.25" Y="5.73" />
+        <Point X="2" Y="5.744" />
+        <Point X="3.25" Y="5.744" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>

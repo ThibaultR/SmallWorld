@@ -11,20 +11,20 @@ namespace UnitTestProject
         public void TestCreator()
         {
             Player p = new Player();
-            Assert.AreEqual(p.name,"Defaultplayer");
-            Assert.AreEqual(p.currentScore, 0);
+            Assert.AreEqual("Defaultplayer", p.name);
+            Assert.AreEqual(0, p.currentScore);
         }
 
         [TestMethod]
         public void TestCreator2()
         {
             Player p = new Player("PlayerOne", FactoryPopulation.populationType.Elf);
-            Assert.AreEqual(p.name, "PlayerOne");
-            Assert.AreEqual(p.currentScore, 0);
+            Assert.AreEqual("PlayerOne", p.name);
+            Assert.AreEqual(0, p.currentScore);
             Assert.AreEqual(FactoryPopulation.populationType.Elf, p.populationType);
 
             int n = p.nbUnitAlive();
-            Assert.AreEqual(n, 0);
+            Assert.AreEqual(0, n);
             //TODO addUnits
         }
     }

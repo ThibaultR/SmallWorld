@@ -45,7 +45,11 @@ int* Algo::findStartCoordinate(int taille){
 	srand((unsigned int)time(NULL));
 
 	// tabCoordinate[xPlayer1, yPlayer1, xPlayer2, yPlayer2]
-	int tabCoordinate[] = { 0, 0, 0, 0 };
+	int * tabCoordinate = new int[4];
+	int i;
+	for (i = 0; i < 4; i++){
+		tabCoordinate[i] = 0;
+	}
 
 	int v = rand() % 4;
 
