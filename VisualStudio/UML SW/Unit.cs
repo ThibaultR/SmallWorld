@@ -7,12 +7,17 @@ namespace UML_SW
 {
     public class Unit
     {
+        public const int MAX_HEALTH = 5;
+        public const int MAX_MVT = 1;
+        public const int ATTACK = 2;
+        public const int DEFENCE = 1;
+
         public Unit()
         {
             isAlive = true;
             bonusPoint = 0;
-            healthPoint = 5;
-            movementPoint = 1;
+            healthPoint = MAX_HEALTH;
+            movementPoint = MAX_MVT;
             coordinate = new Coordinate();
         }
 
@@ -46,10 +51,54 @@ namespace UML_SW
             set;
         }
 
-        public void attack()
+        public void attack(Unit enemy)
         {
-            throw new System.NotImplementedException();
-            //TODO
+            int nbFightMin = 3;
+            int nbFightMax = Math.Max(this.healthPoint, enemy.healthPoint) + 2;
+            Random random = new Random();
+            int nbFight = random.Next(nbFightMin, nbFightMax + 1);
+
+            int i = 0;
+            while (i < nbFight && this.isAlive && enemy.isAlive)
+            {
+                double attackUnit = ATTACK * this.healthPoint / MAX_HEALTH;
+                double defenceEnemy = DEFENCE * enemy.healthPoint / MAX_HEALTH;
+
+                double ecart = (attackUnit - defenceEnemy) / Math.Max(attackUnit, defenceEnemy);
+
+                double victoryProbability = 0.5 + 0.5 * ecart;
+
+                int rd = random.Next(0, 100);
+
+                if (rd < victoryProbability)
+                {
+                    enemy.healthPoint--;
+                    
+                    if (enemy.healthPoint == 0)
+                    {
+                        enemy.die();
+                    }
+                }
+                else {
+                    this.healthPoint--;
+
+                    if (this.healthPoint == 0)
+                    {
+                        this.die();
+                        if (enemy.GetType() == typeof(UnitOrc))
+                        {
+                            enemy.bonusPoint++;
+                        }
+                    }
+                }
+
+                
+
+
+                i++;
+            }
+
+
         }
 
         public void move()
