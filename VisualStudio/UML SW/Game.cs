@@ -25,7 +25,19 @@ namespace UML_SW
             set;
         }
 
-        public int currentRoundNumber
+        public double currentRoundNumber
+        {
+            get;
+            set;
+        }
+
+        public Unit currentSelectedUnit
+        {
+            get;
+            set;
+        }
+
+        public Coordinate currentSelectedTileCoordinate
         {
             get;
             set;
@@ -38,30 +50,119 @@ namespace UML_SW
 
         public void endRound(Player player)
         {
-            throw new System.NotImplementedException();
+            currentRoundNumber += 0.5;
+            this.playerOne.playing = !this.playerOne.playing;
+            this.playerTwo.playing = !this.playerTwo.playing;
         }
 
-        public Unit selectUnit()
+        public void selectUnit(Unit u)
         {
-            throw new System.NotImplementedException();
+            this.currentSelectedUnit = u;
         }
 
-        public ITile selectTile()
+        public void selectTile(Coordinate c)
         {
-            throw new System.NotImplementedException();
+            this.currentSelectedTileCoordinate = c;
+        }
+
+        public List<Unit> selectEnemyUnitsOnCoordinates(Coordinate c)
+        {
+            Player enemyPlayer;
+            if (this.playerOne.playing) { enemyPlayer = playerTwo; }
+            else { enemyPlayer = playerOne; }
+
+            List<Unit> list = new List<Unit>();
+
+            foreach (Unit u in enemyPlayer.units)
+            {
+                if (u.isAlive && u.coordinate.equals(c)) { list.Add(u); }
+            }
+
+            return list;
+        }
+
+        public Unit selectBestOpponent(List<Unit> list)
+        {
+            if (list.Count == 0) { return null; }
+
+
+            Unit bestUnit = list[0];
+
+            foreach (Unit u in list)
+            {
+                if (u.healthPoint > bestUnit.healthPoint) { bestUnit = u; }
+            }
+
+            return bestUnit;
+        }
+
+        public Type getTypeofTile(Coordinate c) {
+            int tile = c.x + map.strategy.size * c.y;
+            return this.map.tilesList[tile].GetType();
+        }
+
+        public bool isActionPossible()
+        {
+            //TODO verif proximity
+            if (currentSelectedUnit.movementPoint == 0)
+            {
+                return false;
+            }
+
+            if (currentSelectedUnit.movementPoint == 1)
+            {
+                return true;
+            }
+
+            if (currentSelectedUnit.movementPoint == 0.5)
+            {
+                if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Forest) && currentSelectedUnit.GetType() == typeof(UnitElf))
+                {
+                    return true;
+                }
+
+                if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Plain))
+                {
+                    if (currentSelectedUnit.GetType() == typeof(UnitDwarf) || currentSelectedUnit.GetType() == typeof(UnitOrc))
+                    {
+                        return true;
+                    }
+                }
+
+            }
+
+            return false;
         }
 
         public void action()
         {
-            throw new System.NotImplementedException();
             /*
-             If enemy on tile then 
-             * attack (enemy with most hp)
+             * If enemy on tile then 
+             *      attack (enemy with most hp)
              * 
-             * 
-             * if enmey on tile move to here
-             * else move to tile
+             * if enemy on tile then
+             *      move to here
+             * else 
+             *      move to tile
              */
+
+            if (isActionPossible())
+            {
+                List<Unit> listEnemyUnits = selectEnemyUnitsOnCoordinates(currentSelectedTileCoordinate);
+                if (listEnemyUnits.Count > 0)
+                {
+                    currentSelectedUnit.attack(selectBestOpponent(listEnemyUnits));
+
+                    listEnemyUnits = selectEnemyUnitsOnCoordinates(currentSelectedTileCoordinate);
+                }
+
+                if (listEnemyUnits.Count > 0) { currentSelectedUnit.move(currentSelectedUnit.coordinate, getTypeofTile(currentSelectedUnit.coordinate)); }
+                else
+                {
+                    currentSelectedUnit.move(currentSelectedTileCoordinate, getTypeofTile(currentSelectedUnit.coordinate));
+                }
+
+            }
 
         }
 

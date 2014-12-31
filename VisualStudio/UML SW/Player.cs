@@ -32,11 +32,18 @@ namespace UML_SW
             set;
         }
 
+        public bool playing
+        {
+            get;
+            set;
+        }
+
         public Player()
         {
             name = "Defaultplayer";
             currentScore = 0;
             units = new List<Unit>();
+            playing = false;
         }
 
         public Player(String playerName, FactoryPopulation.populationType playerPopulationType) {
@@ -44,6 +51,7 @@ namespace UML_SW
             populationType = playerPopulationType;
             currentScore = 0;
             units = new List<Unit>();
+            playing = false;
         }
 
         public int nbUnitAlive()

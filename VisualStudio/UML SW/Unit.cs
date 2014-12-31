@@ -11,6 +11,7 @@ namespace UML_SW
         public const int MAX_MVT = 1;
         public const int ATTACK = 2;
         public const int DEFENCE = 1;
+        public const int COSTMVT = 1;
 
         public Unit()
         {
@@ -98,10 +99,12 @@ namespace UML_SW
 
                 i++;
             }
+
+            //TODO : Elf  can escape
            
         }
 
-        public void move(Coordinate c, Type currentTileType)
+        public virtual void move(Coordinate c, Type currentTileType)
         {
             this.coordinate.x = c.x;
             this.coordinate.y = c.y;
@@ -110,24 +113,55 @@ namespace UML_SW
         public void die()
         {
             isAlive = false;
-            //TODO : remove from tile ...
         }
     }
 
 
     public class UnitElf : Unit
     {
-        public void move(Coordinate c, Type currentTileType) 
-            : base( c , c)
-    { fds
-    }
+        public override void move(Coordinate c, Type currentTileType)
+        {
+            base.move(c, currentTileType);
+            if (currentTileType == typeof(Forest))
+            {
+                this.movementPoint -= (double)COSTMVT / 2;
+            }
+            else
+            {
+                this.movementPoint -= COSTMVT;
+            }
+        }
     }
 
     public class UnitDwarf : Unit
     {
+        public override void move(Coordinate c, Type currentTileType)
+        {
+            base.move(c, currentTileType);
+            if (currentTileType == typeof(Plain))
+            {
+                this.movementPoint -= (double) COSTMVT / 2;
+            }
+            else
+            {
+                this.movementPoint -= COSTMVT;
+            }
+        }
     }
 
     public class UnitOrc : Unit
     {
+        public override void move(Coordinate c, Type currentTileType)
+        {
+            base.move(c, currentTileType);
+            if (currentTileType == typeof(Plain))
+            {
+                this.movementPoint -= (double)COSTMVT / 2;
+            }
+            else
+            {
+                this.movementPoint -= COSTMVT;
+            }
+        }
     }
 }

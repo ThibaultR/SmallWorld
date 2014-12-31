@@ -66,6 +66,16 @@ namespace UML_SW
         {
             game.playerOne = new Player(playerOneName, playerOnePopulationType);
             game.playerTwo = new Player(playerTwoName, playerTwoPopulationType);
+
+            Random random = new Random();
+            int startingPlayer = random.Next(0, 2);
+            if (startingPlayer == 0) {
+                game.playerOne.playing = true;
+            }
+            else
+            {
+                game.playerTwo.playing = true;
+            }
         }
 
         abstract public void placeUnitsOnMap();

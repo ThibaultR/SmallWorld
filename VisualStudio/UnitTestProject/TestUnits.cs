@@ -55,5 +55,21 @@ namespace UnitTestProject
             
 
         }
+
+        [TestMethod]
+        public void TestMove()
+        {
+            FactoryPopulation fp = new FactoryPopulation();
+            Unit u =  fp.createUnit(FactoryPopulation.populationType.Dwarf);
+            u.move(new Coordinate(3, 2), typeof(Plain));
+            Coordinate c = new Coordinate(3, 2);
+            Assert.IsTrue(c.equals(u.coordinate));
+            Assert.AreEqual(0.5, u.movementPoint);
+
+            Unit u2 = fp.createUnit(FactoryPopulation.populationType.Dwarf);
+            u2.move(new Coordinate(3, 2), typeof(Forest));
+            Assert.AreEqual(0, u2.movementPoint);
+
+        }
     }
 }
