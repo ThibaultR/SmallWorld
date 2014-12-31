@@ -54,9 +54,14 @@ namespace UML_SW
         public void action()
         {
             throw new System.NotImplementedException();
-            //TODO : select enemy unit with the most HP on defined tile
-            //then attack
-            // if enemy on tile then attack, else move to tile
+            /*
+             If enemy on tile then 
+             * attack (enemy with most hp)
+             * 
+             * 
+             * if enmey on tile move to here
+             * else move to tile
+             */
 
         }
 

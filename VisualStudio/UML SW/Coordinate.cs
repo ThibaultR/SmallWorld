@@ -29,6 +29,10 @@ namespace UML_SW
             get;
             set;
         }
+
+        public bool equals(Coordinate c){
+            return this.x == c.x && this.y == c.y;
+        }
     }
 
 }

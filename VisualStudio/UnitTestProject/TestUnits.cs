@@ -44,5 +44,16 @@ namespace UnitTestProject
             Assert.AreEqual(0, u.bonusPoint);
             
         }
+
+        [TestMethod]
+        public void TestAttack()
+        {
+            FactoryPopulation fp = new FactoryPopulation();
+            Unit u = fp.createUnit(FactoryPopulation.populationType.Dwarf);
+            Unit enemy = fp.createUnit(FactoryPopulation.populationType.Orc);
+            u.attack(enemy);
+            
+
+        }
     }
 }

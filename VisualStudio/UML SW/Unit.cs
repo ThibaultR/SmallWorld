@@ -61,8 +61,8 @@ namespace UML_SW
             int i = 0;
             while (i < nbFight && this.isAlive && enemy.isAlive)
             {
-                double attackUnit = ATTACK * this.healthPoint / MAX_HEALTH;
-                double defenceEnemy = DEFENCE * enemy.healthPoint / MAX_HEALTH;
+                double attackUnit = ATTACK * this.healthPoint / (double) MAX_HEALTH;
+                double defenceEnemy = DEFENCE * enemy.healthPoint / (double) MAX_HEALTH;
 
                 double ecart = (attackUnit - defenceEnemy) / Math.Max(attackUnit, defenceEnemy);
 
@@ -70,13 +70,17 @@ namespace UML_SW
 
                 int rd = random.Next(0, 100);
 
-                if (rd < victoryProbability)
+                if (rd < victoryProbability*100)
                 {
                     enemy.healthPoint--;
                     
                     if (enemy.healthPoint == 0)
                     {
                         enemy.die();
+                        if (this.GetType() == typeof(UnitOrc))
+                        {
+                            this.bonusPoint++;
+                        }
                     }
                 }
                 else {
@@ -92,19 +96,15 @@ namespace UML_SW
                     }
                 }
 
-                
-
-
                 i++;
             }
-
-
+           
         }
 
-        public void move()
+        public void move(Coordinate c, Type currentTileType)
         {
-            throw new System.NotImplementedException();
-            //TODO
+            this.coordinate.x = c.x;
+            this.coordinate.y = c.y;
         }
 
         public void die()
@@ -117,6 +117,10 @@ namespace UML_SW
 
     public class UnitElf : Unit
     {
+        public void move(Coordinate c, Type currentTileType) 
+            : base( c , c)
+    { fds
+    }
     }
 
     public class UnitDwarf : Unit
