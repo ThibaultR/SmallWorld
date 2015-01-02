@@ -54,10 +54,9 @@ namespace UML_SW
         }
 
 
-        public Game createGame()
+        public void createGame()
         {
             this.game = new Game();
-            return game; //TODO reverifier 
         }
 
         abstract public void createMap();

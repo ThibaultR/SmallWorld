@@ -30,9 +30,43 @@ namespace UML_SW
             set;
         }
 
-        public bool equals(Coordinate c){
-            return this.x == c.x && this.y == c.y;
+
+        public override bool Equals(System.Object obj)
+        {
+            // If parameter is null return false.
+            if (obj == null)
+            {
+                return false;
+            }
+
+            // If parameter cannot be cast to Point return false.
+            Coordinate c = obj as Coordinate;
+            if ((System.Object) c == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (x == c.x) && (y == c.y);
         }
+
+        public bool Equals(Coordinate c)
+        {
+            // If parameter is null return false:
+            if ((object)c == null)
+            {
+                return false;
+            }
+
+            // Return true if the fields match:
+            return (x == c.x) && (y == c.y);
+        }
+
+        public override int GetHashCode()
+        {
+            return x ^ y;
+        }
+
     }
 
 }

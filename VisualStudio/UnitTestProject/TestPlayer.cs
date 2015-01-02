@@ -25,7 +25,6 @@ namespace UnitTestProject
 
             int n = p.nbUnitAlive();
             Assert.AreEqual(0, n);
-            //TODO addUnits
         }
     }
 }

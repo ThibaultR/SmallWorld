@@ -23,6 +23,7 @@ namespace UnitTestProject
             Assert.AreEqual(FactoryPopulation.populationType.Elf, bng.game.playerOne.populationType);
             Assert.AreEqual("Laura", bng.game.playerOne.name);
             Assert.AreEqual(0, bng.game.playerOne.units.Count);
+            Assert.AreNotEqual(bng.game.playerOne.playing, bng.game.playerTwo.playing);
 
             bng.placeUnitsOnMap();
             Assert.AreEqual(4, bng.game.playerOne.units.Count);

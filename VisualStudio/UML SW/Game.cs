@@ -48,11 +48,12 @@ namespace UML_SW
         }
 
 
-        public void endRound(Player player)
+        public void endRound()
         {
             currentRoundNumber += 0.5;
             this.playerOne.playing = !this.playerOne.playing;
             this.playerTwo.playing = !this.playerTwo.playing;
+            this.calculScore();
         }
 
         public void selectUnit(Unit u)
@@ -75,7 +76,7 @@ namespace UML_SW
 
             foreach (Unit u in enemyPlayer.units)
             {
-                if (u.isAlive && u.coordinate.equals(c)) { list.Add(u); }
+                if (u.isAlive && u.coordinate.Equals(c)) { list.Add(u); }
             }
 
             return list;
@@ -97,8 +98,8 @@ namespace UML_SW
         }
 
         public Type getTypeofTile(Coordinate c) {
-            int tile = c.x + map.strategy.size * c.y;
-            return this.map.tilesList[tile].GetType();
+            int tileNumber = c.x + map.strategy.size * c.y;
+            return this.map.tilesList[tileNumber].GetType();
         }
 
         public bool isActionPossible()
@@ -170,9 +171,56 @@ namespace UML_SW
 
         }
 
+        public int calculScoreSingleUnit(Unit u, List<Coordinate> lc)
+        {
+            int val = u.bonusPoint;
+            if (!lc.Contains(u.coordinate))
+            {
+                if ((u.GetType() == typeof(UnitElf) && this.getTypeofTile(u.coordinate) == typeof(Desert)) ||
+                    (u.GetType() == typeof(UnitOrc) && this.getTypeofTile(u.coordinate) == typeof(Forest)) ||
+                    (u.GetType() == typeof(UnitDwarf) && this.getTypeofTile(u.coordinate) == typeof(Plain)))
+                {
+                    return val;
+                }
+                else
+                {
+                    val++;
+                }
+            }
+
+            return val;
+        }
+
         public void calculScore()
         {
-            throw new System.NotImplementedException();
+            List<Coordinate> list = new List<Coordinate>();
+
+            int scoreP1 = 0;
+            foreach (Unit u in playerOne.units)
+            {
+                if (u.isAlive) 
+                {
+                    scoreP1 += calculScoreSingleUnit(u, list);
+                    list.Add(u.coordinate);
+                }
+            }
+
+            playerOne.currentScore = scoreP1;
+
+            list.Clear();
+
+            int scoreP2 = 0;
+            foreach (Unit u in playerTwo.units)
+            {
+                if (u.isAlive)
+                {
+                    scoreP2 += calculScoreSingleUnit(u, list);
+                    list.Add(u.coordinate);
+                }
+            }
+
+            playerTwo.currentScore = scoreP2;
+
         }
     }
 }

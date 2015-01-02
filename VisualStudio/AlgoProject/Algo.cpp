@@ -56,20 +56,20 @@ int* Algo::findStartCoordinate(int taille){
 	switch (v)
 	{
 	case 0:
-		tabCoordinate[2] = taille;
-		tabCoordinate[3] = taille;
+		tabCoordinate[2] = taille - 1;
+		tabCoordinate[3] = taille - 1;
 		break;
 	case 1:
-		tabCoordinate[0] = taille;
-		tabCoordinate[3] = taille;
+		tabCoordinate[0] = taille - 1;
+		tabCoordinate[3] = taille - 1;
 		break;
 	case 2:
-		tabCoordinate[1] = taille;
-		tabCoordinate[2] = taille;
+		tabCoordinate[1] = taille - 1;
+		tabCoordinate[2] = taille - 1;
 		break;
 	case 3:
-		tabCoordinate[0] = taille;
-		tabCoordinate[1] = taille;
+		tabCoordinate[0] = taille - 1;
+		tabCoordinate[1] = taille - 1;
 		break;
 	default:
 		//TODO ERROR

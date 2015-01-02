@@ -63,7 +63,7 @@ namespace UnitTestProject
             Unit u =  fp.createUnit(FactoryPopulation.populationType.Dwarf);
             u.move(new Coordinate(3, 2), typeof(Plain));
             Coordinate c = new Coordinate(3, 2);
-            Assert.IsTrue(c.equals(u.coordinate));
+            Assert.IsTrue(c.Equals(u.coordinate));
             Assert.AreEqual(0.5, u.movementPoint);
 
             Unit u2 = fp.createUnit(FactoryPopulation.populationType.Dwarf);
