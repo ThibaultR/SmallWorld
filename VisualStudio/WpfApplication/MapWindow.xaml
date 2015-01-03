@@ -11,8 +11,8 @@
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="Transparent" HorizontalAlignment="Left">
             <MenuItem Header="_Start new game" Click="ClickStartNewGame"/>
-            <MenuItem Header="_Open" Click="ClickOpen" />
-            <MenuItem Header="_Save" Click="ClickSave"/>
+            <MenuItem Header="_Open" Click="ClickOpen"  />
+            <MenuItem Header="_Save" Click="ClickSave" />
             <Separator/>
             <MenuItem Header="_Exit" Click="ClickExit" />
         </Menu>

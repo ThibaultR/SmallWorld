@@ -85,17 +85,17 @@ namespace WpfApplication
 
             string mapTypeString = (string) mapBox.SelectedItem;
 
-            if (name1 == name2)
+            if (name1 == "" || name2 == "" || population1String == null || population2String == null || mapTypeString == null)
             {
-                MessageBox.Show("Vous ne pouvez pas avoir le même nom !");
+                MessageBox.Show("Il manque des informations pour créer la partie !");
             }
             else if (population1String == population2String)
             {
                 MessageBox.Show("Vous devez choisir des peuples différents !");
             }
-            else if (name1 == "" || name2 == "" || population1String == null || population2String == null || mapTypeString == null)
+            else if (name1 == name2)
             {
-                MessageBox.Show("Il manque des informations pour créer la partie !");
+                MessageBox.Show("Vous ne pouvez pas avoir le même nom !");
             }
             else
             {
@@ -108,6 +108,9 @@ namespace WpfApplication
 
                 this.gameCreator.builderGame = new BuilderNewGame(name1, name2, population1, population2, mapType);
             }
+            MapWindow map = new MapWindow();
+            map.Show();
+            this.Close();
         }
     }
 
