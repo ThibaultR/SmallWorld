@@ -1,0 +1,43 @@
+﻿<Window x:Class="WpfApplication.MapWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MapWindow" Loaded="Window_Loaded" WindowState="Maximized" WindowStyle="None" 
+        Icon="textures/icon.png">
+
+
+    <Window.Background>
+        <ImageBrush ImageSource="textures/background_bis.jpg" ></ImageBrush>
+    </Window.Background>
+    <DockPanel>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="Transparent" HorizontalAlignment="Left">
+            <MenuItem Header="_Start new game" Click="ClickStartNewGame"/>
+            <MenuItem Header="_Open" Click="ClickOpen" />
+            <MenuItem Header="_Save" Click="ClickSave"/>
+            <Separator/>
+            <MenuItem Header="_Exit" Click="ClickExit" />
+        </Menu>
+        <StackPanel Orientation="Horizontal" Width="800" DockPanel.Dock="Bottom">
+            <StackPanel Width="550">
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                    <TextBlock Name="currentD"></TextBlock>
+                    <TextBlock  Name="lastMove" Foreground="Red"></TextBlock>
+                </StackPanel>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Horizontal" Name="unitSelecter"/>
+                </ScrollViewer>
+            </StackPanel>
+            <StackPanel Width="250" FlowDirection="RightToLeft">
+                <Button Name="endTurn"  HorizontalAlignment="left"></Button>
+                <TextBlock  Name="roundD"></TextBlock>
+                <TextBlock Name="playerD1"></TextBlock>
+                <TextBlock  Name="playerD2"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid Margin="50">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid"/>
+            </Grid>
+        </ScrollViewer >
+    </DockPanel>
+
+</Window>
