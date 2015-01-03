@@ -114,6 +114,10 @@
       <Project>{c3e7864c-f28d-4f40-9d61-f3932ad00fe3}</Project>
       <Name>AlgoWrapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\UML SW\UML SW.csproj">
+      <Project>{72494335-a567-4057-af96-676629812e72}</Project>
+      <Name>UML SW</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="textures\background_bis.jpg" />

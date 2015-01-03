@@ -31,8 +31,8 @@ namespace UnitTestProject
             Assert.IsInstanceOfType(bng.game.playerTwo.units[0], typeof(UnitOrc));
             Assert.AreEqual(bng.game.playerOne.units[0].coordinate.x, bng.game.playerOne.units[3].coordinate.x);
             Assert.AreEqual(bng.game.playerOne.units[0].coordinate.y, bng.game.playerOne.units[3].coordinate.y);
-            Assert.AreEqual(6, Math.Abs(bng.game.playerOne.units[0].coordinate.x - bng.game.playerTwo.units[0].coordinate.x));
-            Assert.AreEqual(6, Math.Abs(bng.game.playerOne.units[0].coordinate.y - bng.game.playerTwo.units[0].coordinate.y));
+            Assert.AreEqual(5, Math.Abs(bng.game.playerOne.units[0].coordinate.x - bng.game.playerTwo.units[0].coordinate.x));
+            Assert.AreEqual(5, Math.Abs(bng.game.playerOne.units[0].coordinate.y - bng.game.playerTwo.units[0].coordinate.y));
 
         }
     }

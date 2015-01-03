@@ -12,71 +12,106 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UML_SW;
 
 namespace WpfApplication
 {
-    /// <summary>
-    /// Logique d'interaction pour StartWindow.xaml
-    /// </summary>
+
     public partial class StartWindow : Window
     {
-        PeopleCollection people1Collec;
-        PeopleCollection people2Collec;
-        MapCollection mapCollection;
+        public GameCreator gameCreator;
 
         public StartWindow()
         {
-            this.WindowState = WindowState.Maximized;
             InitializeComponent();
+            this.gameCreator = new GameCreator();
+        }
 
-            mapCollection = new MapCollection();
+        private void OnClickNewGame(object sender, RoutedEventArgs e)
+        {
+
+            MapCollection mapCollection = new MapCollection();
             mapBox.DataContext = mapCollection;
             mapBox.SelectedItem = "Demo";
 
-            people1Collec = new PeopleCollection();
-            people1Box.DataContext = people1Collec;
-            people1Box.SelectedItem = "Elf";
+            PopulationCollection populationCollection = new PopulationCollection();
+            population1Box.DataContext = populationCollection;
+            population1Box.SelectedItem = "Elf";
+            population2Box.DataContext = populationCollection;
+            population2Box.SelectedItem = "Dwarf";
 
-            people2Collec = new PeopleCollection();
-            people2Box.DataContext = people2Collec;
-            people2Box.SelectedItem = "Dwarf";
+            builderGrid.Visibility = System.Windows.Visibility.Hidden;
+            newGameGrid.Visibility = System.Windows.Visibility.Visible;
+
         }
 
-        private void OnChangeMap(object sender, SelectionChangedEventArgs e)
+        private void OnClickLoadGame(object sender, RoutedEventArgs e)
         {
-            mapCollection.selected = (string)mapBox.SelectedItem;
+            //TODO
         }
 
-        private void OnChangePeople1(object sender, SelectionChangedEventArgs e)
+        private void OnChangePopulation1(object sender, SelectionChangedEventArgs e)
         {
-            string value = (string)people1Box.SelectedItem;
-            people1Collec.selected = value;
-            people2Collec.Remove(value);
+            if ((string)population1Box.SelectedItem == (string)population2Box.SelectedItem)
+            {
+                errorPop1.Visibility = System.Windows.Visibility.Visible;
+            }
+            else {
+                errorPop1.Visibility = System.Windows.Visibility.Collapsed;
+                errorPop2.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
-        private void OnChangePeople2(object sender, SelectionChangedEventArgs e)
+        private void OnChangePopulation2(object sender, SelectionChangedEventArgs e)
         {
-            string value = (string)people2Box.SelectedItem;
-            people2Collec.selected = value;
-            people2Collec.Remove(value);
+            if ((string)population1Box.SelectedItem == (string)population2Box.SelectedItem)
+            {
+                errorPop2.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                errorPop1.Visibility = System.Windows.Visibility.Collapsed;
+                errorPop2.Visibility = System.Windows.Visibility.Collapsed;
+            }
         }
 
         private void OnClickLauncher(object sender, RoutedEventArgs e)
         {
             string name1 = name1Box.Text;
             string name2 = name2Box.Text;
+            
+            string population1String = (string) population1Box.SelectedItem;
+            string population2String = (string) population2Box.SelectedItem;
 
+            string mapTypeString = (string) mapBox.SelectedItem;
+
+            if (name1 == name2)
+            {
+                MessageBox.Show("Vous ne pouvez pas avoir le même nom !");
+            }
+            else if (population1String == population2String)
+            {
+                MessageBox.Show("Vous devez choisir des peuples différents !");
+            }
+            else if (name1 == "" || name2 == "" || population1String == null || population2String == null || mapTypeString == null)
+            {
+                MessageBox.Show("Il manque des informations pour créer la partie !");
+            }
+            else
+            {
+                FactoryPopulation.populationType population1;
+                Enum.TryParse<FactoryPopulation.populationType>(population1String, out population1);
+                FactoryPopulation.populationType population2;
+                Enum.TryParse<FactoryPopulation.populationType>(population2String, out population2);
+                Map.mapType mapType;
+                Enum.TryParse<Map.mapType>(mapTypeString, out mapType);
+
+                this.gameCreator.builderGame = new BuilderNewGame(name1, name2, population1, population2, mapType);
+            }
         }
-
-        private void OnClickEnd(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-
     }
 
-    class PeopleCollection : ObservableCollection<string>
+    class PopulationCollection : ObservableCollection<string>
     {
         public string selected
         {
@@ -86,7 +121,7 @@ namespace WpfApplication
         /// <summary>
         /// Constructor
         /// </summary>
-        public PeopleCollection()
+        public PopulationCollection()
         {
             Add("Elf");
             Add("Dwarf");
@@ -109,8 +144,8 @@ namespace WpfApplication
         public MapCollection()
         {
             Add("Demo");
-            Add("Normal");
             Add("Small");
+            Add("Normal");
         }
     }
 

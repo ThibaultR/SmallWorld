@@ -22,7 +22,6 @@ namespace WpfApplication
         private string saveFile;
         public MapWindow()
         {
-            this.WindowState = WindowState.Maximized;
             InitializeComponent();
         }
 

@@ -9,13 +9,8 @@ namespace UML_SW
     {
         public BuilderGame builderGame
         {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
+            get;
+            set;
         }
     
         public Game createGame()
