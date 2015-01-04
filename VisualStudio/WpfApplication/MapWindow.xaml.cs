@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,6 +21,7 @@ namespace WpfApplication
     public partial class MapWindow : Window
     {
         private Game game;
+        private string saveFile;
 
         public MapWindow(Game g)
         {
@@ -37,7 +41,22 @@ namespace WpfApplication
 
         private void ClickStartNewGame(object sender, RoutedEventArgs e)
         {
-
+            MessageBoxResult newGameBox= MessageBox.Show("Souhaitez-vous enregistrer la partie en cours ?",
+                                                            "New Game",
+                                                            MessageBoxButton.YesNo);
+            if (newGameBox == MessageBoxResult.Yes)
+            {
+                //Ne fonctionne pas : this.SaveGame();
+            }
+            else if (newGameBox == MessageBoxResult.No)
+            {
+                StartWindow createNewGame = new StartWindow();
+                createNewGame.builderGrid.Visibility = System.Windows.Visibility.Hidden;
+                createNewGame.newGameGrid.Visibility = System.Windows.Visibility.Visible;
+                createNewGame.Show();
+                this.Close();
+            }
+            
         }
 
         private void ClickOpen(object sender, RoutedEventArgs e)
@@ -47,8 +66,40 @@ namespace WpfApplication
 
         private void ClickSave(object sender, RoutedEventArgs e)
         {
-
+            //Solution Chaigno, à revoir (mais j'en avais marre, mes trucs ne fonctionnaient pas)
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.DefaultExt = ".sav";
+            dlg.Filter = "Saved game (*.sav)|*.sav|All files (*.*)|*.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if (result == true)
+            {
+                this.saveFile = dlg.FileName;
+                this.SaveGame();
+            }
         }
 
+        private void ClickExit(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult exitBox= MessageBox.Show("Vous nous quittez déjà ?","Exit",MessageBoxButton.YesNo);
+            if (exitBox == MessageBoxResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void SaveGame()
+        {
+            if (this.saveFile == null)
+            {
+
+            }
+            else
+            {
+                Stream stream = File.Open(this.saveFile, FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, this.game);
+                stream.Close();
+            }
+        }
     }
 }
