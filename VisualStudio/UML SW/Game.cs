@@ -82,6 +82,8 @@ namespace UML_SW
             return list;
         }
 
+
+
         public Unit selectBestOpponent(List<Unit> list)
         {
             if (list.Count == 0) { return null; }

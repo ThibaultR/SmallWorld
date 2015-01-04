@@ -8,6 +8,7 @@ public:
 	int computeFoo();
 	int * mapCreation(int taille);
 	int * findStartCoordinate(int taille);
+	int * findPossibleMovement(int taille);
 };
 
 

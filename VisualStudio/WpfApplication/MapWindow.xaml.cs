@@ -43,10 +43,48 @@ namespace WpfApplication
             playerTwoNbUnit.Tag = "Unit : " + this.NbUnitP2;
 
             MapView mv = new MapView(this.game);
-            //mv.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-            //mv.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            myScrollViewer.Content = mv;
+            myCanvas.Children.Add(mv);
+
+            int TAILLE = this.game.map.strategy.size;
+            for (int i = 0; i < TAILLE; i++)
+            {
+                for (int j = 0; j < TAILLE; j++)
+                {
+                    double posx = i * Hexagon.w;
+                    double posy = j * Hexagon.h * 3 / 4;
+                    if (j % 2 == 1)
+                    {
+                        posx += Hexagon.w / 2;
+                    }
+                    Hexagon h = new Hexagon(posx, posy);
+                    h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHandler);
+                    h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
+                    myCanvas.Children.Add(h.polygon);
+                }
+            }
+            
+
+
+           // myCanvas.Children.Add(h.polygon);
+            //Hexagon h2 = new Hexagon(200.0, 200.0);
+            //myCanvas.Children.Add(h2.polygon);
+
+
         }
+
+        private void mouseEnterHandler(object sender, MouseEventArgs e)
+        {
+            var polygon = sender as Polygon;
+            polygon.StrokeThickness = 20;
+        }
+
+        private void mouseLeaveHandler(object sender, MouseEventArgs e)
+        {
+            var polygon = sender as Polygon;
+            polygon.StrokeThickness = 2;
+        }
+
+        
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -118,6 +156,46 @@ namespace WpfApplication
                 formatter.Serialize(stream, this.game);
                 stream.Close();
             }
+        }
+
+    }
+
+
+    public class Hexagon
+    {
+
+        public Polygon polygon;
+        public const double h = 80;
+        public const double w = 69; //TODO 
+
+        public Hexagon(double x, double y)
+        {
+            polygon = new Polygon();
+            polygon.Stroke = Brushes.Black;
+            polygon.Fill = Brushes.Transparent;
+            polygon.StrokeThickness = 2;
+
+            // d + side + d = h
+            double d = w /2 * Math.Tan(30 * Math.PI / 180);
+            
+            PointCollection pCollect = new PointCollection();
+            Point p1 = new Point(w/2, 0);
+            Point p2 = new Point(w, d);
+            Point p3 = new Point(w, h-d);
+            Point p4 = new Point(w/2, h);
+            Point p5 = new Point(0, h-d);
+            Point p6 = new Point(0, d);
+            pCollect.Add(p1);
+            pCollect.Add(p2);
+            pCollect.Add(p3);
+            pCollect.Add(p4);
+            pCollect.Add(p5);
+            pCollect.Add(p6);
+            polygon.Points = pCollect;
+
+            polygon.SetValue(Canvas.LeftProperty, x);
+            polygon.SetValue(Canvas.TopProperty, y);
+
         }
     }
 }
