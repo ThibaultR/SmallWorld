@@ -8,13 +8,50 @@
     <Window.Background>
         <ImageBrush ImageSource="textures/background_bis.jpg" ></ImageBrush>
     </Window.Background>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Name="topMenu">
+            <Button Click="ClickStartNewGame">Start new game</Button>
+            <Button Click="ClickOpen">Open saved game</Button>
+            <Button Click="ClickSave">Save game</Button>
+        </StackPanel>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" Name="gameState" VerticalAlignment="Center">
+            <StackPanel Style="{StaticResource playerInfoBlock}">
+                <Label Name="playerOneName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerOneName}" />
+                <Label Name="playerOnePopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerOnePopulation}" />
+            </StackPanel>
+
+            <StackPanel Style="{StaticResource playerInfoBlock}">
+                <Label Name="playerTwoName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerTwoName}" />
+                <Label Name="playerTwoPopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerTwoPopulation}" />
+            </StackPanel>
+        </StackPanel>
+
+
+    </Grid>
+
+
+    
+    
+        <!--
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="Transparent" HorizontalAlignment="Left">
             <MenuItem Header="_Start new game" Click="ClickStartNewGame"/>
             <MenuItem Header="_Open" Click="ClickOpen" />
             <MenuItem Header="_Save" Click="ClickSave"/>
-            <Separator/>
-            <MenuItem Header="_Exit" Click="ClickExit" />
         </Menu>
         <StackPanel Orientation="Horizontal" Width="800" DockPanel.Dock="Bottom">
             <StackPanel Width="550">
@@ -39,5 +76,5 @@
             </Grid>
         </ScrollViewer >
     </DockPanel>
-
+    -->
 </Window>

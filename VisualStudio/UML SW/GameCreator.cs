@@ -13,9 +13,12 @@ namespace UML_SW
             set;
         }
     
-        public Game createGame()
+        public void createGame()
         {
-            throw new System.NotImplementedException();
+            builderGame.createGame();
+            builderGame.createMap();
+            builderGame.createPlayers();
+            builderGame.placeUnitsOnMap();
         }
     }
 }

@@ -11,18 +11,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UML_SW;
 
 namespace WpfApplication
 {
-    /// <summary>
-    /// Logique d'interaction pour MapWindow.xaml
-    /// </summary>
     public partial class MapWindow : Window
     {
-        private string saveFile;
-        public MapWindow()
+        private Game game;
+
+        public MapWindow(Game g)
         {
             InitializeComponent();
+            game = g;
+            
+            playerOneName.Tag = this.game.playerOne.name;
+            playerTwoName.Tag = this.game.playerTwo.name;
+            playerOnePopulation.Tag = "Population : " + this.game.playerOne.populationType;
+            playerTwoPopulation.Tag = "Population : " + this.game.playerTwo.populationType;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -45,9 +50,5 @@ namespace WpfApplication
 
         }
 
-        private void ClickExit(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

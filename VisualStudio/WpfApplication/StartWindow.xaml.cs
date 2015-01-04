@@ -107,6 +107,11 @@ namespace WpfApplication
                 Enum.TryParse<Map.mapType>(mapTypeString, out mapType);
 
                 this.gameCreator.builderGame = new BuilderNewGame(name1, name2, population1, population2, mapType);
+                this.gameCreator.createGame();
+
+                MapWindow mapW = new MapWindow(this.gameCreator.builderGame.game);
+                mapW.Show();
+                this.Close();
             }
         }
     }
@@ -127,8 +132,6 @@ namespace WpfApplication
             Add("Dwarf");
             Add("Orc");
         }
-
-
     }
 
     class MapCollection : ObservableCollection<string>
