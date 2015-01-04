@@ -5,9 +5,15 @@
     <Application.Resources>
 
 
-        <Style x:Key="playerInfoBlock" TargetType="StackPanel">
+        <Style x:Key="infoBlock" TargetType="Border">
             <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>            
             <Setter Property="Background" Value="AntiqueWhite"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
+
+        <Style x:Key="playerInfoBlock" TargetType="StackPanel">
             <Setter Property="MinWidth" Value="250"/>
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>

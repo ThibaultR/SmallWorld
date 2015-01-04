@@ -27,7 +27,7 @@ namespace WpfApplication
             this.gameCreator = new GameCreator();
         }
 
-        private void OnClickNewGame(object sender, RoutedEventArgs e)
+        public void OnClickNewGame(object sender, RoutedEventArgs e)
         {
 
             MapCollection mapCollection = new MapCollection();
@@ -104,7 +104,7 @@ namespace WpfApplication
                 FactoryPopulation.populationType population2;
                 Enum.TryParse<FactoryPopulation.populationType>(population2String, out population2);
                 Map.mapType mapType;
-                Enum.TryParse<Map.mapType>(mapTypeString, out mapType);
+                Enum.TryParse<Map.mapType>(mapTypeString, true, out mapType);
 
                 this.gameCreator.builderGame = new BuilderNewGame(name1, name2, population1, population2, mapType);
                 this.gameCreator.createGame();

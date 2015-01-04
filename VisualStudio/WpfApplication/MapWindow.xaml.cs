@@ -22,22 +22,39 @@ namespace WpfApplication
     {
         private Game game;
         private string saveFile;
+        private int NbUnitP1;
+        private int NbUnitP2;
 
         public MapWindow(Game g)
         {
-            InitializeComponent();
             game = g;
             
+            InitializeComponent();
+
             playerOneName.Tag = this.game.playerOne.name;
             playerTwoName.Tag = this.game.playerTwo.name;
             playerOnePopulation.Tag = "Population : " + this.game.playerOne.populationType;
             playerTwoPopulation.Tag = "Population : " + this.game.playerTwo.populationType;
+            playerOneScore.Tag = "Score : " + this.game.playerOne.currentScore;
+            playerTwoScore.Tag = "Score : " + this.game.playerTwo.currentScore;
+            NbUnitP1 = this.game.playerOne.nbUnitAlive();
+            NbUnitP2 = this.game.playerOne.nbUnitAlive();
+            playerOneNbUnit.Tag = "Unit : " + this.NbUnitP1;
+            playerTwoNbUnit.Tag = "Unit : " + this.NbUnitP2;
+
+            MapView mv = new MapView(this.game);
+            //mv.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            //mv.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            myScrollViewer.Content = mv;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
+            NbUnitP1 = this.game.playerOne.nbUnitAlive();
+            NbUnitP2 = this.game.playerOne.nbUnitAlive();
         }
+
+
 
         private void ClickStartNewGame(object sender, RoutedEventArgs e)
         {
@@ -46,13 +63,13 @@ namespace WpfApplication
                                                             MessageBoxButton.YesNo);
             if (newGameBox == MessageBoxResult.Yes)
             {
-                //Ne fonctionne pas : this.SaveGame();
+                //TODO Ne fonctionne pas : this.SaveGame();
             }
             else if (newGameBox == MessageBoxResult.No)
             {
                 StartWindow createNewGame = new StartWindow();
-                createNewGame.builderGrid.Visibility = System.Windows.Visibility.Hidden;
-                createNewGame.newGameGrid.Visibility = System.Windows.Visibility.Visible;
+                createNewGame.OnClickNewGame(null, null);
+
                 createNewGame.Show();
                 this.Close();
             }
@@ -61,12 +78,12 @@ namespace WpfApplication
 
         private void ClickOpen(object sender, RoutedEventArgs e)
         {
-
+            //TODO avec builderSavedGame
         }
 
         private void ClickSave(object sender, RoutedEventArgs e)
         {
-            //Solution Chaigno, à revoir (mais j'en avais marre, mes trucs ne fonctionnaient pas)
+            //TODO a revoir
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = ".sav";
             dlg.Filter = "Saved game (*.sav)|*.sav|All files (*.*)|*.*";
@@ -89,6 +106,7 @@ namespace WpfApplication
 
         private void SaveGame()
         {
+            //TODO a verifier
             if (this.saveFile == null)
             {
 

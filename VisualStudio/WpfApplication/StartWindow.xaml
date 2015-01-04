@@ -9,63 +9,68 @@
     </Window.Background>
 
     <ScrollViewer Name="scrollViewerStart" CanContentScroll="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="80" Name="title">SmallWorld</TextBlock>
 
-        <Grid Name="builderGrid" Visibility="Visible">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" Name="NewGame" Click="OnClickNewGame" MinHeight="50" FontSize="25" Margin="5">New Game</Button>
-            <Button Grid.Column="1" Name="LoadGame" Click="OnClickLoadGame" MinHeight="50" FontSize="25" Margin="5">Load saved Game</Button>
-        </Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="80" Name="title">SmallWorld</TextBlock>
 
-        <Grid Margin="20" Name="newGameGrid" Visibility="Collapsed">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
+            <Grid Name="builderGrid" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Name="NewGame" Click="OnClickNewGame" MinHeight="50" FontSize="25" Margin="5">New Game</Button>
+                <Button Grid.Column="1" Name="LoadGame" Click="OnClickLoadGame" MinHeight="50" FontSize="25" Margin="5">Load saved Game</Button>
+            </Grid>
 
-            <TextBlock Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20">Player 1</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="1">Name :</TextBlock>
-            <TextBox Grid.Column="1" Grid.Row="1" Name="name1Box"></TextBox>
-            <TextBlock Grid.Column="0" Grid.Row="2">Population :</TextBlock>
-            <ComboBox  Grid.Column="1" Grid.Row="2" SelectionChanged="OnChangePopulation1" ItemsSource="{Binding}" Name="population1Box"/>
-            <TextBlock Grid.Column="1" Grid.Row="3" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop1">You must choose different population</TextBlock>
 
-            <TextBlock Grid.Column="0" Grid.Row="3" Margin="5" FontSize="20"></TextBlock>
+            <Grid Margin="20" Name="newGameGrid" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
 
-            <TextBlock Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontSize="20">Player 2</TextBlock>
-            <TextBlock Grid.Column="0" Grid.Row="5">Name :</TextBlock>
-            <TextBox  Grid.Column="1" Grid.Row="5" Name="name2Box"></TextBox>
-            <TextBlock  Grid.Column="0" Grid.Row="6">Population :</TextBlock>
-            <ComboBox Grid.Column="1" Grid.Row="6" SelectionChanged="OnChangePopulation2" ItemsSource="{Binding}" Name="population2Box" />
-            <TextBlock Grid.Column="1" Grid.Row="7" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop2">You must choose different population</TextBlock>
 
-            <TextBlock Grid.Column="0" Grid.Row="7" Margin="10" FontSize="20"></TextBlock>
 
-            <TextBlock Grid.Column="0" Grid.Row="8">Map size:</TextBlock>
-            <ComboBox  Grid.Row="8" Grid.Column="1" ItemsSource="{Binding}" Name="mapBox" />
+                <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource playerName}">Player 1</Label>
+                <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource playerInfo}">Name :</Label>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="name1Box"></TextBox>
+                <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource playerInfo}">Population :</Label>
+                <ComboBox  Grid.Column="1" Grid.Row="2" SelectionChanged="OnChangePopulation1" ItemsSource="{Binding}" Name="population1Box"/>
+                <Label Grid.Column="1" Grid.Row="3" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop1">You must choose different population</Label>
 
-            <TextBlock Grid.Column="0" Grid.Row="9" Margin="10" FontSize="20"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="3" Margin="5" FontSize="20"></TextBlock>
 
-            <Button Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="launcher" Click="OnClickLauncher" Width="150" Height="50">Launch Game !</Button>
-        </Grid>
-        
-    </StackPanel>
+                <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource playerName}">Player 2</Label>
+                <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource playerInfo}">Name :</Label>
+                <TextBox  Grid.Column="1" Grid.Row="5" Name="name2Box"></TextBox>
+                <Label  Grid.Column="0" Grid.Row="6" Style="{StaticResource playerInfo}">Population :</Label>
+                <ComboBox Grid.Column="1" Grid.Row="6" SelectionChanged="OnChangePopulation2" ItemsSource="{Binding}" Name="population2Box" Height="Auto"/>
+                <Label Grid.Column="1" Grid.Row="7" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop2">You must choose different population</Label>
+
+                <TextBlock Grid.Column="0" Grid.Row="7" Margin="10" FontSize="20"></TextBlock>
+
+                <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource playerInfo}">Map size :</Label>
+                <ComboBox  Grid.Row="8" Grid.Column="1" ItemsSource="{Binding}" Name="mapBox" />
+
+                <TextBlock Grid.Column="0" Grid.Row="9" Margin="10" FontSize="20"></TextBlock>
+
+                <Button Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="launcher" Click="OnClickLauncher" Width="150" Height="50">Launch Game !</Button>
+            </Grid>
+
+        </StackPanel>
+
     </ScrollViewer>
 </Window>
