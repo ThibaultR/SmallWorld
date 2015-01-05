@@ -30,5 +30,14 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Padding" Value="10,0,0,0"/> <!--Left, top , right, bottom-->
         </Style>
+
+        <Style x:Key="infoUnit" TargetType="Border">
+            <Setter Property="Width" Value="300"/>
+            <Setter Property="Margin" Value="10,2,10,2"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Background" Value="AntiqueWhite"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Setter Property="BorderThickness" Value="2"/>
+        </Style>
     </Application.Resources>
 </Application>

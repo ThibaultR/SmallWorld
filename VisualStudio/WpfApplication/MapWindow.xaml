@@ -49,10 +49,15 @@
             </Border>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="1" Name="myScrollViewer" VerticalScrollBarVisibility="Hidden" >
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Name="myScrollViewer" VerticalScrollBarVisibility="Auto" >
             <Canvas Name="myCanvas">
                 
             </Canvas>
+        </ScrollViewer>
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Name="myScrollViewerUnit" VerticalScrollBarVisibility="Auto" >
+            <StackPanel Name="panelUnit">
+                
+            </StackPanel>
         </ScrollViewer>
 
 

@@ -66,11 +66,14 @@ namespace WpfApplication
                 {
                     int tile = listIntMap[j * TAILLE + i];
 
+                    double d = tabimg[tile].PixelWidth / 2 * Math.Tan(30 * Math.PI / 180);
+
                     double posx = i * tabimg[tile].PixelWidth;
-                    double posy = j * tabimg[tile].PixelHeight * 3 / 4;
+                    double posy = j * (tabimg[tile].PixelHeight - d);
                     if(j % 2 == 1 ){
                         posx += tabimg[tile].PixelWidth / 2;
                     }
+
                     dc.DrawImage(tabimg[tile], new Rect(posx, posy, tabimg[tile].PixelWidth, tabimg[tile].PixelHeight));
                 }
             }

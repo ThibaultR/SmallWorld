@@ -77,11 +77,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="MapView.cs" />
+    <Compile Include="UnitBox.xaml.cs">
+      <DependentUpon>UnitBox.xaml</DependentUpon>
+    </Compile>
     <Page Include="MapWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UnitBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

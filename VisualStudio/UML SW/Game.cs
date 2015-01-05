@@ -104,38 +104,53 @@ namespace UML_SW
             return this.map.tilesList[tileNumber].GetType();
         }
 
-        public bool isActionPossible()
+        public bool isMovementPossible(Unit u)
         {
-            //TODO verif proximity
-            if (currentSelectedUnit.movementPoint == 0)
+            if (u.isAlive)
             {
-                return false;
-            }
+                if (u.movementPoint == 0)
+                {
+                    return false;
+                }
 
-            if (currentSelectedUnit.movementPoint == 1)
-            {
-                return true;
-            }
-
-            if (currentSelectedUnit.movementPoint == 0.5)
-            {
-                if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Forest) && currentSelectedUnit.GetType() == typeof(UnitElf))
+                if (u.movementPoint == 1)
                 {
                     return true;
                 }
 
-                if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Plain))
+                if (u.movementPoint == 0.5)
                 {
-                    if (currentSelectedUnit.GetType() == typeof(UnitDwarf) || currentSelectedUnit.GetType() == typeof(UnitOrc))
+                    if (getTypeofTile(u.coordinate) == typeof(Forest) && u.GetType() == typeof(UnitElf))
                     {
                         return true;
                     }
-                }
 
+                    if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Plain))
+                    {
+                        if (u.GetType() == typeof(UnitDwarf) || u.GetType() == typeof(UnitOrc))
+                        {
+                            return true;
+                        }
+                    }
+                }
             }
 
             return false;
         }
+
+        public void isTileReachable(Unit unit, Coordinate coordinate)
+        {
+            throw new NotImplementedException();//TODO
+        }
+
+        public bool isActionPossible()
+        {
+            return isMovementPossible(this.currentSelectedUnit);
+            // && isTileReachable(this.currentSelectedUnit, this.currentSelectedTileCoordinate);
+            //TODO verif proximity
+            
+        }
+
 
         public void action()
         {

@@ -20,15 +20,20 @@ namespace WpfApplication
 {
     public partial class MapWindow : Window
     {
-        private Game game;
+        public Game game;
         private string saveFile;
         private int NbUnitP1;
         private int NbUnitP2;
+        private List<Polygon> listHexa;
+        private Polygon selectedPolygon;
 
         public MapWindow(Game g)
         {
+
+            Application.Current.MainWindow = this;
             game = g;
-            
+            listHexa = new List<Polygon>();
+
             InitializeComponent();
 
             playerOneName.Tag = this.game.playerOne.name;
@@ -46,12 +51,13 @@ namespace WpfApplication
             myCanvas.Children.Add(mv);
 
             int TAILLE = this.game.map.strategy.size;
+            double d = Hexagon.w /2 * Math.Tan(30 * Math.PI / 180);
             for (int i = 0; i < TAILLE; i++)
             {
                 for (int j = 0; j < TAILLE; j++)
                 {
                     double posx = i * Hexagon.w;
-                    double posy = j * Hexagon.h * 3 / 4;
+                    double posy = j * (Hexagon.h - d)+1;
                     if (j % 2 == 1)
                     {
                         posx += Hexagon.w / 2;
@@ -59,32 +65,77 @@ namespace WpfApplication
                     Hexagon h = new Hexagon(posx, posy);
                     h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHandler);
                     h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
+                    h.polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickHandler);
+                    listHexa.Add(h.polygon);
                     myCanvas.Children.Add(h.polygon);
                 }
             }
-            
 
-
-           // myCanvas.Children.Add(h.polygon);
-            //Hexagon h2 = new Hexagon(200.0, 200.0);
-            //myCanvas.Children.Add(h2.polygon);
-
-
+            showUnit();
         }
 
         private void mouseEnterHandler(object sender, MouseEventArgs e)
         {
             var polygon = sender as Polygon;
-            polygon.StrokeThickness = 20;
+            if (polygon != this.selectedPolygon)
+            {
+                polygon.StrokeThickness = 4;
+                polygon.Stroke = Brushes.White;
+                polygon.SetValue(Canvas.ZIndexProperty, 50);
+            }
         }
 
         private void mouseLeaveHandler(object sender, MouseEventArgs e)
         {
             var polygon = sender as Polygon;
-            polygon.StrokeThickness = 2;
+            if (polygon != this.selectedPolygon)
+            {
+                polygon.StrokeThickness = 2;
+                polygon.Stroke = Brushes.Black;
+                polygon.SetValue(Canvas.ZIndexProperty, 10);
+            }
         }
 
-        
+        private void mouseLeftClickHandler(object sender, MouseButtonEventArgs e)
+        {
+            foreach(Polygon p in this.listHexa){
+                p.StrokeThickness = 2;
+                p.Stroke = Brushes.Black;
+                p.SetValue(Canvas.ZIndexProperty, 10);
+            }
+
+            var polygon = sender as Polygon;
+            this.selectedPolygon = polygon;
+            polygon.StrokeThickness = 4;
+            polygon.Stroke = Brushes.Red;
+            polygon.SetValue(Canvas.ZIndexProperty, 60);
+
+            //showUnit();
+
+            //MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
+        }
+
+        private void showUnit()
+        {
+            Player currentPlayer;
+            if (this.game.playerOne.playing) { currentPlayer = this.game.playerOne; }
+            else { currentPlayer = this.game.playerTwo; }
+
+
+            panelUnit.Children.Clear();
+
+            ListBox listUnit = new ListBox();
+
+            List<UnitBox> listUnitBox = new List<UnitBox>();
+            foreach (Unit u in currentPlayer.units) {
+                UnitBox ub = new UnitBox(u);
+                //listUnitBox.Add(ub);
+                panelUnit.Children.Add(ub);
+            }
+
+            //listUnit.ItemsSource = listUnitBox;
+            //panelUnit.Children.Add(listUnit);
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -177,7 +228,7 @@ namespace WpfApplication
 
             // d + side + d = h
             double d = w /2 * Math.Tan(30 * Math.PI / 180);
-            
+
             PointCollection pCollect = new PointCollection();
             Point p1 = new Point(w/2, 0);
             Point p2 = new Point(w, d);
