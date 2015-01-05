@@ -52,9 +52,9 @@ namespace WpfApplication
 
             int TAILLE = this.game.map.strategy.size;
             double d = Hexagon.w /2 * Math.Tan(30 * Math.PI / 180);
-            for (int i = 0; i < TAILLE; i++)
+            for (int j = 0; j < TAILLE; j++)
             {
-                for (int j = 0; j < TAILLE; j++)
+                for (int i = 0; i < TAILLE; i++)
                 {
                     double posx = i * Hexagon.w;
                     double posy = j * (Hexagon.h - d)+1;
@@ -112,7 +112,7 @@ namespace WpfApplication
 
             //showUnit();
 
-            //MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
+            MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
         }
 
         private void showUnit()

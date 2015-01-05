@@ -77,5 +77,34 @@ namespace UML_SW
                 tilesList.Add(tempTile);
             }
         }
+
+        public List<int> convertMapToIntList()
+        {
+            List<int> listIntMap = new List<int>();
+            foreach (ITile t in this.tilesList)
+            {
+                if (t.GetType() == typeof(Plain))
+                {
+                    listIntMap.Add(0);
+                }
+                else if (t.GetType() == typeof(Desert))
+                {
+                    listIntMap.Add(1);
+                }
+                else if (t.GetType() == typeof(Mountain))
+                {
+                    listIntMap.Add(2);
+                }
+                else if (t.GetType() == typeof(Forest))
+                {
+                    listIntMap.Add(3);
+                }
+                else
+                {
+                    //TODO : error
+                }
+            }
+            return listIntMap;
+        }
     }
 }

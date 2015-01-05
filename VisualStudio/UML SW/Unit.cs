@@ -77,6 +77,14 @@ namespace UML_SW
                     
                     if (enemy.healthPoint == 0)
                     {
+                        if (enemy.GetType() == typeof(UnitElf)) {
+                            int survive = random.Next(0, 2);
+                            if (survive == 0) { enemy.die(); }
+                            else { 
+                                enemy.healthPoint = 1;
+                                break;
+                            }
+                        }
                         enemy.die();
                         if (this.GetType() == typeof(UnitOrc))
                         {
@@ -89,6 +97,16 @@ namespace UML_SW
 
                     if (this.healthPoint == 0)
                     {
+                        if (this.GetType() == typeof(UnitElf))
+                        {
+                            int survive = random.Next(0, 2);
+                            if (survive == 0) { this.die(); }
+                            else
+                            {
+                                this.healthPoint = 1;
+                                break;
+                            }
+                        }
                         this.die();
                         if (enemy.GetType() == typeof(UnitOrc))
                         {
@@ -100,7 +118,7 @@ namespace UML_SW
                 i++;
             }
 
-            //TODO : Elf  can escape
+            //TODO : Verif Elf  can escape
            
         }
 

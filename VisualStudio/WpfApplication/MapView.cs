@@ -21,31 +21,7 @@ namespace WpfApplication
         public MapView(Game g){
             this.game = g;
             this.listIntMap = new List<int>();
-            this.convertMapToIntList();
-        }
-
-        public void convertMapToIntList() {
-            foreach (ITile t in this.game.map.tilesList) {
-                if (t.GetType() == typeof(Plain)) {
-                    this.listIntMap.Add(0);
-                }
-                else if (t.GetType() == typeof(Desert))
-                {
-                    this.listIntMap.Add(1);
-                }
-                else if (t.GetType() == typeof(Mountain))
-                {
-                    this.listIntMap.Add(2);
-                }
-                else if (t.GetType() == typeof(Forest))
-                {
-                    this.listIntMap.Add(3);
-                }
-                else
-                { 
-                    //TODO : error
-                }
-            }
+            listIntMap = this.game.map.convertMapToIntList();
         }
 
 
@@ -60,9 +36,9 @@ namespace WpfApplication
 
             BitmapImage[] tabimg = {img0, img1, img2, img3};
 
-            for (int i = 0; i < TAILLE; i++ )
+            for (int j = 0; j < TAILLE; j++ )
             {
-                for (int j = 0; j < TAILLE; j++)
+                for (int i = 0; i < TAILLE; i++)
                 {
                     int tile = listIntMap[j * TAILLE + i];
 
