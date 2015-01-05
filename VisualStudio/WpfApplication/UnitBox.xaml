@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <Border Style="{StaticResource infoUnit}" Name="border" Margin="{Binding Tag, ElementName=border}" >
+    <Border Style="{StaticResource infoUnit}" Name="border" >
         <Grid Margin="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -21,6 +21,7 @@
 
             <Label Grid.Column="0" Grid.Row="0" Name="UnitType" Style="{StaticResource playerName}"  Content="{Binding Tag, ElementName=UnitType}"/>
             <Label Grid.Column="1" Grid.Row="0" Name="UnitAlive" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="DEAD" />
+            <Label Grid.Column="1" Grid.Row="0" Name="UnitTired" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="TIRED" />
             <Label Grid.Column="0" Grid.Row="1" Name="UnitAttack" Style="{StaticResource playerInfo}"  Content="{Binding Tag, ElementName=UnitAttack}"/>
             <Label Grid.Column="1" Grid.Row="1" Name="UnitDefence" Style="{StaticResource playerInfo}"  Content="{Binding Tag, ElementName=UnitDefence}"/>
             <Label Grid.Column="0" Grid.Row="2" Name="UnitHealth" Style="{StaticResource playerInfo}"  Content="{Binding Tag, ElementName=UnitHealth}"/>

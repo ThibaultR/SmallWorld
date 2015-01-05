@@ -49,8 +49,8 @@ namespace UnitTestProject
         public void TestAttack()
         {
             FactoryPopulation fp = new FactoryPopulation();
-            Unit u = fp.createUnit(FactoryPopulation.populationType.Dwarf);
-            Unit enemy = fp.createUnit(FactoryPopulation.populationType.Orc);
+            Unit u = fp.createUnit(FactoryPopulation.populationType.Orc);
+            Unit enemy = fp.createUnit(FactoryPopulation.populationType.Elf);
             u.attack(enemy);
             
 

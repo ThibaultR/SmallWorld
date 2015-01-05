@@ -117,9 +117,6 @@ namespace UML_SW
 
                 i++;
             }
-
-            //TODO : Verif Elf  can escape
-           
         }
 
         public virtual void move(Coordinate c, Type currentTileType)

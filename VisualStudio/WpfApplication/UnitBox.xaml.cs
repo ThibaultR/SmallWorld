@@ -21,36 +21,46 @@ namespace WpfApplication
     /// </summary>
     public partial class UnitBox : UserControl
     {
-        Thickness BorderMargin;
+        Unit unit;
+        
 
 
-        public UnitBox(Unit unit)
+        public UnitBox(Unit u)
         {
-
-            MapWindow parentWindow = (Application.Current.MainWindow as MapWindow);
-            if (parentWindow.game.isMovementPossible(unit))
-            {
-                BorderMargin = new Thickness(10, 2, 50, 2);
-            }
-            else
-            {
-                BorderMargin = new Thickness(50, 2, 10, 2);
-            }
-
+            this.unit = u;
             InitializeComponent();
 
+            String typeUnitString = "";
+            Type typeUnit = unit.GetType();
+            if (typeUnit == typeof(UnitElf)) { typeUnitString = "Elf"; }
+            if (typeUnit == typeof(UnitDwarf)) { typeUnitString = "Dwarf"; }
+            if (typeUnit == typeof(UnitOrc)) { typeUnitString = "Orc"; }
 
-            UnitType.Tag = "Unité " + unit.GetType();
+            UnitType.Tag = "Unité " + typeUnitString;
             UnitAttack.Tag = "Attack : " + Unit.ATTACK;
             UnitDefence.Tag = "Defence : " + Unit.DEFENCE;
             UnitHealth.Tag = "Health : " + unit.healthPoint;
             UnitMvt.Tag = "Movement : " + unit.movementPoint;
             UnitPos.Tag = "Position : (" + unit.coordinate.x + ", " + unit.coordinate.y + ")";
-            border.Tag = BorderMargin;
+
+
+            
+            MapWindow parentWindow = (Application.Current.MainWindow as MapWindow);
+            bool isOnSelectedTile = parentWindow.listHexa.IndexOf(parentWindow.selectedPolygon) == unit.coordinate.x + unit.coordinate.y * parentWindow.game.map.strategy.size;
+
+            if (!parentWindow.game.isMovementPossible(unit))
+            {
+                UnitTired.Visibility = System.Windows.Visibility.Visible;
+            }
+            else if (parentWindow.game.getCurrentPlayer().units.Contains(unit) && isOnSelectedTile)
+            {
+                border.Margin = new Thickness(10, 2, 50, 2);
+            }
 
             if (!unit.isAlive) //TODO try with binding
             {
                 border.Opacity = 0.5;
+                UnitTired.Visibility = System.Windows.Visibility.Collapsed;
                 UnitAlive.Visibility = System.Windows.Visibility.Visible;
             }
 

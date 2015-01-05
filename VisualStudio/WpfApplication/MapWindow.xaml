@@ -30,7 +30,7 @@
         </StackPanel>
 
         <StackPanel Grid.Column="0" Grid.Row="1" Name="gameState" VerticalAlignment="Center">
-            <Border Style="{StaticResource infoBlock}" >
+            <Border Style="{StaticResource infoBlock}" BorderBrush="Blue">
                 <StackPanel Style="{StaticResource playerInfoBlock}">
                     <Label Name="playerOneName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerOneName}" />
                     <Label Name="playerOnePopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerOnePopulation}" />
@@ -39,7 +39,7 @@
                 </StackPanel>
             </Border>
 
-            <Border Style="{StaticResource infoBlock}" >
+            <Border Style="{StaticResource infoBlock}" BorderBrush="Green">
                 <StackPanel Style="{StaticResource playerInfoBlock}">
                     <Label Name="playerTwoName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerTwoName}" />
                     <Label Name="playerTwoPopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerTwoPopulation}" />
@@ -49,8 +49,8 @@
             </Border>
         </StackPanel>
 
-        <ScrollViewer Grid.Row="1" Grid.Column="1" Name="myScrollViewer" VerticalScrollBarVisibility="Auto" >
-            <Canvas Name="myCanvas">
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Name="myScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+            <Canvas Name="myCanvas" Height="{Binding Height, ElementName=myCanvas}" Width="{Binding Width, ElementName=myCanvas}">
                 
             </Canvas>
         </ScrollViewer>

@@ -91,8 +91,15 @@ bool * findPossibleMovement(int taille, bool isDwarf, int x, int y, int * tabMap
 			if (isDwarf && tile == TILE_MOUNTAIN){
 				reachableTiles[j * taille + i] = true;
 			}
-			else if (true){
-				reachableTiles[j * taille + i] = true;
+			else if (j % 2 == 0){// ligne paire
+				if (((i >= x - 1 && i <= x) && (j >= y - 1 && j <= y + 1)) || (i = x + 1 && j == y)){
+					reachableTiles[j * taille + i] = true;
+				}
+			}
+			else if (j % 2 == 1){// ligne impaire
+				if (((i >= x && i <= x + 1) && (j >= y - 1 && j <= y + 1)) || (i = x - 1 && j == y)){
+					reachableTiles[j * taille + i] = true;
+				}
 			}
 			else {
 				reachableTiles[j * taille + i] = false;

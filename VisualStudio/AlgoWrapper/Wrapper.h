@@ -23,6 +23,7 @@ namespace Wrapper {
 
 		int* mapCreation(int taille){ return algo->mapCreation(taille); }
 		int* findStartCoordinate(int taille){ return algo->findStartCoordinate(taille); }
+		bool * findPossibleMovement(int taille, bool isDwarf, int x, int y, int * tabMap){ return algo->findPossibleMovement(taille, isDwarf, x, y, tabMap); }
 	};
 }
 #endif

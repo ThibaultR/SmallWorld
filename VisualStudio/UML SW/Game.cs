@@ -51,9 +51,24 @@ namespace UML_SW
         public void endRound()
         {
             currentRoundNumber += 0.5;
+            foreach (Unit u in this.getCurrentPlayer().units) 
+            {
+                u.movementPoint = Unit.MAX_MVT;
+            }
             this.playerOne.playing = !this.playerOne.playing;
             this.playerTwo.playing = !this.playerTwo.playing;
             this.calculScore();
+        }
+
+        public Player getCurrentPlayer() {
+            if (this.playerOne.playing) { return this.playerOne; }
+            else { return this.playerTwo; }
+        }
+
+        public Player getEnemyPlayer()
+        {
+            if (this.playerOne.playing) { return this.playerTwo; }
+            else { return this.playerOne; }
         }
 
         public void selectUnit(Unit u)
@@ -65,23 +80,23 @@ namespace UML_SW
         {
             this.currentSelectedTileCoordinate = c;
         }
+        public Type getTypeofTile(Coordinate c)
+        {
+            int tileNumber = c.x + map.strategy.size * c.y;
+            return this.map.tilesList[tileNumber].GetType();
+        }
 
         public List<Unit> selectEnemyUnitsOnCoordinates(Coordinate c)
         {
-            Player enemyPlayer;
-            if (this.playerOne.playing) { enemyPlayer = playerTwo; }
-            else { enemyPlayer = playerOne; }
-
             List<Unit> list = new List<Unit>();
 
-            foreach (Unit u in enemyPlayer.units)
+            foreach (Unit u in this.getEnemyPlayer().units)
             {
                 if (u.isAlive && u.coordinate.Equals(c)) { list.Add(u); }
             }
 
             return list;
         }
-
 
 
         public Unit selectBestOpponent(List<Unit> list)
@@ -97,11 +112,6 @@ namespace UML_SW
             }
 
             return bestUnit;
-        }
-
-        public Type getTypeofTile(Coordinate c) {
-            int tileNumber = c.x + map.strategy.size * c.y;
-            return this.map.tilesList[tileNumber].GetType();
         }
 
         public bool isMovementPossible(Unit u)

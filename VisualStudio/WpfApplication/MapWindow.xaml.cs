@@ -24,16 +24,21 @@ namespace WpfApplication
         private string saveFile;
         private int NbUnitP1;
         private int NbUnitP2;
-        private List<Polygon> listHexa;
-        private Polygon selectedPolygon;
+        public double canvasHeight;
+        public double canvasWidth;
+        public List<Polygon> listHexa;
+        public Polygon selectedPolygon;
 
         public MapWindow(Game g)
         {
 
             Application.Current.MainWindow = this;
             game = g;
+            int TAILLE = this.game.map.strategy.size;
+            double d = Hexagon.w / 2 * Math.Tan(30 * Math.PI / 180);
+            canvasHeight = (Hexagon.h - d) * TAILLE + d;
+            canvasWidth = Hexagon.w * (TAILLE + 0.5);
             listHexa = new List<Polygon>();
-
             InitializeComponent();
 
             playerOneName.Tag = this.game.playerOne.name;
@@ -46,12 +51,13 @@ namespace WpfApplication
             NbUnitP2 = this.game.playerOne.nbUnitAlive();
             playerOneNbUnit.Tag = "Unit : " + this.NbUnitP1;
             playerTwoNbUnit.Tag = "Unit : " + this.NbUnitP2;
+            myCanvas.Height = this.canvasHeight;
+            myCanvas.Width = this.canvasWidth;
 
             MapView mv = new MapView(this.game);
             myCanvas.Children.Add(mv);
 
-            int TAILLE = this.game.map.strategy.size;
-            double d = Hexagon.w /2 * Math.Tan(30 * Math.PI / 180);
+            
             for (int j = 0; j < TAILLE; j++)
             {
                 for (int i = 0; i < TAILLE; i++)
@@ -70,6 +76,14 @@ namespace WpfApplication
                     myCanvas.Children.Add(h.polygon);
                 }
             }
+
+            /* For test purpose
+            */
+            this.game.playerOne.units[0].die();
+            this.game.playerOne.units[2].movementPoint = 0;
+            this.game.playerTwo.units[0].die();
+            this.game.playerTwo.units[2].movementPoint = 0;
+            
 
             showUnit();
         }
@@ -110,31 +124,36 @@ namespace WpfApplication
             polygon.Stroke = Brushes.Red;
             polygon.SetValue(Canvas.ZIndexProperty, 60);
 
-            //showUnit();
+            showUnit();
 
-            MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
+            //MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
         }
 
         private void showUnit()
         {
-            Player currentPlayer;
-            if (this.game.playerOne.playing) { currentPlayer = this.game.playerOne; }
-            else { currentPlayer = this.game.playerTwo; }
-
-
             panelUnit.Children.Clear();
+            int pos = this.listHexa.IndexOf(selectedPolygon);
+            int x = pos % this.game.map.strategy.size;
+            int y = pos / this.game.map.strategy.size;
 
-            ListBox listUnit = new ListBox();
+            List<Unit> listEnemyUnits = this.game.selectEnemyUnitsOnCoordinates(new Coordinate(x, y));
 
-            List<UnitBox> listUnitBox = new List<UnitBox>();
-            foreach (Unit u in currentPlayer.units) {
-                UnitBox ub = new UnitBox(u);
-                //listUnitBox.Add(ub);
-                panelUnit.Children.Add(ub);
+            if (listEnemyUnits.Count == 0)
+            {
+                foreach (Unit u in this.game.getCurrentPlayer().units)
+                {
+                    UnitBox ub = new UnitBox(u);
+                    panelUnit.Children.Add(ub);
+                }
+            }
+            else {
+                foreach (Unit u in listEnemyUnits)
+                {
+                    UnitBox ub = new UnitBox(u);
+                    panelUnit.Children.Add(ub);
+                }
             }
 
-            //listUnit.ItemsSource = listUnitBox;
-            //panelUnit.Children.Add(listUnit);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
