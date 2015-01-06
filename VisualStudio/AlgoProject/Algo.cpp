@@ -80,7 +80,7 @@ int* Algo::findStartCoordinate(int taille){
 }
 
 
-bool * findPossibleMovement(int taille, bool isDwarf, int x, int y, int * tabMap){
+bool * Algo::findPossibleMovement(int taille, bool isDwarf, int x, int y, int * tabMap){
 	bool * reachableTiles = new bool[taille * taille];
 
 	for (int j = 0; j < taille; j++)
