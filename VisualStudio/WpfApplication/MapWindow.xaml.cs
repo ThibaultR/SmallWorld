@@ -86,6 +86,7 @@ namespace WpfApplication
             
 
             showUnit();
+            showUnitOnMap();
         }
 
         private void mouseEnterHandler(object sender, MouseEventArgs e)
@@ -153,7 +154,62 @@ namespace WpfApplication
                     panelUnit.Children.Add(ub);
                 }
             }
+        }
 
+        private void showUnitOnMap()
+        {
+            BitmapImage elf = new BitmapImage(new Uri("textures/population/elf.png", UriKind.Relative));
+            BitmapImage dwarf = new BitmapImage(new Uri("textures/population/dwarf.png", UriKind.Relative));
+            BitmapImage orc = new BitmapImage(new Uri("textures/population/orc.png", UriKind.Relative));
+
+            double w = Hexagon.w;
+            double h = Hexagon.h;
+            Image elfImg = new Image();
+            elfImg.Source = elf;
+            elfImg.Width = w;
+            elfImg.Height = h;
+
+            Image dwarfImg = new Image();
+            dwarfImg.Source = dwarf;
+            dwarfImg.Width = w;
+            dwarfImg.Height = h;
+
+            Image orcImg = new Image();
+            orcImg.Source = orc;
+            orcImg.Width = w;
+            orcImg.Height = h;
+
+            List<Coordinate> coordinateList = new List<Coordinate>();
+            foreach (Unit u in this.game.playerOne.units) {
+                if (!coordinateList.Contains(u.coordinate)) {
+                    coordinateList.Add(u.coordinate);
+
+                    double d = elf.PixelWidth / 2 * Math.Tan(30 * Math.PI / 180);
+
+                    double posx = u.coordinate.x * elf.PixelWidth;
+                    double posy = u.coordinate.y * (elf.PixelHeight - d);
+                    if (u.coordinate.y % 2 == 1)
+                    {
+                        posx += w / 2;
+                    }
+
+                    switch (this.game.playerOne.populationType)
+                    {
+                        case FactoryPopulation.populationType.Elf:
+                            myCanvas.Children.Add(elfImg);
+                            break;
+                        case FactoryPopulation.populationType.Orc:
+                            myCanvas.Children.Add(dwarfImg);
+                            break;
+                        case FactoryPopulation.populationType.Dwarf:
+                            myCanvas.Children.Add(orcImg);
+                            break;
+                        default:
+                            break;
+                             //TODO ERROR
+                    }
+                }
+            }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
