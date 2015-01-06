@@ -54,6 +54,9 @@ namespace WpfApplication
             myCanvas.Height = this.canvasHeight;
             myCanvas.Width = this.canvasWidth;
 
+            //TO DO : Ne Fonctionne pas très bien 
+            nbRoundsLeft.Tag = "Nb Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
+
             MapView mv = new MapView(this.game);
             myCanvas.Children.Add(mv);
 
@@ -83,6 +86,8 @@ namespace WpfApplication
             this.game.playerOne.units[2].movementPoint = 0;
             this.game.playerTwo.units[0].die();
             this.game.playerTwo.units[2].movementPoint = 0;
+
+            image.Source = this.ChoseImage();
             
 
             showUnit();
@@ -227,6 +232,39 @@ namespace WpfApplication
                 stream.Close();
             }
         }
+
+        private void EndRound(object sender, RoutedEventArgs e)
+        {
+            image.Source = this.ChoseImage();
+            this.game.endRound();
+            MessageBox.Show("abeh" + this.game.currentRoundNumber);
+
+        }
+
+        private BitmapImage ChoseImage(){
+            // Create source
+            BitmapImage myBitmapImage = new BitmapImage();
+            myBitmapImage.BeginInit();
+
+            switch (game.getCurrentPlayer().populationType)
+            {
+                case FactoryPopulation.populationType.Elf:
+                    myBitmapImage.UriSource = new Uri("textures/images_projet/elf.jpg", UriKind.Relative);
+                    break;
+                case FactoryPopulation.populationType.Orc:
+                    myBitmapImage.UriSource = new Uri("textures/images_projet/orcs_bis.jpg", UriKind.Relative);
+                    break;
+                case FactoryPopulation.populationType.Dwarf:
+                    myBitmapImage.UriSource = new Uri("textures/images_projet/nains_dwarf_bis.jpg", UriKind.Relative);
+                    break;
+                default:
+                    break;
+            }
+
+            myBitmapImage.EndInit();
+            return myBitmapImage;
+        }
+
 
     }
 
