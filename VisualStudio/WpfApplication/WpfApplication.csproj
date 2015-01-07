@@ -164,6 +164,8 @@
     <Content Include="textures\background_bis.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="textures\fond_bois.png" />
+    <Resource Include="textures\fond_bois2.png" />
     <Content Include="textures\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
