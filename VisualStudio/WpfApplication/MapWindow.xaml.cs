@@ -61,7 +61,7 @@ namespace WpfApplication
                 for (int i = 0; i < TAILLE; i++)
                 {
                     double posx = i * Hexagon.w;
-                    double posy = j * (Hexagon.h - d)+1;
+                    double posy = j * (Hexagon.h - d);
                     if (j % 2 == 1)
                     {
                         posx += Hexagon.w / 2;

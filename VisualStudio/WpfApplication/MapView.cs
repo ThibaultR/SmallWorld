@@ -28,6 +28,8 @@ namespace WpfApplication
         unsafe protected override void OnRender(System.Windows.Media.DrawingContext dc)
         {
             int TAILLE = this.game.map.strategy.size;
+            double h = Hexagon.h;
+            double w = Hexagon.w;
             
             BitmapImage img0 = new BitmapImage(new Uri("textures/tile/plain.png", UriKind.Relative));
             BitmapImage img1 = new BitmapImage(new Uri("textures/tile/desert.png", UriKind.Relative));
@@ -42,15 +44,15 @@ namespace WpfApplication
                 {
                     int tile = listIntMap[j * TAILLE + i];
 
-                    double d = tabimg[tile].PixelWidth / 2 * Math.Tan(30 * Math.PI / 180);
+                    double d = w / 2 * Math.Tan(30 * Math.PI / 180);
 
-                    double posx = i * tabimg[tile].PixelWidth;
-                    double posy = j * (tabimg[tile].PixelHeight - d);
+                    double posx = i * w;
+                    double posy = j * (h - d);
                     if(j % 2 == 1 ){
-                        posx += tabimg[tile].PixelWidth / 2;
+                        posx += w / 2;
                     }
 
-                    dc.DrawImage(tabimg[tile], new Rect(posx, posy, tabimg[tile].PixelWidth, tabimg[tile].PixelHeight));
+                    dc.DrawImage(tabimg[tile], new Rect(posx, posy, w, h));
                 }
             }
             
