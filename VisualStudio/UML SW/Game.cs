@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Wrapper;
 
 namespace UML_SW
 {
@@ -150,17 +151,41 @@ namespace UML_SW
             return false;
         }
 
-        public void isTileReachable(Unit unit, Coordinate coordinate)
+        public unsafe bool * getBoolListReachable(Unit u) {
+
+            int taille = this.map.strategy.size;
+            int[] table = this.map.convertMapToIntList().ToArray();
+            myStruct myStruct = new myStruct();
+            myStruct.size = taille * taille;
+            for (int i = 0; i < taille * taille; i++)
+            {
+                myStruct.tab[i] = table[i];
+            }
+            int* tabPtr = (int*)&myStruct.tab[0];
+            for (int i = 0; i < taille * taille; i++)
+            {
+                *(tabPtr + i) = myStruct.tab[i];
+            }
+
+            // Find reachableTile and update List and polygon style
+            WrapperAlgo algoW = new WrapperAlgo();
+            return algoW.findPossibleMovement(taille, u.GetType() == typeof(UnitDwarf), u.coordinate.x, u.coordinate.y, tabPtr);
+            
+        }
+
+        public unsafe bool isTileReachable(Unit u, Coordinate coordinate)
         {
-            throw new NotImplementedException();//TODO
+            bool * boolList = this.getBoolListReachable(u);
+            if(boolList[coordinate.x + coordinate.y * this.map.strategy.size]){
+                return true;
+            }else {
+                return false;
+            }
         }
 
         public bool isActionPossible()
         {
-            return isMovementPossible(this.currentSelectedUnit);
-            // && isTileReachable(this.currentSelectedUnit, this.currentSelectedTileCoordinate);
-            //TODO verif proximity
-            
+            return isMovementPossible(this.currentSelectedUnit) && isTileReachable(this.currentSelectedUnit, this.currentSelectedTileCoordinate);
         }
 
 
@@ -251,5 +276,12 @@ namespace UML_SW
             playerTwo.currentScore = scoreP2;
 
         }
+    }
+
+    public unsafe struct myStruct
+    {
+        public int size;
+        public fixed int tab[196];
+
     }
 }

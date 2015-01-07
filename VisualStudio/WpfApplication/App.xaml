@@ -44,6 +44,27 @@
             <Setter Property="FontSize" Value="11" />
             <Setter Property="Margin" Value="2"/>
         </Style>
+
+        <!-- Polygons Style/ Doesn't work-->
+        <Style x:Key="polygonBase" TargetType="Polygon">
+            <Setter Property="StrokeThickness" Value="2" />
+            <Setter Property="Stroke" Value="Black"/>
+        </Style>
+
+        <Style x:Key="polygonOver" TargetType="Polygon">
+            <Setter Property="StrokeThickness" Value="4" />
+            <Setter Property="Stroke" Value="White"/>
+        </Style>
         
+        <Style x:Key="polygonSelected" TargetType="Polygon">
+            <Setter Property="StrokeThickness" Value="4" />
+            <Setter Property="Stroke" Value="Red"/>
+        </Style>
+
+        <Style x:Key="polygonReachable" TargetType="Polygon">
+            <Setter Property="StrokeThickness" Value="3" />
+            <Setter Property="Stroke" Value="GreenYellow"/>
+        </Style>
+
     </Application.Resources>
 </Application>

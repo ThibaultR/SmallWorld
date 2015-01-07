@@ -70,6 +70,22 @@ namespace UnitTestProject
 
             bng.game.map.tilesList[1] = ft.getOrCreateForest();
             Assert.IsTrue(bng.game.isActionPossible());
+
+            /****** TEST isTileReachable ******/
+            bng.game.playerOne.units[0] = new UnitDwarf();
+            bng.game.playerOne.units[0].coordinate = new Coordinate(3, 3);
+            bng.game.currentSelectedUnit = bng.game.playerOne.units[0];
+
+            bng.game.currentSelectedTileCoordinate = new Coordinate(3, 4);
+            Assert.IsTrue(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
+
+            bng.game.currentSelectedTileCoordinate = new Coordinate(3, 5);
+            bng.game.map.tilesList[3 + 5 * bng.game.map.strategy.size] = ft.getOrCreateDesert();
+            Assert.IsFalse(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
+
+            bng.game.map.tilesList[3 + 5 * bng.game.map.strategy.size] = ft.getOrCreateMountain();
+            Assert.IsTrue(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
+            Assert.IsTrue(bng.game.isActionPossible());
         }
 
         [TestMethod]

@@ -121,24 +121,8 @@ namespace WpfApplication
             }
             pW.listHexaReachable.Clear();
 
-            // Create table to use in DLL function
             int taille = pW.game.map.strategy.size;
-            int[] fd = pW.game.map.convertMapToIntList().ToArray();
-            myStruct myStruct = new myStruct();
-            myStruct.size = taille * taille;
-            for (int i = 0; i < taille * taille; i++)
-            {
-                myStruct.tab[i] = fd[i];
-            }
-            int* tabTest = (int*)&myStruct.tab[0];
-            for (int i = 0; i < taille * taille; i++)
-            {
-                *(tabTest + i) = myStruct.tab[i];
-            }
-
-            // Find reachableTile and update List and polygon style
-            WrapperAlgo algoW = new WrapperAlgo();
-            bool * boolList = algoW.findPossibleMovement(taille, unit.GetType() == typeof(UnitDwarf), unit.coordinate.x, unit.coordinate.y, tabTest);
+            bool * boolList = pW.game.getBoolListReachable(unit);
             for (int i = 0; i < taille * taille; i++)
             {
                 if (boolList[i])
@@ -158,10 +142,10 @@ namespace WpfApplication
 
     }
 
-    public unsafe struct myStruct
-    {
-        public int size;
-        public fixed int tab[196];
+    //public unsafe struct myStruct
+    //{
+    //    public int size;
+    //    public fixed int tab[196];
 
-    }
+    //}
 }

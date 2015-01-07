@@ -127,9 +127,18 @@ namespace WpfApplication
             foreach(Polygon p in this.listHexa){
                 if (p == selectedPolygon)
                 {
-                    p.StrokeThickness = 2;
-                    p.Stroke = Brushes.Black;
-                    p.SetValue(Canvas.ZIndexProperty, 10);
+                    if (this.listHexaReachable.Contains(selectedPolygon))
+                    {
+                        p.StrokeThickness = 3;
+                        p.Stroke = Brushes.GreenYellow;
+                        p.SetValue(Canvas.ZIndexProperty, 25);
+                    }
+                    else
+                    {
+                        p.StrokeThickness = 2;
+                        p.Stroke = Brushes.Black;
+                        p.SetValue(Canvas.ZIndexProperty, 10);
+                    }
                 }
             }
 
@@ -340,6 +349,12 @@ namespace WpfApplication
             panelPlayer.Children.Clear();
             panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
             panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
+
+            foreach (Polygon p in listHexaReachable) {
+                p.StrokeThickness = 2;
+                p.Stroke = Brushes.Black; 
+            }
+            listHexaReachable.Clear();
         }
 
         private BitmapImage selectImageForPlayer(Player p, bool isSmall){
