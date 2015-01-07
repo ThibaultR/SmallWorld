@@ -63,6 +63,27 @@ namespace UML_SW
             this.calculScore();
         }
 
+        public bool isEnd() {
+            if (this.currentRoundNumber >= this.map.strategy.nbRounds)
+            {
+                return true;
+            }
+            return this.playerOne.nbUnitAlive() == 0 || this.playerTwo.nbUnitAlive() == 0;
+        }
+
+        public Player getWinner() {
+            if (isEnd())
+            {
+                if (this.playerOne.nbUnitAlive() == 0) { return this.playerTwo; } 
+                if (this.playerTwo.nbUnitAlive() == 0) { return this.playerOne; }
+                if (this.playerOne.currentScore > this.playerTwo.currentScore) { return this.playerOne; }
+                else { return this.playerTwo; }
+            }
+            
+           //TODO error
+           return null;
+        }
+
         public Player getCurrentPlayer() {
             if (this.playerOne.playing) { return this.playerOne; }
             else { return this.playerTwo; }

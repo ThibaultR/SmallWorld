@@ -43,19 +43,16 @@ namespace WpfApplication
             listHexaReachable = new List<Polygon>();
 
             InitializeComponent();
+
             panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
             panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
             
+            // display Map
             myCanvas.Height = this.canvasHeight;
             myCanvas.Width = this.canvasWidth;
-
-            //TO DO : Ne Fonctionne pas très bien 
-            nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
-
             MapView mv = new MapView(this.game);
             myCanvas.Children.Add(mv);
 
-            
             for (int j = 0; j < TAILLE; j++)
             {
                 for (int i = 0; i < TAILLE; i++)
@@ -67,23 +64,27 @@ namespace WpfApplication
                         posx += Hexagon.w / 2;
                     }
                     Hexagon h = new Hexagon(posx, posy);
-                    h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHandler);
-                    h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
-                    h.polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickHandler);
+                    h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHexaHandler);
+                    h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHexaHandler);
+                    h.polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickHexaHandler);
+                    h.polygon.MouseRightButtonDown += new MouseButtonEventHandler(mouseRightClickHexaHandler);
                     listHexa.Add(h.polygon);
                     myCanvas.Children.Add(h.polygon);
                 }
             }
 
             /* For test purpose
-            */
+            
             this.game.playerOne.units[0].die();
             this.game.playerOne.units[2].movementPoint = 0;
             this.game.playerTwo.units[0].die();
             this.game.playerTwo.units[2].movementPoint = 0;
             this.game.playerTwo.units[1].coordinate = new Coordinate(3,3);
+            */
 
 
+            //TO DO : Ne Fonctionne pas très bien 
+            nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
             imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
             NbUnitP1 = this.game.playerOne.nbUnitAlive();
@@ -95,7 +96,7 @@ namespace WpfApplication
 
 
 
-        private void mouseEnterHandler(object sender, MouseEventArgs e)
+        private void mouseEnterHexaHandler(object sender, MouseEventArgs e)
         {
             var polygon = sender as Polygon;
             if (polygon != this.selectedPolygon)
@@ -106,7 +107,7 @@ namespace WpfApplication
             }
         }
 
-        private void mouseLeaveHandler(object sender, MouseEventArgs e)
+        private void mouseLeaveHexaHandler(object sender, MouseEventArgs e)
         {
             var polygon = sender as Polygon;
             if (polygon != this.selectedPolygon)
@@ -122,7 +123,7 @@ namespace WpfApplication
             }
         }
 
-        private void mouseLeftClickHandler(object sender, MouseButtonEventArgs e)
+        private void mouseLeftClickHexaHandler(object sender, MouseButtonEventArgs e)
         {
             foreach(Polygon p in this.listHexa){
                 if (p == selectedPolygon)
@@ -149,8 +150,33 @@ namespace WpfApplication
             polygon.SetValue(Canvas.ZIndexProperty, 60);
 
             showUnit();
+        }
 
-            //MessageBox.Show("Machin : "+ this.listHexa.IndexOf(polygon));
+        private void mouseRightClickHexaHandler(object sender, MouseButtonEventArgs e)
+        {
+            var polygon = sender as Polygon;
+            int pos = this.listHexa.IndexOf(polygon);
+            int x = pos % this.game.map.strategy.size;
+            int y = pos / this.game.map.strategy.size;
+            this.game.currentSelectedTileCoordinate = new Coordinate(x,y);
+            if (this.game.currentSelectedUnit == null) { 
+                //unité non selectionné
+            }
+            else if (!this.game.isTileReachable(this.game.currentSelectedUnit, this.game.currentSelectedTileCoordinate))
+            {
+                //tile non reachable
+            }
+            else if (!this.game.isMovementPossible(this.game.currentSelectedUnit))
+            {
+                //not enough movement
+            }
+            else
+            {
+                this.game.action();
+            }
+
+            showUnit();
+            showUnitOnMap();
         }
 
         private void showUnit()
@@ -199,7 +225,7 @@ namespace WpfApplication
 
             List<Coordinate> coordinateList = new List<Coordinate>();
             foreach (Unit u in this.game.playerOne.units) {
-                if (!coordinateList.Contains(u.coordinate)) {
+                if (!coordinateList.Contains(u.coordinate) && u.isAlive) {
                     coordinateList.Add(u.coordinate);
 
                     double d = w / 2 * Math.Tan(30 * Math.PI / 180);
@@ -226,7 +252,7 @@ namespace WpfApplication
 
             foreach (Unit u2 in this.game.playerTwo.units)
             {
-                if (!coordinateList.Contains(u2.coordinate))
+                if (!coordinateList.Contains(u2.coordinate) && u2.isAlive)
                 {
                     coordinateList.Add(u2.coordinate);
 
@@ -309,18 +335,20 @@ namespace WpfApplication
             if (exitBox == MessageBoxResult.Yes)
             {
                 return false;
-            };
+            }
             return true;
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
             if (newGame) {
-                newGame = false;
-                e.Cancel = false;
+               newGame = false;
+               e.Cancel = false;
             }
             else if (AskConfirmQuitAppli() == false)
+            {
                 e.Cancel = true;
+            }
         }
 
 
@@ -343,6 +371,11 @@ namespace WpfApplication
         private void endRoundClickHandler(object sender, RoutedEventArgs e)
         {
             this.game.endRound();
+
+            if (this.game.isEnd()) {
+                MessageBox.Show("The game has ended ! The Winner is " + this.game.getWinner().name + " with " + this.game.getWinner().currentScore + " points. Well Played !");
+            }
+
             showUnit();
             imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
