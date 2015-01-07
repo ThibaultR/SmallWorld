@@ -55,6 +55,8 @@ namespace UML_SW
             {
                 u.movementPoint = Unit.MAX_MVT;
             }
+            this.currentSelectedTileCoordinate = null;
+            this.currentSelectedUnit = null;
             this.playerOne.playing = !this.playerOne.playing;
             this.playerTwo.playing = !this.playerTwo.playing;
             this.calculScore();

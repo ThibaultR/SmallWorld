@@ -39,23 +39,16 @@ namespace WpfApplication
             canvasHeight = (Hexagon.h - d) * TAILLE + d;
             canvasWidth = Hexagon.w * (TAILLE + 0.5);
             listHexa = new List<Polygon>();
-            InitializeComponent();
 
-            playerOneName.Tag = this.game.playerOne.name;
-            playerTwoName.Tag = this.game.playerTwo.name;
-            playerOnePopulation.Tag = "Population : " + this.game.playerOne.populationType;
-            playerTwoPopulation.Tag = "Population : " + this.game.playerTwo.populationType;
-            playerOneScore.Tag = "Score : " + this.game.playerOne.currentScore;
-            playerTwoScore.Tag = "Score : " + this.game.playerTwo.currentScore;
-            NbUnitP1 = this.game.playerOne.nbUnitAlive();
-            NbUnitP2 = this.game.playerOne.nbUnitAlive();
-            playerOneNbUnit.Tag = "Unit : " + this.NbUnitP1;
-            playerTwoNbUnit.Tag = "Unit : " + this.NbUnitP2;
+            InitializeComponent();
+            panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
+            panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
+            
             myCanvas.Height = this.canvasHeight;
             myCanvas.Width = this.canvasWidth;
 
             //TO DO : Ne Fonctionne pas très bien 
-            nbRoundsLeft.Tag = "Nb Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
+            nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
 
             MapView mv = new MapView(this.game);
             myCanvas.Children.Add(mv);
@@ -86,13 +79,19 @@ namespace WpfApplication
             this.game.playerOne.units[2].movementPoint = 0;
             this.game.playerTwo.units[0].die();
             this.game.playerTwo.units[2].movementPoint = 0;
+            this.game.playerTwo.units[1].coordinate = new Coordinate(3,3);
 
-            image.Source = this.ChoseImage();
-            
 
+            imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
+
+            NbUnitP1 = this.game.playerOne.nbUnitAlive();
+            NbUnitP2 = this.game.playerTwo.nbUnitAlive();
             showUnit();
             showUnitOnMap();
+            
         }
+
+
 
         private void mouseEnterHandler(object sender, MouseEventArgs e)
         {
@@ -119,9 +118,12 @@ namespace WpfApplication
         private void mouseLeftClickHandler(object sender, MouseButtonEventArgs e)
         {
             foreach(Polygon p in this.listHexa){
-                p.StrokeThickness = 2;
-                p.Stroke = Brushes.Black;
-                p.SetValue(Canvas.ZIndexProperty, 10);
+                if (p == selectedPolygon)
+                {
+                    p.StrokeThickness = 2;
+                    p.Stroke = Brushes.Black;
+                    p.SetValue(Canvas.ZIndexProperty, 10);
+                }
             }
 
             var polygon = sender as Polygon;
@@ -163,56 +165,72 @@ namespace WpfApplication
 
         private void showUnitOnMap()
         {
-            BitmapImage elf = new BitmapImage(new Uri("textures/population/elf.png", UriKind.Relative));
-            BitmapImage dwarf = new BitmapImage(new Uri("textures/population/dwarf.png", UriKind.Relative));
-            BitmapImage orc = new BitmapImage(new Uri("textures/population/orc.png", UriKind.Relative));
+            List<Image> imgToRemove = new List<Image>();
+            foreach (UIElement e in myCanvas.Children)
+            {
+                if (e.GetType() == typeof(Image))
+                {
+                    imgToRemove.Add((Image)e);
+                }
+            }
+
+            foreach (Image i in imgToRemove) { 
+                myCanvas.Children.Remove(i); 
+            }
 
             double w = Hexagon.w;
             double h = Hexagon.h;
-            Image elfImg = new Image();
-            elfImg.Source = elf;
-            elfImg.Width = w;
-            elfImg.Height = h;
-
-            Image dwarfImg = new Image();
-            dwarfImg.Source = dwarf;
-            dwarfImg.Width = w;
-            dwarfImg.Height = h;
-
-            Image orcImg = new Image();
-            orcImg.Source = orc;
-            orcImg.Width = w;
-            orcImg.Height = h;
 
             List<Coordinate> coordinateList = new List<Coordinate>();
             foreach (Unit u in this.game.playerOne.units) {
                 if (!coordinateList.Contains(u.coordinate)) {
                     coordinateList.Add(u.coordinate);
 
-                    double d = elf.PixelWidth / 2 * Math.Tan(30 * Math.PI / 180);
+                    double d = w / 2 * Math.Tan(30 * Math.PI / 180);
 
-                    double posx = u.coordinate.x * elf.PixelWidth;
-                    double posy = u.coordinate.y * (elf.PixelHeight - d);
+                    double posx = u.coordinate.x * w;
+                    double posy = u.coordinate.y * (h - d);
                     if (u.coordinate.y % 2 == 1)
                     {
                         posx += w / 2;
                     }
 
-                    switch (this.game.playerOne.populationType)
+                    Image imgP1 = new Image();
+                    imgP1.Source = selectImageForPlayer(this.game.playerOne, true);
+                    imgP1.Width = w;
+                    imgP1.Height = h;
+                    imgP1.SetValue(Canvas.ZIndexProperty, 9);
+                    imgP1.SetValue(Canvas.LeftProperty, posx);
+                    imgP1.SetValue(Canvas.TopProperty, posy);
+                    myCanvas.Children.Add(imgP1);     
+                }
+            }
+
+            
+
+            foreach (Unit u2 in this.game.playerTwo.units)
+            {
+                if (!coordinateList.Contains(u2.coordinate))
+                {
+                    coordinateList.Add(u2.coordinate);
+
+                    double d = w / 2 * Math.Tan(30 * Math.PI / 180);
+
+                    double posx = u2.coordinate.x * w;
+                    double posy = u2.coordinate.y * (h - d);
+                    if (u2.coordinate.y % 2 == 1)
                     {
-                        case FactoryPopulation.populationType.Elf:
-                            myCanvas.Children.Add(elfImg);
-                            break;
-                        case FactoryPopulation.populationType.Orc:
-                            myCanvas.Children.Add(dwarfImg);
-                            break;
-                        case FactoryPopulation.populationType.Dwarf:
-                            myCanvas.Children.Add(orcImg);
-                            break;
-                        default:
-                            break;
-                             //TODO ERROR
+                        posx += w / 2;
                     }
+
+                    Image imgP2 = new Image();
+                    imgP2.Source = selectImageForPlayer(this.game.playerTwo, true);
+                    imgP2.Width = w;
+                    imgP2.Height = h;
+                    imgP2.SetValue(Canvas.ZIndexProperty, 9);
+                    imgP2.SetValue(Canvas.LeftProperty, posx);
+                    imgP2.SetValue(Canvas.TopProperty, posy);
+                    myCanvas.Children.Add(imgP2);
                 }
             }
         }
@@ -289,35 +307,58 @@ namespace WpfApplication
             }
         }
 
-        private void EndRound(object sender, RoutedEventArgs e)
+        private void endRoundClickHandler(object sender, RoutedEventArgs e)
         {
-            image.Source = this.ChoseImage();
             this.game.endRound();
-            MessageBox.Show("abeh" + this.game.currentRoundNumber);
+            showUnit();
+            imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
+            panelPlayer.Children.Clear();
+            panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
+            panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
         }
 
-        private BitmapImage ChoseImage(){
-            // Create source
+        private BitmapImage selectImageForPlayer(Player p, bool isSmall){
             BitmapImage myBitmapImage = new BitmapImage();
-            myBitmapImage.BeginInit();
 
-            switch (game.getCurrentPlayer().populationType)
+            myBitmapImage.BeginInit();
+            switch (p.populationType)
             {
                 case FactoryPopulation.populationType.Elf:
-                    myBitmapImage.UriSource = new Uri("textures/images_projet/elf.jpg", UriKind.Relative);
+                    if (isSmall)
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/elf.png", UriKind.Relative);
+                    }
+                    else
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/elf_big.png", UriKind.Relative);
+                    }
+                    break;
+                case FactoryPopulation.populationType.Dwarf: 
+                    if (isSmall)
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/dwarf.png", UriKind.Relative);
+                    }
+                    else
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/dwarf_big.png", UriKind.Relative);
+                    }
                     break;
                 case FactoryPopulation.populationType.Orc:
-                    myBitmapImage.UriSource = new Uri("textures/images_projet/orcs_bis.jpg", UriKind.Relative);
-                    break;
-                case FactoryPopulation.populationType.Dwarf:
-                    myBitmapImage.UriSource = new Uri("textures/images_projet/nains_dwarf_bis.jpg", UriKind.Relative);
+                    if (isSmall)
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/orc.png", UriKind.Relative);
+                    }
+                    else
+                    {
+                        myBitmapImage.UriSource = new Uri("textures/population/orc_big.png", UriKind.Relative);
+                    }
                     break;
                 default:
                     break;
             }
-
             myBitmapImage.EndInit();
+
             return myBitmapImage;
         }
 
@@ -359,6 +400,7 @@ namespace WpfApplication
 
             polygon.SetValue(Canvas.LeftProperty, x);
             polygon.SetValue(Canvas.TopProperty, y);
+            polygon.SetValue(Canvas.ZIndexProperty, 10);
 
         }
     }

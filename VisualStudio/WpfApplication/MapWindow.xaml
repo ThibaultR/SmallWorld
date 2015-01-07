@@ -29,57 +29,43 @@
             <Button Click="ClickSave">Save game</Button>
         </StackPanel>
 
-        <StackPanel Grid.Column="0" Grid.Row="1" Name="gameState" VerticalAlignment="Center">
-            <Border Style="{StaticResource infoBlock}" BorderBrush="Blue">
-                <StackPanel Style="{StaticResource playerInfoBlock}">
-                    <Label Name="playerOneName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerOneName}" />
-                    <Label Name="playerOnePopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerOnePopulation}" />
-                    <Label Name="playerOneScore" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerOneScore}" />
-                    <Label Name="playerOneNbUnit" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerOneNbUnit}" />
-                </StackPanel>
-            </Border>
-
-            <Border Style="{StaticResource infoBlock}" BorderBrush="Green">
-                <StackPanel Style="{StaticResource playerInfoBlock}">
-                    <Label Name="playerTwoName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerTwoName}" />
-                    <Label Name="playerTwoPopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerTwoPopulation}" />
-                    <Label Name="playerTwoScore" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerTwoScore}" />
-                    <Label Name="playerTwoNbUnit" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerTwoNbUnit}" />
-                </StackPanel>
-            </Border>
+        <StackPanel Name="panelPlayer" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">
+            
         </StackPanel>
 
-        <ScrollViewer Margin="0,0,0,50" Grid.Row="1" Grid.Column="1" Name="myScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+        <ScrollViewer Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Name="myScrollViewer" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
             <Canvas Name="myCanvas" Height="{Binding Height, ElementName=myCanvas}" Width="{Binding Width, ElementName=myCanvas}">
             </Canvas>
         </ScrollViewer>
-        <ScrollViewer Grid.Row="1" Grid.Column="2" Name="myScrollViewerUnit" VerticalScrollBarVisibility="Auto" >
+
+        <ScrollViewer Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" Name="myScrollViewerUnit" VerticalScrollBarVisibility="Auto" >
             <StackPanel Name="panelUnit">
-                
+
             </StackPanel>
         </ScrollViewer>
 
-        <Grid Grid.Row="2" Grid.Column="0" VerticalAlignment="Bottom" Margin="2,0,0,10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+        <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource infoBlock}">
+            <Grid  VerticalAlignment="Bottom" Margin="2,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
 
-            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="nbTourRest">
-                <Label Name="nbRoundsLeft" Content="{Binding Tag, ElementName=nbRoundsLeft}"/>
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="nbTourRest">
+                    <Label Name="nbRoundsLeft" Content="{Binding Tag, ElementName=nbRoundsLeft}"/>
+                </Grid>
+                <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Panel.ZIndex="1" Margin="2,2,2,2" Name="imagePlayer" MaxHeight="150"/>
+                <Grid Grid.Row="2" Grid.Column="2" Name="finTour" VerticalAlignment="Bottom" Margin="2,2,2,2" >
+                    <Button Click="endRoundClickHandler" MaxHeight="70">Fin de tour</Button>
+                </Grid>
+
             </Grid>
-            <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Panel.ZIndex="1" Margin="2,2,2,2" Name="image" MaxHeight="150"/>
-            <Grid Grid.Row="2" Grid.Column="2" Name="finTour" VerticalAlignment="Bottom" Margin="2,2,2,2" >
-                <Button Click="EndRound" MaxHeight="70">Fin de tour</Button>
-            </Grid>
-
-        </Grid>
-
+        </Border>
 
 
     </Grid>
