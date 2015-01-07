@@ -99,44 +99,52 @@ namespace WpfApplication
 
         private unsafe void mouseLeftClickUnitHandler(object sender, MouseButtonEventArgs e)
         {
+            // Change style of selectedUnit to normal
             foreach (UnitBox ub in pW.panelUnit.Children)
             {
                 if(ub.unit == pW.game.currentSelectedUnit)
                 ub.border.BorderThickness = new Thickness(2);
                 ub.border.BorderBrush = Brushes.Gray;
             }
-
             
-            int taille = pW.game.map.strategy.size;
-            WrapperAlgo algoW = new WrapperAlgo();
-
-            Unit currentUnit = pW.game.currentSelectedUnit;
-            /*int[] fd = pW.game.map.convertMapToIntList().ToArray();
-            bool* boolList = algoW.findPossibleMovement(taille, currentUnit.GetType() == typeof(UnitDwarf), currentUnit.coordinate.x, currentUnit.coordinate.y, fd);
-            for (int i = 0; i < taille * taille; i++) {
-                if (boolList[i]) {
-                    Polygon p = pW.listHexa.ElementAt<Polygon>(i);
-                    if (p != pW.selectedPolygon)
-                    {
-                        p.StrokeThickness = 2;
-                        p.Stroke = Brushes.Black;
-                        p.SetValue(Canvas.ZIndexProperty, 10);
-                    }
-                }
-            }*/
-
-
+            // Change currentSelectedUnit and change style to selected
             var border = sender as Border;
             pW.game.currentSelectedUnit = unit;
             border.BorderThickness = new Thickness(4);
             border.BorderBrush = Brushes.Red;
 
-            /*boolList = algoW.findPossibleMovement(taille, unit.GetType() == typeof(UnitDwarf), unit.coordinate.x, unit.coordinate.y, fd);
+            // Change old reachable tile style
+            foreach (Polygon p in pW.listHexaReachable) {
+                p.StrokeThickness = 2;
+                p.Stroke = Brushes.Black;
+                p.SetValue(Canvas.ZIndexProperty, 10);
+            }
+            pW.listHexaReachable.Clear();
+
+            // Create table to use in DLL function
+            int taille = pW.game.map.strategy.size;
+            int[] fd = pW.game.map.convertMapToIntList().ToArray();
+            myStruct myStruct = new myStruct();
+            myStruct.size = taille * taille;
+            for (int i = 0; i < taille * taille; i++)
+            {
+                myStruct.tab[i] = fd[i];
+            }
+            int* tabTest = (int*)&myStruct.tab[0];
+            for (int i = 0; i < taille * taille; i++)
+            {
+                *(tabTest + i) = myStruct.tab[i];
+            }
+
+            // Find reachableTile and update List and polygon style
+            WrapperAlgo algoW = new WrapperAlgo();
+            bool * boolList = algoW.findPossibleMovement(taille, unit.GetType() == typeof(UnitDwarf), unit.coordinate.x, unit.coordinate.y, tabTest);
             for (int i = 0; i < taille * taille; i++)
             {
                 if (boolList[i])
                 {
                     Polygon p = pW.listHexa.ElementAt<Polygon>(i);
+                    pW.listHexaReachable.Add(p);
                     if (p != pW.selectedPolygon)
                     {
                         p.StrokeThickness = 3;
@@ -144,9 +152,16 @@ namespace WpfApplication
                         p.SetValue(Canvas.ZIndexProperty, 25);
                     }
                 }
-            }*/
+            }
+
         }
 
+    }
+
+    public unsafe struct myStruct
+    {
+        public int size;
+        public fixed int tab[196];
 
     }
 }

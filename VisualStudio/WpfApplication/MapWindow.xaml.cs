@@ -28,10 +28,11 @@ namespace WpfApplication
         public double canvasWidth;
         public List<Polygon> listHexa;
         public Polygon selectedPolygon;
+        public List<Polygon> listHexaReachable;
+
 
         public MapWindow(Game g)
         {
-
             Application.Current.MainWindow = this;
             game = g;
             int TAILLE = this.game.map.strategy.size;
@@ -39,6 +40,7 @@ namespace WpfApplication
             canvasHeight = (Hexagon.h - d) * TAILLE + d;
             canvasWidth = Hexagon.w * (TAILLE + 0.5);
             listHexa = new List<Polygon>();
+            listHexaReachable = new List<Polygon>();
 
             InitializeComponent();
             panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
@@ -112,6 +114,11 @@ namespace WpfApplication
                 polygon.StrokeThickness = 2;
                 polygon.Stroke = Brushes.Black;
                 polygon.SetValue(Canvas.ZIndexProperty, 10);
+            }
+            if (this.listHexaReachable.Contains(polygon)) {
+                polygon.StrokeThickness = 3;
+                polygon.Stroke = Brushes.GreenYellow;
+                polygon.SetValue(Canvas.ZIndexProperty, 25);
             }
         }
 
