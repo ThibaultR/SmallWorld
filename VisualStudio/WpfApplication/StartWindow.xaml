@@ -5,13 +5,14 @@
         Icon="textures/icon.png">
 
     <Window.Background>
-        <ImageBrush ImageSource="textures/background_bis.jpg" ></ImageBrush>
+        <ImageBrush ImageSource="textures/fond_bois2.png" ></ImageBrush>
     </Window.Background>
 
     <ScrollViewer Name="scrollViewerStart" CanContentScroll="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock HorizontalAlignment="Center" Margin="10" FontSize="80" Name="title">SmallWorld</TextBlock>
+            <Image Source="textures/SW-Logo.gif" HorizontalAlignment="Center" Margin="10" Name="title"/>
+           
 
             <Grid Name="builderGrid" Visibility="Visible">
                 <Grid.ColumnDefinitions>

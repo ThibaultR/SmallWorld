@@ -7,7 +7,7 @@
 
 
     <Window.Background>
-        <ImageBrush ImageSource="textures/background_bis.jpg" ></ImageBrush>
+        <ImageBrush ImageSource="textures/fond_bois2.png" ></ImageBrush>
     </Window.Background>
     
     <Grid>

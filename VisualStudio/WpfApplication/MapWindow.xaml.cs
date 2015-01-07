@@ -29,7 +29,7 @@ namespace WpfApplication
         public List<Polygon> listHexa;
         public Polygon selectedPolygon;
         public List<Polygon> listHexaReachable;
-
+        public bool newGame = false;
 
         public MapWindow(Game g)
         {
@@ -252,6 +252,7 @@ namespace WpfApplication
 
         private void ClickStartNewGame(object sender, RoutedEventArgs e)
         {
+            
             MessageBoxResult newGameBox= MessageBox.Show("Souhaitez-vous enregistrer la partie en cours ?",
                                                             "New Game",
                                                             MessageBoxButton.YesNo);
@@ -265,9 +266,11 @@ namespace WpfApplication
                 createNewGame.OnClickNewGame(null, null);
 
                 createNewGame.Show();
+                newGame = true;
                 this.Close();
+                
             }
-            
+            //return false;
         }
 
         private void ClickOpen(object sender, RoutedEventArgs e)
@@ -289,14 +292,28 @@ namespace WpfApplication
             }
         }
 
-        private void ClickExit(object sender, RoutedEventArgs e)
+
+        public bool AskConfirmQuitAppli()
         {
-            MessageBoxResult exitBox= MessageBox.Show("Vous nous quittez déjà ?","Exit",MessageBoxButton.YesNo);
+            MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNo);
+
             if (exitBox == MessageBoxResult.Yes)
             {
-                this.Close();
-            }
+                return false;
+            };
+            return true;
         }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            if (newGame) {
+                newGame = false;
+                e.Cancel = false;
+            }
+            else if (AskConfirmQuitAppli() == false)
+                e.Cancel = true;
+        }
+
 
         private void SaveGame()
         {
