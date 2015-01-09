@@ -159,7 +159,7 @@ namespace UML_SW
                         return true;
                     }
 
-                    if (getTypeofTile(currentSelectedUnit.coordinate) == typeof(Plain))
+                    if (getTypeofTile(u.coordinate) == typeof(Plain))
                     {
                         if (u.GetType() == typeof(UnitDwarf) || u.GetType() == typeof(UnitOrc))
                         {
@@ -187,7 +187,7 @@ namespace UML_SW
             {
                 *(tabPtr + i) = myStruct.tab[i];
             }
-
+            
             // Find reachableTile and update List and polygon style
             WrapperAlgo algoW = new WrapperAlgo();
             return algoW.findPossibleMovement(taille, u.GetType() == typeof(UnitDwarf), u.coordinate.x, u.coordinate.y, tabPtr);

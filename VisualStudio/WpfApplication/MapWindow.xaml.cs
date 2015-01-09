@@ -91,7 +91,7 @@ namespace WpfApplication
             NbUnitP2 = this.game.playerTwo.nbUnitAlive();
             showUnit();
             showUnitOnMap();
-            
+            selectEventSentence(-1);           
         }
 
 
@@ -161,25 +161,58 @@ namespace WpfApplication
             this.game.currentSelectedTileCoordinate = new Coordinate(x,y);
             if (this.game.currentSelectedUnit == null) { 
                 //unité non selectionné
+                selectEventSentence(0);
             }
             else if (!this.game.isTileReachable(this.game.currentSelectedUnit, this.game.currentSelectedTileCoordinate))
             {
                 //tile non reachable
+                selectEventSentence(1);
             }
             else if (!this.game.isMovementPossible(this.game.currentSelectedUnit))
             {
                 //not enough movement
+                selectEventSentence(2);
             }
             else
             {
                 this.game.action();
+                if (!this.game.isMovementPossible(this.game.currentSelectedUnit))
+                {
+                    this.game.currentSelectedUnit = null;
+                    selectListReachable();
+                }
+
+
             }
 
+            showPolygon();
             showUnit();
             showUnitOnMap();
         }
 
-        private void showUnit()
+        public void showPolygon()
+        {
+            foreach (Polygon p in listHexa) {
+                if (p == selectedPolygon) {
+                    p.StrokeThickness = 4;
+                    p.Stroke = Brushes.Red;
+                    p.SetValue(Canvas.ZIndexProperty, 60);
+                }
+                else if (listHexaReachable.Contains(p))
+                {
+                    p.StrokeThickness = 3;
+                    p.Stroke = Brushes.GreenYellow;
+                    p.SetValue(Canvas.ZIndexProperty, 25);
+                }
+                else {
+                    p.StrokeThickness = 2;
+                    p.Stroke = Brushes.Black;
+                    p.SetValue(Canvas.ZIndexProperty, 10);
+                }
+            }
+        }
+
+        public void showUnit()
         {
             panelUnit.Children.Clear();
             int pos = this.listHexa.IndexOf(selectedPolygon);
@@ -205,7 +238,7 @@ namespace WpfApplication
             }
         }
 
-        private void showUnitOnMap()
+        public void showUnitOnMap()
         {
             List<Image> imgToRemove = new List<Image>();
             foreach (UIElement e in myCanvas.Children)
@@ -390,6 +423,25 @@ namespace WpfApplication
             listHexaReachable.Clear();
         }
 
+        public unsafe void selectListReachable() {
+            listHexaReachable.Clear();
+
+            if(this.game.currentSelectedUnit == null){
+                return;
+            }
+
+            int taille = this.game.map.strategy.size;
+            bool* boolList = this.game.getBoolListReachable(this.game.currentSelectedUnit);
+            for (int i = 0; i < taille * taille; i++)
+            {
+                if (boolList[i])
+                {
+                    Polygon p = this.listHexa.ElementAt<Polygon>(i);
+                    this.listHexaReachable.Add(p);
+                }
+            }
+        }
+
         private BitmapImage selectImageForPlayer(Player p, bool isSmall){
             BitmapImage myBitmapImage = new BitmapImage();
 
@@ -434,7 +486,27 @@ namespace WpfApplication
             return myBitmapImage;
         }
 
+        public void selectEventSentence(int n) {
+            string str = this.game.getCurrentPlayer().name + ", it's your turn !";
 
+            switch (n)
+            {
+                case 0:
+                    str = "You must select an unit first.";
+                    break;
+                case 1:
+                    str = "You must select a reachable tile.";
+                    break;
+                case 2:
+                    str = "The selected unit is tired.";
+                    break;
+                default:
+                    break;
+            }
+
+            eventSentence.Content = str;
+            
+        }
     }
 
 

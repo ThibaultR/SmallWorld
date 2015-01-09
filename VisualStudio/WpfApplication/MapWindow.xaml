@@ -54,13 +54,14 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Name="nbTourRest">
-                    <Label Name="nbRoundsLeft" Content="{Binding Tag, ElementName=nbRoundsLeft}"/>
-                </Grid>
-                <Image Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Panel.ZIndex="1" Margin="2,2,2,2" Name="imagePlayer" MaxHeight="150"/>
-                <Grid Grid.Row="2" Grid.Column="2" Name="finTour" VerticalAlignment="Bottom" Margin="2,2,2,2" >
+
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Style="{StaticResource eventSentence}" Name="eventSentence" Content="Vous ne pouvez pas faire ça !!!"/>
+                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Name="nbRoundsLeft" Content="{Binding Tag, ElementName=nbRoundsLeft}"/>
+                <Image Grid.Row="2" Grid.Column="0" Grid.RowSpan="2" Panel.ZIndex="1" Margin="2,2,2,2" Name="imagePlayer" MaxHeight="150"/>
+                <Grid Grid.Row="3" Grid.Column="1" Name="finTour" VerticalAlignment="Bottom" Margin="2,2,2,2" >
                     <Button Click="endRoundClickHandler" MaxHeight="70">Fin de tour</Button>
                 </Grid>
 

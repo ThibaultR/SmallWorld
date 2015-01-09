@@ -97,7 +97,7 @@ namespace WpfApplication
             }
         }
 
-        private unsafe void mouseLeftClickUnitHandler(object sender, MouseButtonEventArgs e)
+        private void mouseLeftClickUnitHandler(object sender, MouseButtonEventArgs e)
         {
             // Change style of selectedUnit to normal
             foreach (UnitBox ub in pW.panelUnit.Children)
@@ -112,9 +112,9 @@ namespace WpfApplication
             pW.game.currentSelectedUnit = unit;
             border.BorderThickness = new Thickness(4);
             border.BorderBrush = Brushes.Red;
-
+            
             // Change old reachable tile style
-            foreach (Polygon p in pW.listHexaReachable) {
+            /*foreach (Polygon p in pW.listHexaReachable) {
                 p.StrokeThickness = 2;
                 p.Stroke = Brushes.Black;
                 p.SetValue(Canvas.ZIndexProperty, 10);
@@ -136,8 +136,9 @@ namespace WpfApplication
                         p.SetValue(Canvas.ZIndexProperty, 25);
                     }
                 }
-            }
-
+            }*/
+            pW.selectListReachable();
+            pW.showPolygon();
         }
 
     }
