@@ -73,15 +73,6 @@ namespace WpfApplication
                 }
             }
 
-            /* For test purpose
-            
-            this.game.playerOne.units[0].die();
-            this.game.playerOne.units[2].movementPoint = 0;
-            this.game.playerTwo.units[0].die();
-            this.game.playerTwo.units[2].movementPoint = 0;
-            this.game.playerTwo.units[1].coordinate = new Coordinate(3,3);
-            */
-
 
             //TO DO : Ne Fonctionne pas très bien 
             nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
@@ -125,30 +116,9 @@ namespace WpfApplication
 
         private void mouseLeftClickHexaHandler(object sender, MouseButtonEventArgs e)
         {
-            foreach(Polygon p in this.listHexa){
-                if (p == selectedPolygon)
-                {
-                    if (this.listHexaReachable.Contains(selectedPolygon))
-                    {
-                        p.StrokeThickness = 3;
-                        p.Stroke = Brushes.GreenYellow;
-                        p.SetValue(Canvas.ZIndexProperty, 25);
-                    }
-                    else
-                    {
-                        p.StrokeThickness = 2;
-                        p.Stroke = Brushes.Black;
-                        p.SetValue(Canvas.ZIndexProperty, 10);
-                    }
-                }
-            }
-
             var polygon = sender as Polygon;
             this.selectedPolygon = polygon;
-            polygon.StrokeThickness = 4;
-            polygon.Stroke = Brushes.Red;
-            polygon.SetValue(Canvas.ZIndexProperty, 60);
-
+            showPolygon();
             showUnit();
         }
 
@@ -181,8 +151,6 @@ namespace WpfApplication
                     this.game.currentSelectedUnit = null;
                     selectListReachable();
                 }
-
-
             }
 
             showPolygon();
@@ -361,15 +329,15 @@ namespace WpfApplication
         }
 
 
-        public bool AskConfirmQuitAppli()
+        public bool AskSave()
         {
-            MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNo);
+            MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNoCancel);
 
-            if (exitBox == MessageBoxResult.Yes)
+            if (exitBox == MessageBoxResult.Yes  || exitBox == MessageBoxResult.Cancel)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -378,7 +346,7 @@ namespace WpfApplication
                newGame = false;
                e.Cancel = false;
             }
-            else if (AskConfirmQuitAppli() == false)
+            else if (AskSave() == true)
             {
                 e.Cancel = true;
             }
@@ -416,11 +384,9 @@ namespace WpfApplication
             panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
             panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
 
-            foreach (Polygon p in listHexaReachable) {
-                p.StrokeThickness = 2;
-                p.Stroke = Brushes.Black; 
-            }
             listHexaReachable.Clear();
+            showPolygon();
+            selectEventSentence(-1);
         }
 
         public unsafe void selectListReachable() {

@@ -113,30 +113,6 @@ namespace WpfApplication
             border.BorderThickness = new Thickness(4);
             border.BorderBrush = Brushes.Red;
             
-            // Change old reachable tile style
-            /*foreach (Polygon p in pW.listHexaReachable) {
-                p.StrokeThickness = 2;
-                p.Stroke = Brushes.Black;
-                p.SetValue(Canvas.ZIndexProperty, 10);
-            }
-            pW.listHexaReachable.Clear();
-
-            int taille = pW.game.map.strategy.size;
-            bool * boolList = pW.game.getBoolListReachable(unit);
-            for (int i = 0; i < taille * taille; i++)
-            {
-                if (boolList[i])
-                {
-                    Polygon p = pW.listHexa.ElementAt<Polygon>(i);
-                    pW.listHexaReachable.Add(p);
-                    if (p != pW.selectedPolygon)
-                    {
-                        p.StrokeThickness = 3;
-                        p.Stroke = Brushes.GreenYellow;
-                        p.SetValue(Canvas.ZIndexProperty, 25);
-                    }
-                }
-            }*/
             pW.selectListReachable();
             pW.showPolygon();
         }
