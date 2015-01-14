@@ -45,14 +45,14 @@ namespace WpfApplication
                 border.Opacity = 0.5;   
             }
 
-            if (player == pW.game.playerOne)
-            {
-                border.BorderBrush = Brushes.Blue;
-            }
-            else 
-            {
-                border.BorderBrush = Brushes.Green;
-            }
+            //if (player == pW.game.playerOne)
+            //{
+            //    border.BorderBrush = Brushes.Blue;
+            //}
+            //else 
+            //{
+            //    border.BorderBrush = Brushes.Green;
+            //}
         }
     }
 }

@@ -22,7 +22,7 @@
             </Grid>
 
 
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="newGameGrid" Visibility="Collapsed" Height="300" Width="360">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="newGameGrid" Visibility="Collapsed" Width="360">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>

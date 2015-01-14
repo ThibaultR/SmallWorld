@@ -118,11 +118,4 @@ namespace WpfApplication
         }
 
     }
-
-    //public unsafe struct myStruct
-    //{
-    //    public int size;
-    //    public fixed int tab[196];
-
-    //}
 }

@@ -335,6 +335,16 @@ namespace WpfApplication
             }
         }
 
+        private void ClickHelp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickSaveAs(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         public bool AskSave()
         {
@@ -375,6 +385,7 @@ namespace WpfApplication
                 stream.Close();
             }
         }
+
 
         private void endRoundClickHandler(object sender, RoutedEventArgs e)
         {
@@ -479,15 +490,7 @@ namespace WpfApplication
             
         }
 
-        private void ClickHelp(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ClickSaveAs(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
     }
 
 
