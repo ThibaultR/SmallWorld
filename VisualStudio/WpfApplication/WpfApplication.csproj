@@ -166,6 +166,7 @@
     </Content>
     <Resource Include="textures\fond_bois.png" />
     <Resource Include="textures\fond_bois2.png" />
+    <Resource Include="textures\fond_page_modifie.png" />
     <Content Include="textures\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -221,6 +222,8 @@
     <Content Include="textures\population\orc_big.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Resource Include="textures\smallWorld3.png" />
+    <Resource Include="textures\smallWorld3_1.png" />
     <Content Include="textures\SW-Logo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
