@@ -44,8 +44,7 @@ namespace WpfApplication
 
             InitializeComponent();
 
-            panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
-            panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
+            this.playerPlaying();
             
             // display Map
             myCanvas.Height = this.canvasHeight;
@@ -318,8 +317,8 @@ namespace WpfApplication
         {
             //TODO a revoir
             SaveFileDialog dlg = new SaveFileDialog();
-            dlg.DefaultExt = ".sav";
-            dlg.Filter = "Saved game (*.sav)|*.sav|All files (*.*)|*.*";
+            dlg.DefaultExt = ".sw";
+            dlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
             Nullable<bool> result = dlg.ShowDialog();
             if (result == true)
             {
@@ -381,8 +380,7 @@ namespace WpfApplication
             imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
             panelPlayer.Children.Clear();
-            panelPlayer.Children.Add(new PlayerBox(this.game.playerOne));
-            panelPlayer.Children.Add(new PlayerBox(this.game.playerTwo));
+            this.playerPlaying();
 
             listHexaReachable.Clear();
             showPolygon();
@@ -472,6 +470,22 @@ namespace WpfApplication
 
             eventSentence.Content = str;
             
+        }
+
+        public void playerPlaying()
+        {
+            PlayerBox p1 = new PlayerBox(this.game.playerOne);
+            panelPlayer.Children.Add(p1);
+            PlayerBox p2 = new PlayerBox(this.game.playerTwo);
+            panelPlayer.Children.Add(p2);
+            if (this.game.getCurrentPlayer() == this.game.playerOne)
+            {
+                p2.border.Opacity = 0.5;
+            }
+            else
+            {
+                p1.border.Opacity = 0.5;
+            }
         }
     }
 
