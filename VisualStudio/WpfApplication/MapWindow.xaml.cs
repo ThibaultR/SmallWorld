@@ -479,6 +479,15 @@ namespace WpfApplication
             
         }
 
+        private void ClickHelp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickSaveAs(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 

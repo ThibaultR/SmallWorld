@@ -21,6 +21,7 @@
         <Style x:Key="playerName" TargetType="Label">
             <Setter Property="FontSize" Value="20" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontFamily" Value="Calibri" />
             <Setter Property="Margin" Value="5"/>
             <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
