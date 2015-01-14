@@ -127,7 +127,6 @@ namespace UML_SW
         {
             if (list.Count == 0) { return null; }
 
-
             Unit bestUnit = list[0];
 
             foreach (Unit u in list)
@@ -190,7 +189,8 @@ namespace UML_SW
             
             // Find reachableTile and update List and polygon style
             WrapperAlgo algoW = new WrapperAlgo();
-            return algoW.findPossibleMovement(taille, u.GetType() == typeof(UnitDwarf), u.coordinate.x, u.coordinate.y, tabPtr);
+            bool isDwarfOnMountain = u.GetType() == typeof(UnitDwarf) && getTypeofTile(u.coordinate) == typeof(Mountain);
+            return algoW.findPossibleMovement(taille, isDwarfOnMountain , u.coordinate.x, u.coordinate.y, tabPtr);
             
         }
 

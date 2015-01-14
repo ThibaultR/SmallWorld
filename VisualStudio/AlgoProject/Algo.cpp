@@ -80,7 +80,7 @@ int* Algo::findStartCoordinate(int taille){
 }
 
 
-bool * Algo::findPossibleMovement(int taille, bool isDwarf, int x, int y, int * tabMap){
+bool * Algo::findPossibleMovement(int taille, bool isDwarfOnMountain, int x, int y, int * tabMap){
 	bool * reachableTiles = new bool[taille * taille];
 
 	for (int j = 0; j < taille; j++)
@@ -88,7 +88,7 @@ bool * Algo::findPossibleMovement(int taille, bool isDwarf, int x, int y, int * 
 		for (int i = 0; i < taille; i++)
 		{
 			int tile = tabMap[j * taille + i];
-			if (isDwarf && tile == TILE_MOUNTAIN){
+			if (isDwarfOnMountain && tile == TILE_MOUNTAIN){
 				reachableTiles[j * taille + i] = true;
 			}
 			else if (j % 2 == 1){// ligne impaire

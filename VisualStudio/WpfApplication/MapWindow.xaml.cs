@@ -43,8 +43,6 @@ namespace WpfApplication
             listHexaReachable = new List<Polygon>();
 
             InitializeComponent();
-
-            this.playerPlaying();
             
             // display Map
             myCanvas.Height = this.canvasHeight;
@@ -81,6 +79,7 @@ namespace WpfApplication
             NbUnitP2 = this.game.playerTwo.nbUnitAlive();
             showUnit();
             showUnitOnMap();
+            showPlayer();
             selectEventSentence(-1);           
         }
 
@@ -277,6 +276,15 @@ namespace WpfApplication
             }
         }
 
+        public void showPlayer()
+        {
+            panelPlayer.Children.Clear();
+            PlayerBox p1 = new PlayerBox(this.game.playerOne);
+            panelPlayer.Children.Add(p1);
+            PlayerBox p2 = new PlayerBox(this.game.playerTwo);
+            panelPlayer.Children.Add(p2);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             NbUnitP1 = this.game.playerOne.nbUnitAlive();
@@ -379,8 +387,7 @@ namespace WpfApplication
             showUnit();
             imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
-            panelPlayer.Children.Clear();
-            this.playerPlaying();
+            showPlayer();
 
             listHexaReachable.Clear();
             showPolygon();
@@ -472,21 +479,6 @@ namespace WpfApplication
             
         }
 
-        public void playerPlaying()
-        {
-            PlayerBox p1 = new PlayerBox(this.game.playerOne);
-            panelPlayer.Children.Add(p1);
-            PlayerBox p2 = new PlayerBox(this.game.playerTwo);
-            panelPlayer.Children.Add(p2);
-            if (this.game.getCurrentPlayer() == this.game.playerOne)
-            {
-                p2.border.Opacity = 0.5;
-            }
-            else
-            {
-                p1.border.Opacity = 0.5;
-            }
-        }
     }
 
 

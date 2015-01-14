@@ -40,12 +40,17 @@ namespace WpfApplication
             {
                 border.BorderThickness = new Thickness(4);
             }
+            else
+            {
+                border.Opacity = 0.5;   
+            }
 
             if (player == pW.game.playerOne)
             {
                 border.BorderBrush = Brushes.Blue;
             }
-            else {
+            else 
+            {
                 border.BorderBrush = Brushes.Green;
             }
         }
