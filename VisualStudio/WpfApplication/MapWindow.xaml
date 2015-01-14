@@ -7,7 +7,7 @@
 
 
     <Window.Background>
-        <ImageBrush ImageSource="textures/fond_bois2.png" ></ImageBrush>
+        <ImageBrush ImageSource="textures/smallWorldGame.png" ></ImageBrush>
     </Window.Background>
     
     <Grid>
@@ -24,9 +24,17 @@
 
 
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Orientation="Horizontal" Name="topMenu">
-            <Button Click="ClickStartNewGame">Start new game</Button>
-            <Button Click="ClickOpen">Open saved game</Button>
-            <Button Click="ClickSave">Save game</Button>
+            <Menu Background="AntiqueWhite" Opacity="0.9" FontWeight="SemiBold">
+                <MenuItem Header="New Game" Click="ClickStartNewGame"></MenuItem>
+                <MenuItem Header="Open">
+                    <MenuItem Header="Saved game" Click="ClickOpen"/>
+                </MenuItem>
+                <MenuItem Header="Save">
+                    <MenuItem Header="Save" Click="ClickSave"/>
+                    <MenuItem Header="Save as" Click="ClickSaveAs"/>
+                </MenuItem>
+                <MenuItem Header="Help" Click="ClickHelp"></MenuItem>
+            </Menu>
         </StackPanel>
 
         <StackPanel Name="panelPlayer" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center">

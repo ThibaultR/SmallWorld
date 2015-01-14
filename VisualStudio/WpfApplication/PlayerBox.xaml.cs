@@ -41,13 +41,13 @@ namespace WpfApplication
                 border.BorderThickness = new Thickness(4);
             }
 
-            if (player == pW.game.playerOne)
+           /* if (player == pW.game.playerOne)
             {
-                border.BorderBrush = Brushes.Blue;
+                border.BorderBrush = Brushes.Black;
             }
             else {
-                border.BorderBrush = Brushes.Green;
-            }
+                border.BorderBrush = Brushes.White;
+            }*/
         }
     }
 }

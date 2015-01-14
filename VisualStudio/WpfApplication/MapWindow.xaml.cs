@@ -481,11 +481,24 @@ namespace WpfApplication
             if (this.game.getCurrentPlayer() == this.game.playerOne)
             {
                 p2.border.Opacity = 0.5;
+                p2.BorderBrush = Brushes.Black;
             }
             else
             {
                 p1.border.Opacity = 0.5;
+                p2.BorderBrush = Brushes.Black;
+
             }
+        }
+
+        private void ClickHelp(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClickSaveAs(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 

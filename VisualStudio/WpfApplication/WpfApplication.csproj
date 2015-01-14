@@ -224,6 +224,8 @@
     </Content>
     <Resource Include="textures\smallWorld3.png" />
     <Resource Include="textures\smallWorld3_1.png" />
+    <Resource Include="textures\smallWorld.png" />
+    <Resource Include="textures\smallWorldGame.png" />
     <Content Include="textures\SW-Logo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
