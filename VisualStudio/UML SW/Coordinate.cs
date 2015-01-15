@@ -7,6 +7,10 @@ namespace UML_SW
 {
     public class Coordinate
     {
+        public int x { get; set; }
+
+        public int y { get; set; }
+
         public Coordinate() {
             x = 0;
             y = 0;
@@ -16,20 +20,6 @@ namespace UML_SW
             x = posx;
             y = posy;
         }
-
-
-        public int x
-        {
-            get;
-            set;
-        }
-
-        public int y
-        {
-            get;
-            set;
-        }
-
 
         public override bool Equals(System.Object obj)
         {

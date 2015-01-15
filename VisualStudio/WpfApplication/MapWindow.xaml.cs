@@ -20,15 +20,16 @@ namespace WpfApplication
 {
     public partial class MapWindow : Window
     {
-        public Game game;
-        private string saveFile;
-        private int NbUnitP1;
-        private int NbUnitP2;
-        public double canvasHeight;
-        public double canvasWidth;
-        public List<Polygon> listHexa;
-        public Polygon selectedPolygon;
-        public List<Polygon> listHexaReachable;
+        public Game game { get; set; }
+        public string saveFile { get; set; }
+        public int NbUnitP1 { get; set; }
+        public int NbUnitP2 { get; set; }
+        public double canvasHeight { get; set; }
+        public double canvasWidth { get; set; }
+        public List<Polygon> listHexa { get; set; }
+        public Polygon selectedPolygon { get; set; }
+        public List<Polygon> listHexaReachable { get; set; }
+
         public bool newGame = false;
 
         public MapWindow(Game g)

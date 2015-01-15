@@ -21,8 +21,8 @@ namespace WpfApplication
     /// </summary>
     public partial class PlayerBox : UserControl
     {
-        Player player;
-        MapWindow pW;
+        public Player player { get; set; }
+        public MapWindow pW { get; set; }
 
         public PlayerBox(Player p)
         {

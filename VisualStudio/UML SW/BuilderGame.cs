@@ -8,41 +8,17 @@ namespace UML_SW
 {
     public abstract class BuilderGame
     {
-        public Game game
-        {
-            get;
-            set;
-        }
+        public Game game { get; set; }
 
-        public FactoryPopulation.populationType playerOnePopulationType
-        {
-            get;
-            set;
-        }
+        public FactoryPopulation.populationType playerOnePopulationType { get; set; }
 
-        public FactoryPopulation.populationType playerTwoPopulationType
-        {
-            get;
-            set;
-        }
+        public FactoryPopulation.populationType playerTwoPopulationType { get; set; }
 
-        public string playerOneName
-        {
-            get;
-            set;
-        }
+        public string playerOneName { get; set; }
 
-        public string playerTwoName
-        {
-            get;
-            set;
-        }
+        public string playerTwoName { get; set; }
 
-        public Map.mapType mapType
-        {
-            get;
-            set;
-        }
+        public Map.mapType mapType { get; set; }
 
         public BuilderGame(string playerOneName, string playerTwoName, FactoryPopulation.populationType playerOnePopulationType, FactoryPopulation.populationType playerTwoPopulationType, Map.mapType mapType)
         {

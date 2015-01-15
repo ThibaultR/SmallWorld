@@ -19,7 +19,7 @@ namespace WpfApplication
 
     public partial class StartWindow : Window
     {
-        public GameCreator gameCreator;
+        public GameCreator gameCreator { get; set; }
 
         public StartWindow()
         {

@@ -22,8 +22,8 @@ namespace UnitTestProject
             bng.game.playerOne.playing = true;
             bng.game.playerTwo.playing = false;
 
-            bng.game.selectUnit(bng.game.playerOne.units[0]);
-            bng.game.selectTile(new Coordinate(2, 0));
+            bng.game.currentSelectedUnit = bng.game.playerOne.units[0];
+            bng.game.currentSelectedTileCoordinate = new Coordinate(2, 0);
 
 
             /****** TEST selectEnemyUnitsOnCoordinates ******/
@@ -84,6 +84,9 @@ namespace UnitTestProject
             Assert.IsFalse(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
 
             bng.game.map.tilesList[3 + 5 * bng.game.map.strategy.size] = ft.getOrCreateMountain();
+            Assert.IsFalse(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
+
+            bng.game.map.tilesList[3 + 3 * bng.game.map.strategy.size] = ft.getOrCreateMountain();
             Assert.IsTrue(bng.game.isTileReachable(bng.game.currentSelectedUnit, bng.game.currentSelectedTileCoordinate));
             Assert.IsTrue(bng.game.isActionPossible());
         }
@@ -105,8 +108,8 @@ namespace UnitTestProject
             bng.game.playerOne.playing = true;
             bng.game.playerTwo.playing = false;
 
-            bng.game.selectUnit(bng.game.playerOne.units[0]);
-            bng.game.selectTile(new Coordinate(1, 0));
+            bng.game.currentSelectedUnit = bng.game.playerOne.units[0];
+            bng.game.currentSelectedTileCoordinate = new Coordinate(1, 0);
 
             FactoryTile ft = new FactoryTile();
             bng.game.map.tilesList[7] = ft.getOrCreateForest();
@@ -115,7 +118,7 @@ namespace UnitTestProject
             Assert.AreEqual(0.5, bng.game.playerOne.units[0].movementPoint);
             Assert.IsTrue(bng.game.playerOne.units[0].coordinate.Equals(new Coordinate(1, 0)));
 
-            bng.game.selectTile(new Coordinate(2, 0));
+            bng.game.currentSelectedTileCoordinate = new Coordinate(2, 0);
             bng.game.map.tilesList[1] = ft.getOrCreatePlain();
             Assert.IsFalse(bng.game.isActionPossible());
 

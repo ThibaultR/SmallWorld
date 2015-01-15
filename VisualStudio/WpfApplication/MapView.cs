@@ -15,8 +15,8 @@ namespace WpfApplication
 {
     class MapView : Panel
     {
-        private Game game;
-        private List<int> listIntMap;
+        public Game game { get; set; }
+        public List<int> listIntMap { get; set; }
 
         public MapView(Game g){
             this.game = g;

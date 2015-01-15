@@ -8,41 +8,17 @@ namespace UML_SW
 {
     public class Game
     {
-        public Map map
-        {
-            get;
-            set;
-        }
+        public Map map { get; set; }
 
-        public Player playerOne
-        {
-            get;
-            set;
-        }
+        public Player playerOne { get; set; }
 
-        public Player playerTwo
-        {
-            get;
-            set;
-        }
+        public Player playerTwo { get; set; }
 
-        public double currentRoundNumber
-        {
-            get;
-            set;
-        }
+        public double currentRoundNumber { get; set; }
 
-        public Unit currentSelectedUnit
-        {
-            get;
-            set;
-        }
+        public Unit currentSelectedUnit { get; set; }
 
-        public Coordinate currentSelectedTileCoordinate
-        {
-            get;
-            set;
-        }
+        public Coordinate currentSelectedTileCoordinate { get; set; }
 
         public Game() {
             currentRoundNumber = 0;
@@ -96,15 +72,6 @@ namespace UML_SW
             else { return this.playerOne; }
         }
 
-        public void selectUnit(Unit u)
-        {
-            this.currentSelectedUnit = u;
-        }
-
-        public void selectTile(Coordinate c)
-        {
-            this.currentSelectedTileCoordinate = c;
-        }
         public Type getTypeofTile(Coordinate c)
         {
             int tileNumber = c.x + map.strategy.size * c.y;

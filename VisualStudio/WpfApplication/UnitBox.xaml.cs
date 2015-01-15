@@ -22,8 +22,8 @@ namespace WpfApplication
     /// </summary>
     public partial class UnitBox : UserControl
     {
-        Unit unit;
-        MapWindow pW;
+        public Unit unit { get; set; }
+        public MapWindow pW { get; set; }
 
 
         public UnitBox(Unit u)

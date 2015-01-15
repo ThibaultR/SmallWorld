@@ -7,11 +7,7 @@ namespace UML_SW
 {
     public class GameCreator
     {
-        public BuilderGame builderGame
-        {
-            get;
-            set;
-        }
+        public BuilderGame builderGame { get; set; }
     
         public void createGame()
         {

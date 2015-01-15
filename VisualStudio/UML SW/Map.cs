@@ -10,17 +10,9 @@ namespace UML_SW
     {
         public enum mapType { DEMO, SMALL, NORMAL }
 
-        public List<ITile> tilesList
-        {
-            get;
-            set;
-        }
+        public List<ITile> tilesList { get; set; }
 
-        public StrategyMap strategy
-        {
-            get;
-            set;
-        }
+        public StrategyMap strategy { get; set; }
 
         public Map()
         {

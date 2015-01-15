@@ -13,6 +13,16 @@ namespace UML_SW
         public const int DEFENCE = 1;
         public const int COSTMVT = 1;
 
+        public bool isAlive { get; set; }
+
+        public double movementPoint { get; set; }
+
+        public int healthPoint { get; set; }
+
+        public Coordinate coordinate { get; set; }
+
+        public int bonusPoint { get; set; }
+
         public Unit()
         {
             isAlive = true;
@@ -20,36 +30,6 @@ namespace UML_SW
             healthPoint = MAX_HEALTH;
             movementPoint = MAX_MVT;
             coordinate = new Coordinate();
-        }
-
-        public bool isAlive
-        {
-            get;
-            set;
-        }
-
-        public double movementPoint
-        {
-            get;
-            set;
-        }
-
-        public int healthPoint
-        {
-            get;
-            set;
-        }
-
-        public Coordinate coordinate
-        {
-            get;
-            set;
-        }
-
-        public int bonusPoint
-        {
-            get;
-            set;
         }
 
         public void attack(Unit enemy)

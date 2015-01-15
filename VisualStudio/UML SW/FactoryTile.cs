@@ -8,29 +8,13 @@ namespace UML_SW
     public class FactoryTile
     {
 
-        public Plain plain
-        {
-            get;
-            set;
-        }
+        public Plain plain { get; set; }
 
-        public Desert desert
-        {
-            get;
-            set;
-        }
+        public Desert desert { get; set; }
 
-        public Mountain mountain
-        {
-            get;
-            set;
-        }
+        public Mountain mountain { get; set; }
 
-        public Forest forest
-        {
-            get;
-            set;
-        }
+        public Forest forest { get; set; }
 
         public FactoryTile() { }
 

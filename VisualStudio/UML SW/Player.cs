@@ -8,35 +8,15 @@ namespace UML_SW
     public class Player
     {
 
-        public List<Unit> units
-        {
-            get;
-            set;
-        }
+        public List<Unit> units { get; set; }
 
-        public String name
-        {
-            get;
-            set;
-        }
+        public String name { get; set; }
 
-        public int currentScore
-        {
-            get;
-            set;
-        }
+        public int currentScore { get; set; }
 
-        public UML_SW.FactoryPopulation.populationType populationType
-        {
-            get;
-            set;
-        }
+        public UML_SW.FactoryPopulation.populationType populationType { get; set; }
 
-        public bool playing
-        {
-            get;
-            set;
-        }
+        public bool playing { get; set; }
 
         public Player()
         {
