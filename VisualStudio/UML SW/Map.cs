@@ -6,6 +6,7 @@ using Wrapper;
 
 namespace UML_SW
 {
+    [Serializable()]
     public class Map
     {
         public enum mapType { DEMO, SMALL, NORMAL }

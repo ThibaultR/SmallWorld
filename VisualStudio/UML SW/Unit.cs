@@ -5,6 +5,7 @@ using System.Text;
 
 namespace UML_SW
 {
+    [Serializable()]
     public class Unit
     {
         public const int MAX_HEALTH = 5;
@@ -112,6 +113,7 @@ namespace UML_SW
     }
 
 
+    [Serializable()]
     public class UnitElf : Unit
     {
         public override void move(Coordinate c, Type currentTileType)
@@ -128,6 +130,7 @@ namespace UML_SW
         }
     }
 
+    [Serializable()]
     public class UnitDwarf : Unit
     {
         public override void move(Coordinate c, Type currentTileType)
@@ -144,6 +147,7 @@ namespace UML_SW
         }
     }
 
+    [Serializable()]
     public class UnitOrc : Unit
     {
         public override void move(Coordinate c, Type currentTileType)

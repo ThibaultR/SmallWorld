@@ -7,28 +7,6 @@
              d:DesignHeight="300" d:DesignWidth="300">
 
     <Border Style="{StaticResource infoUnit}" Name="border" >
-        <!--<Grid Margin="0" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-
-            <Label Grid.Column="0" Grid.Row="0" Name="UnitType" Style="{StaticResource unitText}" FontWeight="Bold" Content="{Binding Tag, ElementName=UnitType}"/>
-            <Label Grid.Column="1" Grid.Row="0" Name="UnitAlive" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="DEAD" />
-            <Label Grid.Column="1" Grid.Row="0" Name="UnitTired" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="TIRED" />
-            <Label Grid.Column="0" Grid.Row="1" Name="UnitAttack" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitAttack}"/>
-            <Label Grid.Column="1" Grid.Row="1" Name="UnitDefence" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitDefence}"/>
-            <Label Grid.Column="0" Grid.Row="2" Name="UnitHealth" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitHealth}"/>
-            <Label Grid.Column="0" Grid.Row="3" Name="UnitMvt" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitMvt}"/>
-            <Label Grid.Column="1" Grid.Row="2" Grid.RowSpan="2" Name="UnitPos" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitPos}"/>
-        </Grid>-->
-
         <Grid MaxHeight="200" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
@@ -45,12 +23,9 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
 
-            <!--<Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Name="UnitType" Style="{StaticResource unitText}" Content="{Binding Tag, ElementName=UnitType}" />-->
             <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Name="UnitType"  Source="{Binding Tag, ElementName=UnitType}" Margin="0"/>
             <Image Grid.Column="3" Grid.Row="0" Source="textures/unit/position.png" Style="{StaticResource imgUnitBox}" />
             <Label Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitPos" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitPos}"/>
-            <!--<Label Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="4" Name="UnitAlive" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="DEAD" />
-            <Label Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="4" Name="UnitTired" Foreground="Red" FontStyle="Oblique"  Visibility="Collapsed" Content="TIRED" />-->
             <Image Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitAlive" Source="textures/unit/dead.png" Visibility="Collapsed"/>
             <Image Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitTired" Source="textures/unit/tired.png" Visibility="Collapsed"/>
             <Image Grid.Column="0" Grid.Row="1" Source="textures/unit/health.png" Style="{StaticResource imgUnitBox}" />

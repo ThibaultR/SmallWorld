@@ -30,7 +30,6 @@ namespace WpfApplication
 
         public void OnClickNewGame(object sender, RoutedEventArgs e)
         {
-            Window.Background 
 
             MapCollection mapCollection = new MapCollection();
             mapBox.DataContext = mapCollection;

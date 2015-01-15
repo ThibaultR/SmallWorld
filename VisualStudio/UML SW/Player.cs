@@ -5,6 +5,7 @@ using System.Text;
 
 namespace UML_SW
 {
+    [Serializable()]
     public class Player
     {
 

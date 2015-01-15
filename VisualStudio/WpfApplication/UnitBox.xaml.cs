@@ -32,21 +32,6 @@ namespace WpfApplication
             pW = (Application.Current.MainWindow as MapWindow);
             InitializeComponent();
 
-            //String typeUnitString = "";
-            //Type typeUnit = unit.GetType();
-            //if (typeUnit == typeof(UnitElf)) { typeUnitString = "Elf"; }
-            //if (typeUnit == typeof(UnitDwarf)) { typeUnitString = "Dwarf"; }
-            //if (typeUnit == typeof(UnitOrc)) { typeUnitString = "Orc"; }
-            //UnitType.Tag = "Unit " + typeUnitString;
-            //if (pW.game.playerOne.units.Contains(unit)) { UnitType.Foreground = Brushes.Blue; }
-            //else { UnitType.Foreground = Brushes.Green; }
-
-            //UnitAttack.Tag = "Attack : " + Unit.ATTACK;
-            //UnitDefence.Tag = "Defence : " + Unit.DEFENCE;
-            //UnitHealth.Tag = "Health : " + unit.healthPoint;
-            //UnitMvt.Tag = "Movement : " + unit.movementPoint;
-            //UnitPos.Tag = "Position : (" + unit.coordinate.x + ", " + unit.coordinate.y + ")";
-
             Type typeUnit = unit.GetType();
 
             UnitType.Tag = pW.selectImageForPlayer(u, false);

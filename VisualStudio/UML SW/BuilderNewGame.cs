@@ -43,9 +43,5 @@ namespace UML_SW
             }
         }
 
-        public void launchGame()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

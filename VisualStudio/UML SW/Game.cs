@@ -6,6 +6,7 @@ using Wrapper;
 
 namespace UML_SW
 {
+    [Serializable()]
     public class Game
     {
         public Map map { get; set; }

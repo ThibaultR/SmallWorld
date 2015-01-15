@@ -5,6 +5,7 @@ using System.Text;
 
 namespace UML_SW
 {
+    [Serializable()]
     public class Coordinate
     {
         public int x { get; set; }

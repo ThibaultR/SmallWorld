@@ -36,52 +36,23 @@ namespace WpfApplication
         {
             Application.Current.MainWindow = this;
             game = g;
-            int TAILLE = this.game.map.strategy.size;
-            double d = Hexagon.w / 2 * Math.Tan(30 * Math.PI / 180);
-            canvasHeight = (Hexagon.h - d) * TAILLE + d;
-            canvasWidth = Hexagon.w * (TAILLE + 0.5);
             listHexa = new List<Polygon>();
             listHexaReachable = new List<Polygon>();
 
             InitializeComponent();
-            
-            // display Map
-            myCanvas.Height = this.canvasHeight;
-            myCanvas.Width = this.canvasWidth;
-            MapView mv = new MapView(this.game);
-            myCanvas.Children.Add(mv);
 
-            for (int j = 0; j < TAILLE; j++)
-            {
-                for (int i = 0; i < TAILLE; i++)
-                {
-                    double posx = i * Hexagon.w;
-                    double posy = j * (Hexagon.h - d);
-                    if (j % 2 == 1)
-                    {
-                        posx += Hexagon.w / 2;
-                    }
-                    Hexagon h = new Hexagon(posx, posy);
-                    h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHexaHandler);
-                    h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHexaHandler);
-                    h.polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickHexaHandler);
-                    h.polygon.MouseRightButtonDown += new MouseButtonEventHandler(mouseRightClickHexaHandler);
-                    listHexa.Add(h.polygon);
-                    myCanvas.Children.Add(h.polygon);
-                }
-            }
-
+            displayCanvas();
 
             //TO DO : Ne Fonctionne pas très bien 
             nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
             imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
+            selectEventSentence(-1);    
 
             NbUnitP1 = this.game.playerOne.nbUnitAlive();
             NbUnitP2 = this.game.playerTwo.nbUnitAlive();
             showUnit();
             showUnitOnMap();
-            showPlayer();
-            selectEventSentence(-1);           
+            showPlayer();       
         }
 
 
@@ -167,6 +138,42 @@ namespace WpfApplication
         //*********************************************************************************
         //*                           Begin Display Methods
         //*********************************************************************************
+        public void displayCanvas() 
+        {
+            myCanvas.Children.Clear();
+
+            int TAILLE = this.game.map.strategy.size;
+            double d = Hexagon.w / 2 * Math.Tan(30 * Math.PI / 180);
+            canvasHeight = (Hexagon.h - d) * TAILLE + d;
+            canvasWidth = Hexagon.w * (TAILLE + 0.5);
+
+            myCanvas.Height = this.canvasHeight;
+            myCanvas.Width = this.canvasWidth;
+            MapView mv = new MapView(this.game);
+            myCanvas.Children.Add(mv);
+
+            listHexa.Clear();
+            for (int j = 0; j < TAILLE; j++)
+            {
+                for (int i = 0; i < TAILLE; i++)
+                {
+                    double posx = i * Hexagon.w;
+                    double posy = j * (Hexagon.h - d);
+                    if (j % 2 == 1)
+                    {
+                        posx += Hexagon.w / 2;
+                    }
+                    Hexagon h = new Hexagon(posx, posy);
+                    h.polygon.MouseEnter += new MouseEventHandler(mouseEnterHexaHandler);
+                    h.polygon.MouseLeave += new MouseEventHandler(mouseLeaveHexaHandler);
+                    h.polygon.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickHexaHandler);
+                    h.polygon.MouseRightButtonDown += new MouseButtonEventHandler(mouseRightClickHexaHandler);
+                    listHexa.Add(h.polygon);
+                    myCanvas.Children.Add(h.polygon);
+                }
+            }
+        }
+
         public void showPolygon()
         {
             foreach (Polygon p in listHexa) {
@@ -195,7 +202,6 @@ namespace WpfApplication
             int pos = this.listHexa.IndexOf(selectedPolygon);
             int x = pos % this.game.map.strategy.size;
             int y = pos / this.game.map.strategy.size;
-
             List<Unit> listEnemyUnits = this.game.selectEnemyUnitsOnCoordinates(new Coordinate(x, y));
 
             if (listEnemyUnits.Count == 0)
@@ -307,7 +313,7 @@ namespace WpfApplication
             
             MessageBoxResult newGameBox= MessageBox.Show("Souhaitez-vous enregistrer la partie en cours ?",
                                                             "New Game",
-                                                            MessageBoxButton.YesNo);
+                                                            MessageBoxButton.YesNoCancel);
             if (newGameBox == MessageBoxResult.Yes)
             {
                 //TODO Ne fonctionne pas : this.SaveGame();
@@ -327,19 +333,26 @@ namespace WpfApplication
 
         private void ClickOpen(object sender, RoutedEventArgs e)
         {
-            //TODO avec builderSavedGame
+            OpenFileDialog ofdlg = new OpenFileDialog();
+            ofdlg.DefaultExt = ".sw";
+            ofdlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
+            Nullable<bool> result = ofdlg.ShowDialog();
+            if (result == true)
+            {
+                LoadGame(ofdlg.FileName);
+            }
         }
 
         private void ClickSave(object sender, RoutedEventArgs e)
         {
             //TODO a revoir
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.DefaultExt = ".sw";
-            dlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
-            Nullable<bool> result = dlg.ShowDialog();
+            SaveFileDialog sfdlg = new SaveFileDialog();
+            sfdlg.DefaultExt = ".sw";
+            sfdlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
+            Nullable<bool> result = sfdlg.ShowDialog();
             if (result == true)
             {
-                this.saveFile = dlg.FileName;
+                this.saveFile = sfdlg.FileName;
                 this.SaveGame();
             }
         }
@@ -387,18 +400,40 @@ namespace WpfApplication
 
         private void SaveGame()
         {
-            //TODO a verifier
-            if (this.saveFile == null)
+            if (this.saveFile != null)
             {
-
+                Stream stream = File.Open(this.saveFile, FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, this.game);
+                stream.Close();
             }
             else
             {
-                //Stream stream = File.Open(this.saveFile, FileMode.Create);
-                //BinaryFormatter formatter = new BinaryFormatter();
-                //formatter.Serialize(stream, this.game);
-                //stream.Close();
-                File.WriteAllText(this.saveFile, "coucou");
+                //TODO : error
+            }
+        }
+
+        private void LoadGame(string openFile)
+        {
+            if (openFile != null)
+            {
+                BuilderSavedGame bsg = new BuilderSavedGame(openFile);
+                bsg.createGame();
+                this.game = bsg.game;
+                this.listHexaReachable.Clear();
+                this.selectedPolygon = null;
+
+                displayCanvas();
+                showPolygon();
+                showUnit();
+                showPlayer();
+                showUnitOnMap();
+                imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
+                selectEventSentence(-1);
+            }
+            else
+            {
+                //TODO : error
             }
         }
         //*********************************************************************************

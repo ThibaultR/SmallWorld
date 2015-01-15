@@ -20,6 +20,8 @@ namespace UML_SW
 
         public Map.mapType mapType { get; set; }
 
+        public BuilderGame() { }
+
         public BuilderGame(string playerOneName, string playerTwoName, FactoryPopulation.populationType playerOnePopulationType, FactoryPopulation.populationType playerTwoPopulationType, Map.mapType mapType)
         {
             this.playerOneName = playerOneName;
@@ -30,7 +32,7 @@ namespace UML_SW
         }
 
 
-        public void createGame()
+        virtual public void createGame()
         {
             this.game = new Game();
         }
@@ -55,11 +57,5 @@ namespace UML_SW
 
         abstract public void placeUnitsOnMap();
 
-        public void launchGame()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        
     }
 }
