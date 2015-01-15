@@ -18,8 +18,8 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                     
-                <Button Grid.Column="0" Name="NewGame" Click="OnClickNewGame" MaxHeight="40" FontSize="20" Margin="0,0,10,5" Background="WhiteSmoke" Opacity="0.9">New Game</Button>
-                <Button Grid.Column="2" Name="LoadGame" Click="OnClickLoadGame" MaxHeight="40" FontSize="20" Margin="10,0,0,5" Background="WhiteSmoke" Opacity="0.9" HorizontalAlignment="Right" >Load saved Game</Button>
+                <Button Grid.Column="0" Name="NewGame" Click="OnClickNewGame" MaxHeight="40" FontSize="20" Margin="0,0,10,15" Background="WhiteSmoke" Opacity="0.9">New Game</Button>
+                <Button Grid.Column="2" Name="LoadGame" Click="OnClickLoadGame" MaxHeight="40" FontSize="20" Margin="10,0,0,15" Background="WhiteSmoke" Opacity="0.9" HorizontalAlignment="Right" >Load saved Game</Button>
             </Grid>
 
             <Border Padding="12" Opacity="0.9" Background="WhiteSmoke" Visibility="Collapsed" Name="newGameGrid" >

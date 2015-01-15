@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
 
-    <Border Style="{StaticResource infoUnit}" Name="border" >
+    <Border Style="{StaticResource infoUnit}" Name="border" MinWidth="200">
         <Grid MaxHeight="200" Margin="0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
