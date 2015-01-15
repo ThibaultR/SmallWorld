@@ -30,6 +30,8 @@ namespace WpfApplication
 
         public void OnClickNewGame(object sender, RoutedEventArgs e)
         {
+            this.Background = new ImageBrush(new BitmapImage(new Uri("textures/backgroundMap.png", UriKind.Relative)));
+            Info.VerticalAlignment=System.Windows.VerticalAlignment.Center;
 
             MapCollection mapCollection = new MapCollection();
             mapBox.DataContext = mapCollection;

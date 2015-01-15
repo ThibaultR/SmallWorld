@@ -5,12 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    
     <Border Name="border" Style="{StaticResource infoBlock}" >
-        <StackPanel Style="{StaticResource playerInfoBlock}">
-            <Label Name="playerName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerName}" />
-            <Label Name="playerPopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerPopulation}" />
-            <Label Name="playerScore" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerScore}" />
-            <Label Name="playerNbUnit" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerNbUnit}" />
-        </StackPanel>
+        <Grid MaxHeight="200" Margin="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Name="playerName" Style="{StaticResource playerName}" Content="{Binding Tag, ElementName=playerName}" />
+            <Image Grid.Row="0" Grid.Column="3" Name="PlayerType" Source="{Binding Tag, ElementName=PlayerType}" Margin="0"></Image>    
+            <!--<Label Name="playerPopulation" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerPopulation}" />-->
+                <Image Grid.Row="2" Grid.Column="0"  Source="textures/unit/score.png" Style="{StaticResource imgUnitBox}" />
+                <Label Grid.Row="2" Grid.Column="1" Name="playerScore" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerScore}" />
+                <Image Grid.Row="2" Grid.Column="2"  Source="textures/unit/number.png" Style="{StaticResource imgUnitBox}" />
+                <Label Grid.Row="2" Grid.Column="3" Name="playerNbUnit" Style="{StaticResource playerInfo}" Content="{Binding Tag, ElementName=playerNbUnit}" />
+        </Grid>
+       
     </Border>
 </UserControl>
