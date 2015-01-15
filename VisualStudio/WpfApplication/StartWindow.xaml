@@ -45,26 +45,26 @@
 
                 <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource playerName}">Player 1</Label>
                 <Label Grid.Column="0" Grid.Row="1" Style="{StaticResource playerInfo}">Name :</Label>
-                <TextBox Grid.Column="1" Grid.Row="1" Name="name1Box"></TextBox>
+                <TextBox Grid.Column="1" Grid.Row="1" Name="name1Box" Text="PlayerOne" GotFocus="TextBoxFocusHandler"/>
                 <Label Grid.Column="0" Grid.Row="2" Style="{StaticResource playerInfo}">Population :</Label>
                 <ComboBox  Grid.Column="1" Grid.Row="2" SelectionChanged="OnChangePopulation1" ItemsSource="{Binding}" Name="population1Box"/>
                 <Label Grid.Column="1" Grid.Row="3" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop1">You must choose different population</Label>
 
-                <TextBlock Grid.Column="0" Grid.Row="3" Margin="5" FontSize="20"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="3" Margin="5" FontSize="20"/>
 
                 <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Style="{StaticResource playerName}">Player 2</Label>
                 <Label Grid.Column="0" Grid.Row="5" Style="{StaticResource playerInfo}">Name :</Label>
-                <TextBox  Grid.Column="1" Grid.Row="5" Name="name2Box"></TextBox>
+                <TextBox  Grid.Column="1" Grid.Row="5" Name="name2Box" Text="PlayerTwo" GotFocus="TextBoxFocusHandler"/>
                 <Label  Grid.Column="0" Grid.Row="6" Style="{StaticResource playerInfo}">Population :</Label>
                 <ComboBox Grid.Column="1" Grid.Row="6" SelectionChanged="OnChangePopulation2" ItemsSource="{Binding}" Name="population2Box" Height="Auto"/>
                 <Label Grid.Column="1" Grid.Row="7" Foreground="Red" Visibility="Collapsed" FontSize="10" HorizontalAlignment="Center" Name="errorPop2">You must choose different population</Label>
 
-                <TextBlock Grid.Column="0" Grid.Row="7" Margin="10" FontSize="20"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="7" Margin="10" FontSize="20"/>
 
                 <Label Grid.Column="0" Grid.Row="8" Style="{StaticResource playerInfo}">Map size :</Label>
                 <ComboBox  Grid.Row="8" Grid.Column="1" ItemsSource="{Binding}" Name="mapBox" />
 
-                <TextBlock Grid.Column="0" Grid.Row="9" Margin="10" FontSize="20"></TextBlock>
+                <TextBlock Grid.Column="0" Grid.Row="9" Margin="10" FontSize="20"/>
 
                 <Button Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="2" HorizontalAlignment="Center" Name="launcher" Click="OnClickLauncher" Width="150" >Launch Game !</Button>
             </Grid>

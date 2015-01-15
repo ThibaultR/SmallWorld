@@ -85,7 +85,9 @@ namespace WpfApplication
         }
 
 
-
+        //*********************************************************************************
+        //*                           Begin Hexagon handler
+        //*********************************************************************************
         private void mouseEnterHexaHandler(object sender, MouseEventArgs e)
         {
             var polygon = sender as Polygon;
@@ -96,6 +98,7 @@ namespace WpfApplication
                 polygon.SetValue(Canvas.ZIndexProperty, 50);
             }
         }
+
 
         private void mouseLeaveHexaHandler(object sender, MouseEventArgs e)
         {
@@ -156,7 +159,14 @@ namespace WpfApplication
             showUnit();
             showUnitOnMap();
         }
+        //*********************************************************************************
+        //*                           End Hexagon handler
+        //*********************************************************************************
 
+
+        //*********************************************************************************
+        //*                           Begin Display Methods
+        //*********************************************************************************
         public void showPolygon()
         {
             foreach (Polygon p in listHexa) {
@@ -249,8 +259,6 @@ namespace WpfApplication
                 }
             }
 
-            
-
             foreach (Unit u2 in this.game.playerTwo.units)
             {
                 if (!coordinateList.Contains(u2.coordinate) && u2.isAlive)
@@ -286,15 +294,14 @@ namespace WpfApplication
             PlayerBox p2 = new PlayerBox(this.game.playerTwo);
             panelPlayer.Children.Add(p2);
         }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            NbUnitP1 = this.game.playerOne.nbUnitAlive();
-            NbUnitP2 = this.game.playerOne.nbUnitAlive();
-        }
+        //*********************************************************************************
+        //*                           End Display Methods
+        //*********************************************************************************
 
 
-
+        //*********************************************************************************
+        //*                           Begin MenuButton Handler
+        //*********************************************************************************
         private void ClickStartNewGame(object sender, RoutedEventArgs e)
         {
             
@@ -337,17 +344,23 @@ namespace WpfApplication
             }
         }
 
-        private void ClickHelp(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ClickSaveAs(object sender, RoutedEventArgs e)
         {
 
         }
 
+        private void ClickHelp(object sender, RoutedEventArgs e)
+        {
 
+        }
+        //*********************************************************************************
+        //*                           End MenuButton Handler
+        //*********************************************************************************
+
+
+        //*********************************************************************************
+        //*                           Begin Closing / Saving
+        //*********************************************************************************
         public bool AskSave()
         {
             MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNoCancel);
@@ -381,13 +394,16 @@ namespace WpfApplication
             }
             else
             {
-                Stream stream = File.Open(this.saveFile, FileMode.Create);
-                BinaryFormatter formatter = new BinaryFormatter();
-                formatter.Serialize(stream, this.game);
-                stream.Close();
+                //Stream stream = File.Open(this.saveFile, FileMode.Create);
+                //BinaryFormatter formatter = new BinaryFormatter();
+                //formatter.Serialize(stream, this.game);
+                //stream.Close();
+                File.WriteAllText(this.saveFile, "coucou");
             }
         }
-
+        //*********************************************************************************
+        //*                           End Closing / Saving
+        //*********************************************************************************
 
         private void endRoundClickHandler(object sender, RoutedEventArgs e)
         {
@@ -414,6 +430,9 @@ namespace WpfApplication
             selectEventSentence(-1);
         }
 
+        //*********************************************************************************
+        //*                           Begin Selector
+        //*********************************************************************************
         public unsafe void selectListReachable() {
             listHexaReachable.Clear();
 
@@ -508,7 +527,9 @@ namespace WpfApplication
             eventSentence.Content = str;
             
         }
-
+        //*********************************************************************************
+        //*                           End Selector
+        //*********************************************************************************
         
     }
 

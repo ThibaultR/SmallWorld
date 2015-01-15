@@ -75,6 +75,13 @@ namespace WpfApplication
             }
         }
 
+        public void TextBoxFocusHandler(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= TextBoxFocusHandler;
+        }
+
         private void OnClickLauncher(object sender, RoutedEventArgs e)
         {
             string name1 = name1Box.Text;
