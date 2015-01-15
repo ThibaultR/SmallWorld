@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -29,6 +30,7 @@ namespace WpfApplication
 
         public void OnClickNewGame(object sender, RoutedEventArgs e)
         {
+            Window.Background 
 
             MapCollection mapCollection = new MapCollection();
             mapBox.DataContext = mapCollection;
@@ -37,8 +39,11 @@ namespace WpfApplication
             PopulationCollection populationCollection = new PopulationCollection();
             population1Box.DataContext = populationCollection;
             population1Box.SelectedItem = "Elf";
+            ImagePlayerOne.Tag = selectImageForPlayer((string)population1Box.SelectedItem);
             population2Box.DataContext = populationCollection;
             population2Box.SelectedItem = "Dwarf";
+            ImagePlayerTwo.Tag = selectImageForPlayer((string)population2Box.SelectedItem);
+
 
             builderGrid.Visibility = System.Windows.Visibility.Hidden;
             newGameGrid.Visibility = System.Windows.Visibility.Visible;
@@ -52,6 +57,8 @@ namespace WpfApplication
 
         private void OnChangePopulation1(object sender, SelectionChangedEventArgs e)
         {
+            ImagePlayerOne.Tag = selectImageForPlayer((string)population1Box.SelectedItem);
+
             if ((string)population1Box.SelectedItem == (string)population2Box.SelectedItem)
             {
                 errorPop1.Visibility = System.Windows.Visibility.Visible;
@@ -64,6 +71,8 @@ namespace WpfApplication
 
         private void OnChangePopulation2(object sender, SelectionChangedEventArgs e)
         {
+            ImagePlayerTwo.Tag = selectImageForPlayer((string)population2Box.SelectedItem);
+
             if ((string)population1Box.SelectedItem == (string)population2Box.SelectedItem)
             {
                 errorPop2.Visibility = System.Windows.Visibility.Visible;
@@ -121,9 +130,33 @@ namespace WpfApplication
                 this.Close();
             }
         }
+
+        public BitmapImage selectImageForPlayer(string c)
+        {
+            BitmapImage myBitmapImage = new BitmapImage();
+
+            myBitmapImage.BeginInit();
+
+            if (c == "Elf"){
+                myBitmapImage.UriSource = new Uri("textures/population/elf_big.png", UriKind.Relative);
+            }
+            else if (c == "Dwarf")
+            {
+                myBitmapImage.UriSource = new Uri("textures/population/dwarf_big.png", UriKind.Relative);
+            }
+            else if (c == "Orc")
+            {
+                myBitmapImage.UriSource = new Uri("textures/population/orc_big.png", UriKind.Relative);
+            }
+            myBitmapImage.EndInit();
+
+            return myBitmapImage;
+        }
+
+
     }
 
-    class PopulationCollection : ObservableCollection<string>
+    public class PopulationCollection : ObservableCollection<string>
     {
         public string selected
         {
@@ -139,9 +172,14 @@ namespace WpfApplication
             Add("Dwarf");
             Add("Orc");
         }
+
+/*        public string SelectedPopulation()
+        {
+            return (string)this.selected;
+        }*/
     }
 
-    class MapCollection : ObservableCollection<string>
+    public class MapCollection : ObservableCollection<string>
     {
         public string selected
         {
