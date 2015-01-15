@@ -160,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="sw_home.jpg" />
+    <Resource Include="score.png" />
     <Content Include="textures\backgroundMap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -184,7 +185,13 @@
     <Content Include="textures\unit\movement.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="textures\unit\number.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="textures\unit\position.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\score.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="textures\unit\tired.png">

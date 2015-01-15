@@ -31,10 +31,11 @@ namespace WpfApplication
 
             InitializeComponent();
 
+            PlayerType.Tag = pW.selectImageForPlayer(p, false);
+
             playerName.Tag = this.player.name;
-            playerPopulation.Tag = "Population : " + this.player.populationType;
-            playerScore.Tag = "Score : " + this.player.currentScore;
-            playerNbUnit.Tag = "Unit : " + this.player.nbUnitAlive();
+            playerScore.Tag = this.player.currentScore;
+            playerNbUnit.Tag = this.player.nbUnitAlive();
 
             if (player == pW.game.getCurrentPlayer())
             {
