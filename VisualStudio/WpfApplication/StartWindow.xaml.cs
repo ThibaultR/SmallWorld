@@ -38,10 +38,8 @@ namespace WpfApplication
             PopulationCollection populationCollection = new PopulationCollection();
             population1Box.DataContext = populationCollection;
             population1Box.SelectedItem = "Elf";
-            ImagePlayerOne.Tag = selectImageForPlayer((string)population1Box.SelectedItem);
             population2Box.DataContext = populationCollection;
             population2Box.SelectedItem = "Dwarf";
-            ImagePlayerTwo.Tag = selectImageForPlayer((string)population2Box.SelectedItem);
 
 
             builderGrid.Visibility = System.Windows.Visibility.Hidden;
@@ -135,7 +133,6 @@ namespace WpfApplication
             BitmapImage myBitmapImage = new BitmapImage();
 
             myBitmapImage.BeginInit();
-
             if (c == "Elf"){
                 myBitmapImage.UriSource = new Uri("textures/population/elf_big.png", UriKind.Relative);
             }

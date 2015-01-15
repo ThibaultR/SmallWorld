@@ -45,7 +45,6 @@ namespace WpfApplication
 
             //TO DO : Ne Fonctionne pas très bien 
             nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
-            imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
             selectEventSentence(-1);    
 
             NbUnitP1 = this.game.playerOne.nbUnitAlive();
@@ -310,25 +309,22 @@ namespace WpfApplication
         //*********************************************************************************
         private void ClickStartNewGame(object sender, RoutedEventArgs e)
         {
-            
-            MessageBoxResult newGameBox= MessageBox.Show("Souhaitez-vous enregistrer la partie en cours ?",
+            MessageBoxResult newGameBox= MessageBox.Show("Do you want to save the current Game ?",
                                                             "New Game",
                                                             MessageBoxButton.YesNoCancel);
             if (newGameBox == MessageBoxResult.Yes)
             {
-                //TODO Ne fonctionne pas : this.SaveGame();
+                ClickSave(sender,e);
             }
             else if (newGameBox == MessageBoxResult.No)
             {
                 StartWindow createNewGame = new StartWindow();
-                createNewGame.OnClickNewGame(null, null);
+                createNewGame.OnClickNewGame(sender, e);
 
                 createNewGame.Show();
                 newGame = true;
                 this.Close();
-                
             }
-            //return false;
         }
 
         private void ClickOpen(object sender, RoutedEventArgs e)
@@ -345,7 +341,18 @@ namespace WpfApplication
 
         private void ClickSave(object sender, RoutedEventArgs e)
         {
-            //TODO a revoir
+            if (this.saveFile == null)
+            {
+                ClickSaveAs(sender, e);
+            }
+            else 
+            {
+                SaveGame();
+            }
+        }
+
+        private void ClickSaveAs(object sender, RoutedEventArgs e)
+        {
             SaveFileDialog sfdlg = new SaveFileDialog();
             sfdlg.DefaultExt = ".sw";
             sfdlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
@@ -355,11 +362,6 @@ namespace WpfApplication
                 this.saveFile = sfdlg.FileName;
                 this.SaveGame();
             }
-        }
-
-        private void ClickSaveAs(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void ClickHelp(object sender, RoutedEventArgs e)
@@ -372,18 +374,8 @@ namespace WpfApplication
 
 
         //*********************************************************************************
-        //*                           Begin Closing / Saving
+        //*                           Begin Closing / Saving / Load
         //*********************************************************************************
-        public bool AskSave()
-        {
-            MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNoCancel);
-
-            if (exitBox == MessageBoxResult.Yes  || exitBox == MessageBoxResult.Cancel)
-            {
-                return true;
-            }
-            return false;
-        }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
         {
@@ -391,9 +383,23 @@ namespace WpfApplication
                newGame = false;
                e.Cancel = false;
             }
-            else if (AskSave() == true)
+            else
             {
-                e.Cancel = true;
+                MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNoCancel);
+                switch (exitBox) 
+                { 
+                    case MessageBoxResult.Yes:
+                        ClickSave(null, null);
+                        break;
+                    case MessageBoxResult.No:
+                        e.Cancel = false;
+                        break;
+                    case MessageBoxResult.Cancel:
+                        e.Cancel = true;
+                        break;
+                    default:
+                        break;
+                }
             }
         }
 
@@ -428,7 +434,6 @@ namespace WpfApplication
                 showUnit();
                 showPlayer();
                 showUnitOnMap();
-                imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
                 selectEventSentence(-1);
             }
             else
@@ -437,7 +442,7 @@ namespace WpfApplication
             }
         }
         //*********************************************************************************
-        //*                           End Closing / Saving
+        //*                           End Closing / Saving /Load
         //*********************************************************************************
 
         private void endRoundClickHandler(object sender, RoutedEventArgs e)
@@ -456,7 +461,6 @@ namespace WpfApplication
             }
 
             showUnit();
-            imagePlayer.Source = selectImageForPlayer(this.game.getCurrentPlayer(), false);
 
             showPlayer();
 
