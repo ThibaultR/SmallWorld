@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -51,7 +52,19 @@ namespace WpfApplication
 
         private void OnClickLoadGame(object sender, RoutedEventArgs e)
         {
-            //TODO
+            OpenFileDialog ofdlg = new OpenFileDialog();
+            ofdlg.DefaultExt = ".sw";
+            ofdlg.Filter = "Small world (*.sw)|*.sw|All files (*.*)|*.*";
+            Nullable<bool> result = ofdlg.ShowDialog();
+            if (result == true)
+            {
+                this.gameCreator.builderGame = new BuilderSavedGame(ofdlg.FileName);
+                this.gameCreator.builderGame.createGame();
+
+                MapWindow mapW = new MapWindow(this.gameCreator.builderGame.game);
+                mapW.Show();
+                this.Close();
+            }
         }
 
         private void OnChangePopulation1(object sender, SelectionChangedEventArgs e)
