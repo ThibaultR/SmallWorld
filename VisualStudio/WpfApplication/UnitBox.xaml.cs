@@ -32,20 +32,29 @@ namespace WpfApplication
             pW = (Application.Current.MainWindow as MapWindow);
             InitializeComponent();
 
-            String typeUnitString = "";
-            Type typeUnit = unit.GetType();
-            if (typeUnit == typeof(UnitElf)) { typeUnitString = "Elf"; }
-            if (typeUnit == typeof(UnitDwarf)) { typeUnitString = "Dwarf"; }
-            if (typeUnit == typeof(UnitOrc)) { typeUnitString = "Orc"; }
-            UnitType.Tag = "Unité " + typeUnitString;
-            if (pW.game.playerOne.units.Contains(unit)) { UnitType.Foreground = Brushes.Blue; }
-            else { UnitType.Foreground = Brushes.Green; }
+            //String typeUnitString = "";
+            //Type typeUnit = unit.GetType();
+            //if (typeUnit == typeof(UnitElf)) { typeUnitString = "Elf"; }
+            //if (typeUnit == typeof(UnitDwarf)) { typeUnitString = "Dwarf"; }
+            //if (typeUnit == typeof(UnitOrc)) { typeUnitString = "Orc"; }
+            //UnitType.Tag = "Unit " + typeUnitString;
+            //if (pW.game.playerOne.units.Contains(unit)) { UnitType.Foreground = Brushes.Blue; }
+            //else { UnitType.Foreground = Brushes.Green; }
 
-            UnitAttack.Tag = "Attack : " + Unit.ATTACK;
-            UnitDefence.Tag = "Defence : " + Unit.DEFENCE;
-            UnitHealth.Tag = "Health : " + unit.healthPoint;
-            UnitMvt.Tag = "Movement : " + unit.movementPoint;
-            UnitPos.Tag = "Position : (" + unit.coordinate.x + ", " + unit.coordinate.y + ")";
+            //UnitAttack.Tag = "Attack : " + Unit.ATTACK;
+            //UnitDefence.Tag = "Defence : " + Unit.DEFENCE;
+            //UnitHealth.Tag = "Health : " + unit.healthPoint;
+            //UnitMvt.Tag = "Movement : " + unit.movementPoint;
+            //UnitPos.Tag = "Position : (" + unit.coordinate.x + ", " + unit.coordinate.y + ")";
+
+            Type typeUnit = unit.GetType();
+
+            UnitType.Tag = pW.selectImageForPlayer(u, true);
+            UnitAttack.Tag = Unit.ATTACK;
+            UnitDefence.Tag = Unit.DEFENCE;
+            UnitHealth.Tag = unit.healthPoint;
+            UnitMvt.Tag = unit.movementPoint;
+            UnitPos.Tag = "(" + unit.coordinate.x + ", " + unit.coordinate.y + ")";
 
             bool isOnSelectedTile = pW.listHexa.IndexOf(pW.selectedPolygon) == unit.coordinate.x + unit.coordinate.y * pW.game.map.strategy.size;
             if (!pW.game.isMovementPossible(unit))
@@ -102,9 +111,11 @@ namespace WpfApplication
             // Change style of selectedUnit to normal
             foreach (UnitBox ub in pW.panelUnit.Children)
             {
-                if(ub.unit == pW.game.currentSelectedUnit)
-                ub.border.BorderThickness = new Thickness(2);
-                ub.border.BorderBrush = Brushes.Gray;
+                if (ub.unit == pW.game.currentSelectedUnit)
+                {
+                    ub.border.BorderThickness = new Thickness(2);
+                    ub.border.BorderBrush = Brushes.Gray;
+                }
             }
             
             // Change currentSelectedUnit and change style to selected

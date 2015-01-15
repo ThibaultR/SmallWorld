@@ -126,6 +126,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="textures\unused\backgrounds\Background.psd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -158,52 +159,54 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="textures\Background.png">
+    <Content Include="textures\backgroundMap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="textures\background_bis.jpg">
+    <Content Include="textures\backgroundStart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="textures\fond_bois.png" />
-    <Resource Include="textures\fond_bois2.png" />
-    <Resource Include="textures\fond_page_modifie.png" />
+    <Content Include="textures\unit\attack.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\defence.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\health.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\movement.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\position.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="textures\icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="textures\images_projet\Background.png" />
-    <Content Include="textures\images_projet\Background.psd" />
-    <Content Include="textures\images_projet\desert.png" />
-    <Content Include="textures\images_projet\desert_bis.png" />
-    <Content Include="textures\images_projet\dwarf.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\dwarf2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\elf.jpg" />
-    <Content Include="textures\images_projet\elf2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\elves.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\elves_bis.png" />
-    <Content Include="textures\images_projet\forest.png" />
-    <Content Include="textures\images_projet\forest_bis.png" />
-    <Content Include="textures\images_projet\mountain.png" />
-    <Content Include="textures\images_projet\mountain_bis.png" />
-    <Content Include="textures\images_projet\nains.png" />
-    <Content Include="textures\images_projet\nains_dwarf_bis.jpg" />
-    <Content Include="textures\images_projet\orcs.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\orcs.png" />
-    <Content Include="textures\images_projet\orcs2.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="textures\images_projet\orcs_bis.jpg" />
-    <Content Include="textures\images_projet\plain.png" />
-    <Content Include="textures\images_projet\plain_bis.png" />
+    <Resource Include="textures\unused\backgrounds\Background.png" />
+    <Resource Include="textures\unused\backgrounds\background_bis.jpg" />
+    <Resource Include="textures\unused\backgrounds\fond_bois.jpg" />
+    <Resource Include="textures\unused\backgrounds\fond_bois.png" />
+    <Resource Include="textures\unused\backgrounds\fond_bois2.jpg" />
+    <Resource Include="textures\unused\backgrounds\fond_page_modifie.png" />
+    <Resource Include="textures\unused\backgrounds\smallWorld.png" />
+    <Resource Include="textures\unused\backgrounds\smallWorld3.png" />
+    <Resource Include="textures\unused\backgrounds\smallWorldGame.png" />
+    <Resource Include="textures\unused\population\dwarf.jpg" />
+    <Resource Include="textures\unused\population\dwarf2.png" />
+    <Resource Include="textures\unused\population\elf.jpg" />
+    <Resource Include="textures\unused\population\elf2.png" />
+    <Resource Include="textures\unused\population\elves.png" />
+    <Resource Include="textures\unused\population\nains.png" />
+    <Resource Include="textures\unused\population\orcs.jpg" />
+    <Resource Include="textures\unused\population\orcs.png" />
+    <Resource Include="textures\unused\population\orcs2.png" />
+    <Resource Include="textures\unused\tile\desert_big.png" />
+    <Resource Include="textures\unused\tile\forest_big.png" />
+    <Resource Include="textures\unused\tile\mountain_big.png" />
+    <Resource Include="textures\unused\tile\plain_big.png" />
     <Content Include="textures\population\dwarf.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -222,10 +225,6 @@
     <Content Include="textures\population\orc_big.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Resource Include="textures\smallWorld3.png" />
-    <Resource Include="textures\smallWorld3_1.png" />
-    <Resource Include="textures\smallWorld.png" />
-    <Resource Include="textures\smallWorldGame.png" />
     <Content Include="textures\SW-Logo.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -189,6 +189,7 @@ namespace WpfApplication
 
             if (listEnemyUnits.Count == 0)
             {
+                bool NoSelectedUnit = this.game.currentSelectedUnit == null ;
                 foreach (Unit u in this.game.getCurrentPlayer().units)
                 {
                     UnitBox ub = new UnitBox(u);
@@ -424,7 +425,7 @@ namespace WpfApplication
             }
         }
 
-        private BitmapImage selectImageForPlayer(Player p, bool isSmall){
+        public BitmapImage selectImageForPlayer(Player p, bool isSmall){
             BitmapImage myBitmapImage = new BitmapImage();
 
             myBitmapImage.BeginInit();
@@ -466,6 +467,16 @@ namespace WpfApplication
             myBitmapImage.EndInit();
 
             return myBitmapImage;
+        }
+
+        public BitmapImage selectImageForPlayer(Unit u, bool isSmall) { 
+            Player p;
+            if (u.GetType() == this.game.playerOne.units[0].GetType())
+                p = this.game.playerOne;
+            else
+                p = this.game.playerTwo;
+
+            return selectImageForPlayer(p, isSmall);
         }
 
         public void selectEventSentence(int n) {

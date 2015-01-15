@@ -5,7 +5,7 @@
         Icon="textures/icon.png">
 
     <Window.Background>
-        <ImageBrush ImageSource="textures/smallWorld3_1.png" ></ImageBrush>
+        <ImageBrush ImageSource="textures/backgroundStart.png" ></ImageBrush>
     </Window.Background>
 
     <ScrollViewer Name="scrollViewerStart" CanContentScroll="False"  VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
