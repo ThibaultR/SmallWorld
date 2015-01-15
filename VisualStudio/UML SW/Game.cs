@@ -76,6 +76,7 @@ namespace UML_SW
             {
                 if (this.playerOne.nbUnitAlive() == 0) { return this.playerTwo; } 
                 if (this.playerTwo.nbUnitAlive() == 0) { return this.playerOne; }
+                if (this.playerOne.currentScore == this.playerTwo.currentScore) { return null; }
                 if (this.playerOne.currentScore > this.playerTwo.currentScore) { return this.playerOne; }
                 else { return this.playerTwo; }
             }

@@ -168,6 +168,9 @@
     <Content Include="textures\unit\attack.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="textures\unit\dead.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="textures\unit\defence.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -178,6 +181,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="textures\unit\position.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="textures\unit\tired.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

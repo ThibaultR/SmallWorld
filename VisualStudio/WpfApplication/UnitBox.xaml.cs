@@ -49,7 +49,7 @@ namespace WpfApplication
 
             Type typeUnit = unit.GetType();
 
-            UnitType.Tag = pW.selectImageForPlayer(u, true);
+            UnitType.Tag = pW.selectImageForPlayer(u, false);
             UnitAttack.Tag = Unit.ATTACK;
             UnitDefence.Tag = Unit.DEFENCE;
             UnitHealth.Tag = unit.healthPoint;

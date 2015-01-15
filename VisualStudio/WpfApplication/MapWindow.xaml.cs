@@ -393,7 +393,14 @@ namespace WpfApplication
             this.game.endRound();
 
             if (this.game.isEnd()) {
-                MessageBox.Show("The game has ended ! The Winner is " + this.game.getWinner().name + " with " + this.game.getWinner().currentScore + " points. Well Played !");
+                if (this.game.getWinner() == null)
+                {
+                    MessageBox.Show("The game has ended ! It's a tie, there is no Winner. Well Played !");
+                }
+                else
+                {
+                    MessageBox.Show("The game has ended ! The Winner is " + this.game.getWinner().name + " with " + this.game.getWinner().currentScore + " points. Well Played !");
+                }
             }
 
             showUnit();

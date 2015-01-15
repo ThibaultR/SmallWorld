@@ -44,6 +44,7 @@
         <Style x:Key="unitText" TargetType="Label">
             <Setter Property="FontSize" Value="18" />
             <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="2" />
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
