@@ -33,7 +33,6 @@
                     <MenuItem Header="Save" Click="ClickSave"/>
                     <MenuItem Header="Save as" Click="ClickSaveAs"/>
                 </MenuItem>
-                <MenuItem Header="Help" Click="ClickHelp"></MenuItem>
             </Menu>
         </StackPanel>
 
@@ -65,7 +64,7 @@
 
                 <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Style="{StaticResource eventSentence}" Name="eventSentence" Text="Vous ne pouvez pas faire ça !!!"/>
                 <Label Grid.Row="1" Grid.ColumnSpan="2" Name="nbRoundsLeft" Content="{Binding Tag, ElementName=nbRoundsLeft}" HorizontalAlignment="Center"/>
-                <Button Grid.Row="2" Name="finTour" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2,2,2,2" Click="endRoundClickHandler" MaxHeight="70">Fin de tour</Button>
+                <Button Grid.Row="2" Name="finTour" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="2,2,2,2" Click="endRoundClickHandler" MaxHeight="70">End Round</Button>
             </Grid>
         </Border>
 

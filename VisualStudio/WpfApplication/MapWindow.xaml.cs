@@ -370,10 +370,7 @@ namespace WpfApplication
             }
         }
 
-        private void ClickHelp(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
         //*********************************************************************************
         //*                           End MenuButton Handler
         //*********************************************************************************
