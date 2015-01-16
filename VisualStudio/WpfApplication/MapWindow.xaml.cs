@@ -22,8 +22,6 @@ namespace WpfApplication
     {
         public Game game { get; set; }
         public string saveFile { get; set; }
-        public int NbUnitP1 { get; set; }
-        public int NbUnitP2 { get; set; }
         public double canvasHeight { get; set; }
         public double canvasWidth { get; set; }
         public List<Polygon> listHexa { get; set; }
@@ -43,12 +41,9 @@ namespace WpfApplication
 
             displayCanvas();
 
-            //TO DO : Ne Fonctionne pas très bien 
             nbRoundsLeft.Tag = "Rounds left : " + (this.game.map.strategy.nbRounds - this.game.currentRoundNumber);
             selectEventSentence(-1);    
 
-            NbUnitP1 = this.game.playerOne.nbUnitAlive();
-            NbUnitP2 = this.game.playerTwo.nbUnitAlive();
             showUnit();
             showUnitOnMap();
             showPlayer();       
@@ -117,17 +112,28 @@ namespace WpfApplication
             }
             else
             {
-                this.game.action();
+                int sentence = this.game.action();
+                selectEventSentence(sentence);
+                if (!this.game.currentSelectedUnit.isAlive) {
+                    selectEventSentence(22);
+                }
+
+
                 if (!this.game.isMovementPossible(this.game.currentSelectedUnit))
                 {
                     this.game.currentSelectedUnit = null;
                     selectListReachable();
                 }
             }
-
+            showPlayer();
             showPolygon();
             showUnit();
             showUnitOnMap();
+
+            if (this.game.isEnd()) 
+            {
+                endRoundClickHandler(null, null);
+            }
         }
         //*********************************************************************************
         //*                           End Hexagon handler
@@ -385,7 +391,7 @@ namespace WpfApplication
             }
             else
             {
-                MessageBoxResult exitBox = MessageBox.Show("Vous nous quittez déjà ? Souhaitez-vous enregistrer votre partie en cours avant de partir ?", "Exit", MessageBoxButton.YesNoCancel);
+                MessageBoxResult exitBox = MessageBox.Show("Do you want to save the current game before leaving ?", "Exit", MessageBoxButton.YesNoCancel);
                 switch (exitBox) 
                 { 
                     case MessageBoxResult.Yes:
@@ -447,23 +453,37 @@ namespace WpfApplication
 
         private void endRoundClickHandler(object sender, RoutedEventArgs e)
         {
-            this.game.endRound();
-
-            if (this.game.isEnd()) {
-                if (this.game.getWinner() == null)
-                {
-                    MessageBox.Show("The game has ended ! It's a tie, there is no Winner. Well Played !");
-                }
-                else
-                {
-                    MessageBox.Show("The game has ended ! The Winner is " + this.game.getWinner().name + " with " + this.game.getWinner().currentScore + " points. Well Played !");
-                }
+            if (!this.game.isEnd())
+            { 
+                this.game.endRound();
             }
-
-            showUnit();
 
             showPlayer();
 
+            if (this.game.isEnd()) {
+            string str = "";
+                if (this.game.getWinner() == null)
+                {
+                    str = "The game has ended ! It's a tie, there is no Winner. Well Played !";
+                    
+                }
+                else
+                {
+                    str = "The game has ended ! The Winner is " + this.game.getWinner().name + " with " + this.game.getWinner().currentScore + " points. Well Played !";
+                }
+
+                MessageBoxResult exitBox = MessageBox.Show(str+"\nWould you like to start a new game ?", "End of the Game", MessageBoxButton.YesNo);
+                if (exitBox == MessageBoxResult.Yes)
+                {
+                    ClickStartNewGame(null, null);
+                }
+                return;
+            }
+
+            nbRoundsLeft.Tag = "Rounds left : " + ((int)(this.game.map.strategy.nbRounds - this.game.currentRoundNumber));
+
+
+            showUnit();
             listHexaReachable.Clear();
             showPolygon();
             selectEventSentence(-1);
@@ -559,11 +579,23 @@ namespace WpfApplication
                 case 2:
                     str = "The selected unit is tired.";
                     break;
+                case 21:
+                    str = "Your unit moved to the selected tile.";
+                    break;
+                case 22:
+                    str = "Your unit died in battle.";
+                    break;
+                case 23:
+                    str = "You killed the enemy unit and moved.";
+                    break;
+                case 25:
+                    str = "You attacked but there is still enemies on the tile.";
+                    break;
                 default:
                     break;
             }
 
-            eventSentence.Content = str;
+            eventSentence.Text = str;
             
         }
         //*********************************************************************************

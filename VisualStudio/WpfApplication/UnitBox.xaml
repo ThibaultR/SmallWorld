@@ -24,8 +24,10 @@
             </Grid.RowDefinitions>
 
             <Image Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3" Name="UnitType"  Source="{Binding Tag, ElementName=UnitType}" Margin="0"/>
-            <Image Grid.Column="3" Grid.Row="0" Source="textures/unit/position.png" Style="{StaticResource imgUnitBox}" />
+            <Image Grid.Column="3" Grid.Row="0" Name="UnitPosImg" Source="textures/unit/position.png" Style="{StaticResource imgUnitBox}" />
             <Label Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitPos" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitPos}"/>
+            <Image Grid.Column="4" Grid.Row="0" Name="UnitBonusImg" Source="textures/unit/bonus.png" Style="{StaticResource imgUnitBox}" Margin="0,0,0,3" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+            <Label Grid.Column="5" Grid.Row="0" Name="UnitBonus" Style="{StaticResource unitText}"  Content="{Binding Tag, ElementName=UnitBonus}" VerticalAlignment="Bottom" Visibility="Collapsed"/>
             <Image Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitAlive" Source="textures/unit/dead.png" Visibility="Collapsed"/>
             <Image Grid.Column="6" Grid.Row="0" Grid.ColumnSpan="2" Name="UnitTired" Source="textures/unit/tired.png" Visibility="Collapsed"/>
             <Image Grid.Column="0" Grid.Row="1" Source="textures/unit/health.png" Style="{StaticResource imgUnitBox}" />

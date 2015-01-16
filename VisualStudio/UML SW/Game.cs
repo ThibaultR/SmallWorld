@@ -179,7 +179,7 @@ namespace UML_SW
         }
 
 
-        public void action()
+        public int action()
         {
             /*
              * If enemy on tile then 
@@ -190,6 +190,7 @@ namespace UML_SW
              * else 
              *      move to tile
              */
+            int res = 20;
 
             if (isActionPossible())
             {
@@ -200,19 +201,23 @@ namespace UML_SW
                     currentSelectedUnit.attack(selectBestOpponent(listEnemyUnits)); //then attack
 
                     listEnemyUnits = selectEnemyUnitsOnCoordinates(currentSelectedTileCoordinate);//update list of enemies
+                    res += 2;
                 }
 
-                if (listEnemyUnits.Count > 0)//if there is stille enemies
+                if (listEnemyUnits.Count > 0)//if there is still enemies
                 {
                     currentSelectedUnit.move(currentSelectedUnit.coordinate, getTypeofTile(currentSelectedUnit.coordinate));// move to same location
+                    res += 3;
                 }
                 else// no (more) enemies
                 {
                     currentSelectedUnit.move(currentSelectedTileCoordinate, getTypeofTile(currentSelectedUnit.coordinate));//move to tile
+                    res += 1;
                 }
 
             }
 
+            return res;
         }
 
         public int calculScoreSingleUnit(Unit u, List<Coordinate> lc)

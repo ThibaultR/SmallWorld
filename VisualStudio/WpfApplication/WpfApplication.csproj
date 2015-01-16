@@ -173,6 +173,9 @@
     <Content Include="textures\unit\attack.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="textures\unit\bonus.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="textures\unit\dead.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

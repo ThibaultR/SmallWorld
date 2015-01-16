@@ -48,7 +48,7 @@ namespace WpfApplication
             }
             else if (pW.game.getCurrentPlayer().units.Contains(unit) && isOnSelectedTile)
             {
-                border.Margin = new Thickness(10, 2, 50, 2);
+                border.Margin = new Thickness(10, 2, 40, 2);
                 border.MouseEnter += new MouseEventHandler(mouseEnterUnitHandler);
                 border.MouseLeave += new MouseEventHandler(mouseLeaveUnitHandler);
                 border.MouseLeftButtonDown += new MouseButtonEventHandler(mouseLeftClickUnitHandler);
@@ -68,6 +68,12 @@ namespace WpfApplication
             if (!unit.isAlive || pW.game.getEnemyPlayer().units.Contains(unit)) //TODO try with binding
             {
                 border.Opacity = 0.5;
+            }
+
+            if (unit.GetType() == typeof(UnitOrc)) {
+                UnitBonus.Tag = unit.bonusPoint;
+                UnitBonus.Visibility = System.Windows.Visibility.Visible;
+                UnitBonusImg.Visibility = System.Windows.Visibility.Visible;
             }
         }
 
