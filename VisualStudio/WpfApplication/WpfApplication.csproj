@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publier\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -48,6 +48,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -135,9 +139,9 @@
       <Project>{c3e7864c-f28d-4f40-9d61-f3932ad00fe3}</Project>
       <Name>AlgoWrapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\UML SW\UML SW.csproj">
+    <ProjectReference Include="..\UML SW\UML_SW.csproj">
       <Project>{72494335-a567-4057-af96-676629812e72}</Project>
-      <Name>UML SW</Name>
+      <Name>UML_SW</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +164,7 @@
   <ItemGroup>
     <Resource Include="sw_home.jpg" />
     <Resource Include="score.png" />
+    <Resource Include="icon.ico" />
     <Content Include="textures\backgroundMap.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
